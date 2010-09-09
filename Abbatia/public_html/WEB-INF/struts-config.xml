@@ -1,0 +1,669 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+    <form-beans>
+        <form-bean name="MonjeForm" type="org.abbatia.actionform.MostrarMonjeActForm"/>
+        <form-bean name="RegistroForm" type="org.abbatia.actionform.RegistroActForm"/>
+        <form-bean name="LoginForm" type="org.abbatia.actionform.LoginForm"/>
+        <form-bean name="AbadiaForm" type="org.abbatia.actionform.AbadiaActForm"/>
+        <form-bean name="AdminForm" type="org.abbatia.actionform.AdminActForm"/>
+        <form-bean name="VentaForm" type="org.abbatia.actionform.MercadoVentaActForm"/>
+        <form-bean name="SacrificioForm" type="org.abbatia.actionform.DatosSacrificioActForm"/>
+        <form-bean name="DatosVentaForm" type="org.abbatia.actionform.DatosVentaActForm"/>
+        <form-bean name="MensajeForm" type="org.abbatia.actionform.MensajeActForm"/>
+        <form-bean name="DatosEdificioForm" type="org.abbatia.actionform.DatosEdificioActForm"/>
+        <form-bean name="SiembraActForm" type="org.abbatia.actionform.SiembraActForm"/>
+        <form-bean name="VentaAgrupadaForm" type="org.abbatia.actionform.DatosVentaAgrupadaActForm"/>
+        <form-bean name="ActividadesMonjeForm" type="org.abbatia.actionform.MonjeActividadActForm"/>
+        <form-bean name="DatosVotacion" type="org.abbatia.actionform.VotacionActForm"/>
+        <form-bean name="DatosVotacionPapa" type="org.abbatia.actionform.VotacionPapaActForm"/>
+        <form-bean name="ObispadoImpuestos" type="org.abbatia.actionform.ObispadoImpuestosActForm"/>
+        <form-bean name="CardenalesImpuestos" type="org.abbatia.actionform.ObispadoImpuestosActForm"/>
+        <form-bean name="PapadoImpuestos" type="org.abbatia.actionform.ObispadoImpuestosActForm"/>
+        <form-bean name="BuscarAbadiaForm" type="org.abbatia.actionform.BuscarAbadiaActForm"/>
+        <form-bean name="BuscarAbadiasForm" type="org.abbatia.actionform.BuscarAbadiasActForm"/>
+        <form-bean name="ViajarForm" type="org.abbatia.actionform.ViajarActForm"/>
+        <form-bean name="MostrarComisiones" type="org.abbatia.actionform.BuscarAbadiaActForm"/>
+        <form-bean name="datosMolino" type="org.abbatia.actionform.DatosMolinoActForm"/>
+        <form-bean name="datosElaboracion" type="org.abbatia.actionform.DatosElaboracionActForm"/>
+        <form-bean name="datosMercadoAdmin" type="org.abbatia.actionform.MercadoAdminForm"/>
+        <form-bean name="datosCopiaLibro" type="org.abbatia.actionform.DatosCopiaLibroActForm"/>
+        <form-bean name="libroDetalle" type="org.abbatia.actionform.LibroDetalleActForm"/>
+        <form-bean name="BuscarMercadoCompraForm" type="org.abbatia.actionform.BuscarMercadoCompraForm"/>
+        <form-bean name="MercadoCompraForm" type="org.abbatia.actionform.MercadoCompraForm"/>
+        <form-bean name="DiplomaciaForm" type="org.abbatia.actionform.DatosDiplomaciaForm"/>
+        <form-bean name="DatosCampoForm" type="org.abbatia.actionform.DatosCampoActForm"/>
+        <form-bean name="FiltroLibros" type="org.abbatia.actionform.FiltroLibrosActForm"/>
+        <form-bean name="DatosPeticionBloqueo" type="org.abbatia.actionform.PeticionBloqueoActForm"/>
+
+        <form-bean name="BuscarMercadoAgrupadoCompraForm" type="org.apache.struts.action.DynaActionForm">
+            <form-property name="mercancia" type="java.lang.Integer" initial="1"/>
+            <form-property name="familiaAlimento" type="java.lang.Integer" initial="0"/>
+        </form-bean>
+        <form-bean name="MercadoAdminForm" type="org.apache.struts.action.DynaActionForm">
+            <form-property name="mercancia" type="java.lang.Integer" initial="1"/>
+        </form-bean>
+        <form-bean name="PwdAdmin" type="org.apache.struts.action.DynaActionForm">
+            <form-property name="pwd" type="java.lang.String"/>
+        </form-bean>
+        <form-bean name="AceptacionNormas" type="org.apache.struts.action.DynaActionForm">
+            <form-property name="estadoCheck" type="java.lang.Boolean"/>
+        </form-bean>
+        <form-bean name="AltaLiteral" type="org.apache.struts.action.DynaActionForm">
+            <form-property name="literal" type="java.lang.String"/>
+        </form-bean>
+
+    </form-beans>
+
+    <global-exceptions>
+        <exception key="excepcion.PoolSaturado" type="org.abbatia.exception.AbadiaDBConnectionException"
+                   path="/abadias/MostrarMensaje.jsp" handler="org.abbatia.action.exception.AbbatiaExceptionHandler"/>
+        <exception key="excepcion.monjenoencontrado" type="org.abbatia.exception.MonjeNoEncontradoException"
+                   path="/abadias/MostrarMensaje.jsp" handler="org.abbatia.action.exception.AbbatiaExceptionHandler"/>
+        <exception key="excepcion.general.abbatia" type="org.abbatia.exception.base.AbadiaException"
+                   path="/abadias/MostrarMensaje.jsp" handler="org.abbatia.action.exception.AbbatiaExceptionHandler"/>
+        <exception key="excepcion.general.sistema" type="java.lang.Exception" path="/abadias/MostrarMensaje.jsp"
+                   handler="org.abbatia.action.exception.AbbatiaExceptionHandler"/>
+    </global-exceptions>
+
+
+    <global-forwards>
+        <forward name="failure" path="/varios/error.jsp"/>
+        <forward name="error" path="/varios/error.jsp"/>
+        <forward name="desconectar" path="/index.jsp"/>
+        <forward name="login" path="/usuarios/Login.jsp"/>
+        <forward name="sesioncaducada" path="/usuarios/sesionCaducada.jsp"/>
+        <forward name="mensajes" path="/abadias/MostrarMensaje.jsp"/>
+        <forward name="solicitudes" path="/solicitudes/listaSolicitudes.jsp"/>
+        <forward name="diplomacia" path="/mostrarDiplomacia.do"/>
+        <forward name="principal" path="/abadias/principal.jsp"/>
+        <forward name="cerrarPopUp" path="/varios/cerrarPopUp.jsp"/>
+    </global-forwards>
+
+    <action-mappings>
+        <action path="/index_menu" forward="/index_menu.jsp"/>
+        <action path="/proteccion_datos" forward="/ayudas/proteccion_datos.jsp"/>
+
+        <action path="/equipo_desarrollo" forward="/ayudas/desarrollo.jsp"/>
+
+        <action path="/ayudas" forward="/ayudas/ayudas.jsp"/>
+
+        <action path="/faq_normas" forward="/ayudas/faq_normas.jsp"/>
+
+        <action path="/faq_mercados" forward="/ayudas/faq_mercados.jsp"/>
+
+        <action path="/faq_monjes" forward="/ayudas/faq_monjes.jsp"/>
+
+        <action path="/faq_animales" forward="/ayudas/faq_animales.jsp"/>
+
+        <action path="/faq_edificios" forward="/ayudas/faq_edificios.jsp"/>
+
+        <action path="/faq_consejos" forward="/ayudas/faq_consejos.jsp"/>
+
+        <action path="/index_border" forward="/index_border.html"/>
+
+        <action path="/index_main_menu" forward="/index_main_menu.jsp"/>
+
+        <action path="/listarMonjes" type="org.abbatia.action.ListarMonjesAction">
+            <forward name="success" path="/monjes/ListadoMonjes.jsp"/>
+        </action>
+        <action path="/AceptarNormas" type="org.abbatia.action.AceptarNormasAction" name="AceptacionNormas">
+            <forward name="inicio" path="/usuarios/validacion_normas.jsp"/>
+            <forward name="success" path="/abadias/principal.jsp"/>
+        </action>
+        <action path="/supporters" type="org.abbatia.action.SupportersAction">
+            <forward name="success" path="/ayudas/supporters.jsp"/>
+        </action>
+        <action path="/listarTrabajos" type="org.abbatia.action.ListarTrabajosAction">
+            <forward name="successAhora" path="/monjes/ListadoTrabajos_Ahora.jsp"/>
+            <forward name="success" path="/monjes/ListadoTrabajos.jsp"/>
+        </action>
+        <action path="/listarEdificios" type="org.abbatia.action.ListaEdificiosAction">
+            <forward name="success" path="/edificios/ListadoEdificios.jsp"/>
+        </action>
+        <action name="MonjeForm" path="/mostrarMonje" scope="request" type="org.abbatia.action.MostrarMonjeAction">
+            <forward name="success" path="/monjes/MostrarMonje.jsp"/>
+        </action>
+
+        <action name="MonjeForm" path="/evaluarDieta" scope="request" type="org.abbatia.action.EvaluarDietaAction">
+            <forward name="success" path="/idioma.do"/>
+        </action>
+
+        <action path="/actualizarDatosMonje" name="MonjeForm" type="org.abbatia.action.ActualizarDatosMonjeAction"
+                scope="request">
+            <forward name="success" path="/monjes/MostrarMonje.jsp"/>
+        </action>
+
+        <action path="/mostrarEdificio" type="org.abbatia.action.MostrarEdificioAction" name="FiltroLibros"
+                scope="request">
+            <forward name="success" path="/edificios/MostrarEdificio.jsp"/>
+            <forward name="inicio" path="/main.do"/>
+        </action>
+        <action path="/SubirNivel" type="org.abbatia.action.SubirNivelEdificioAction">
+            <forward name="confirmar" path="/edificios/MostrarEdificioNivel.jsp"/>
+            <forward name="success" path="/edificios/MostrarEdificio.jsp"/>
+        </action>
+        <action path="/registro" type="org.abbatia.action.RegistroAction">
+            <forward name="pantallaregistro" path="/usuarios/registro.jsp"/>
+        </action>
+        <action input="/usuarios/registro.jsp" name="RegistroForm" path="/registrar" scope="request"
+                type="org.abbatia.action.RegistroAction" validate="true">
+            <forward name="success" path="/abadias/registroAbadia_1.jsp"/>
+        </action>
+        <action input="/usuarios/Login.jsp" name="LoginForm" path="/login" scope="request"
+                type="org.abbatia.action.LoginAction">
+            <forward name="success" path="/abadias/principal.jsp"/>
+            <forward name="aceptacionNormas" path="/usuarios/validacion_normas.jsp"/>
+            <forward name="registroabadia" path="/abadias/registroAbadia_1.jsp"/>
+            <forward name="failure" path="/usuarios/Login.jsp"/>
+        </action>
+        <action path="/getUserInfo" type="org.abbatia.action.GetDatosUsuarioAction">
+            <forward name="success" path="/usuarios/datosUsuario.jsp"/>
+        </action>
+        <action input="/usuarios/datosUsuario.jsp" name="RegistroForm" path="/actRegistro" scope="request"
+                type="org.abbatia.action.ActRegistroAction">
+            <forward name="success" path="/abadias/principal.jsp"/>
+        </action>
+        <action name="AdminForm" path="/Administracion" scope="request" type="org.abbatia.action.AdminAction"
+                parameter="confirmado">
+            <forward name="success" path="/admin/administracion.jsp"/>
+            <forward name="inicio" path="/abadias/principal.jsp"/>
+        </action>
+        <action name="PwdAdmin" path="/AdministracionConfirmar" scope="request" type="org.abbatia.action.AdminAction"
+                parameter="inicio">
+            <forward name="validar" path="/admin/confirmacionAdmin.jsp"/>
+            <forward name="validado" path="/Administracion.do"/>
+        </action>
+        <!--       <action path="/MostrarDetalleAlimentacionMonjes" type="org.abbatiaa.action.MostrarDetalleAlimentacionAction" parameter="monjes">
+          <forward name="success" path="/edificios/edificio_comedor_dieta.jsp" />
+        </action>-->
+        <!--        <action path="/MostrarDetalleAlimentacionAnimales" type="org.abbatiaa.action.MostrarDetalleAlimentacionAction" parameter="animales">
+          <forward name="success" path="/admin/confirmacionAdmin.jsp" />
+        </action>-->
+
+        <action path="/DesbloquearUsuario" type="org.abbatia.action.DesbloquearUsuarioAction">
+            <forward name="success" path="/admin/admin_bloqueos.jsp"/>
+            <forward name="reload" path="/DesbloquearUsuario.do"/>
+        </action>
+        <action path="/AdminProcess" type="org.abbatia.action.AdminProcessAction">
+            <forward name="success" path="/admin/admin_process.jsp"/>
+        </action>
+        <action path="/EjecutarProceso" type="org.abbatia.action.EjecutarProcesoAction">
+            <forward name="success" path="/AdminProcess.do"/>
+        </action>
+        <action path="/AdminLiterales" type="org.abbatia.action.AdminLiteralesAction">
+            <forward name="success" path="/admin/admin_literales.jsp"/>
+        </action>
+        <action path="/nuevo_literal" type="org.abbatia.action.AltaLiteralAction" name="AltaLiteral">
+            <forward name="success" path="/AdminLiterales.do"/>
+        </action>
+
+        <action path="/AdminTramposos" type="org.abbatia.action.AdminTrampososAction">
+            <forward name="success" path="/admin/admin_tramposos.jsp"/>
+        </action>
+        <action path="/desconectar" type="org.abbatia.action.DesconectarAction"/>
+        <action path="/idioma" type="org.abbatia.action.IdiomaAction"/>
+        <action path="/index" type="org.abbatia.action.IndiceAction">
+            <forward name="success" path="/index.jsp"/>
+        </action>
+        <action path="/inicio" type="org.abbatia.action.InicioAction"/>
+
+        <action path="/loginFrm" type="org.abbatia.action.LoginFrmAction">
+            <forward name="success" path="/usuarios/Login.jsp"/>
+        </action>
+        <action path="/sesionCaducada" type="org.abbatia.action.SesionCaducadaAction"/>
+        <action path="/multiClick" type="org.abbatia.action.MultiClickAction"/>
+        <action input="/abadias/registroAbadia_1.jsp" name="AbadiaForm" path="/registroAbadia" scope="request"
+                type="org.abbatia.action.RegistroAbadiaAction">
+            <forward name="errorregistro" path="/abadias/registroAbadia_1.jsp"/>
+            <forward name="registro2" path="/abadias/registroAbadia_2.jsp"/>
+            <forward name="success" path="/abadias/principal.jsp"/>
+        </action>
+        <action path="/main" type="org.abbatia.action.MainAction">
+            <forward name="success" path="/index_contents.jsp"/>
+        </action>
+        <action path="/index_main" type="org.abbatia.action.InicioMainAction">
+            <forward name="success" path="/index_main.jsp"/>
+            <forward name="topusers" path="/usuarios/Listar_TopUsuarios.jsp"/>
+            <forward name="descarga" path="/ayudas/docs/ABBATIA_v1.pdf"/>
+            <forward name="delphi_hora" path="/delphi_hora.jsp"/>
+        </action>
+        <action input="/mercado/mercado_compra.jsp" name="MercadoCompraForm" path="/mercado_compra"
+                type="org.abbatia.action.MercadoCompraAction">
+            <forward name="comprar2" path="/mercado/mercado_compra_2.jsp"/>
+            <forward name="success" path="/mercado/mercado_compra.jsp"/>
+        </action>
+        <action name="VentaForm" path="/mercado_venta" type="org.abbatia.action.MercadoVentaAction" parameter="inicio">
+            <forward name="venta" path="/mercado/mercado_venta.jsp"/>
+        </action>
+        <action name="VentaForm" path="/mercado_venta_buscar" type="org.abbatia.action.MercadoVentaAction"
+                parameter="venta">
+            <forward name="venta1" path="/mercado/mercado_venta_1.jsp"/>
+        </action>
+
+        <action name="VentaForm" path="/mercado_venta_1" type="org.abbatia.action.MercadoVentaAction" parameter="venta">
+            <forward name="venta2" path="/mercado/mercado_venta_2.jsp"/>
+            <forward name="venta1" path="/mercado/mercado_venta_1.jsp"/>
+        </action>
+
+        <action path="/monjes_acciones" type="org.abbatia.action.MonjesAction">
+            <forward name="monjes_recluta" path="/monjes/monjes_recluta_1.jsp"/>
+            <forward name="success" path="/monjes/monjes_recluta_1.jsp"/>
+        </action>
+        <action path="/mercado_historico" type="org.abbatia.action.MercadoHistoricoAction" name="MercadoAdminForm"
+                scope="request">
+            <forward name="success" path="/mercado/mercado_historico.jsp"/>
+        </action>
+        <action path="/sacrificar_animal" type="org.abbatia.action.SacrificarAnimalAction" parameter="inicio">
+            <forward name="sacrificar" path="/edificios/sacrificarAnimal.jsp"/>
+        </action>
+        <action name="SacrificioForm" path="/sacrificar_animal_confirmacion"
+                type="org.abbatia.action.SacrificarAnimalAction" parameter="confimacion">
+            <forward name="sacrificar2" path="/abadias/MostrarMensaje.jsp"/>
+        </action>
+        <action name="DatosVentaForm" path="/modificar_venta_inicio" type="org.abbatia.action.ModificarVentaAction"
+                parameter="inicio">
+            <forward name="failure" path="/mercado/mercado_venta_modificar.jsp"/>
+            <forward name="mostrar" path="/mercado/mercado_venta_modificar.jsp"/>
+            <forward name="success" path="/mercado/mercado_venta.jsp"/>
+        </action>
+        <action name="DatosVentaForm" path="/modificar_venta_fin" type="org.abbatia.action.ModificarVentaAction"
+                parameter="modificar">
+            <forward name="failure" path="/mercado/mercado_venta_modificar.jsp"/>
+            <forward name="mostrar" path="/mercado/mercado_venta_modificar.jsp"/>
+            <forward name="success" path="/mercado/mercado_venta.jsp"/>
+        </action>
+
+        <action input="/mercado/mercado_compra_1.jsp" name="MercadoCompraForm" path="/mercado_comprar"
+                type="org.abbatia.action.ComprarAction">
+            <forward name="success" path="/mercado/mercado_compra_1.jsp"/>
+            <forward name="cerrarPopUp" path="/varios/cerrarPopUp.jsp"/>
+            <forward name="fincompra" path="/mercado/mercado_compra_2.jsp"/>
+        </action>
+        <action input="/mercado/mercado_venta_2.jsp" name="VentaForm" path="/mercado_vender"
+                type="org.abbatia.action.VenderAction" parameter="inicio">
+            <forward name="success" path="/mercado/mercado_venta_2.jsp"/>
+            <forward name="cerrarPopUp" path="/varios/cerrarPopUp.jsp"/>
+        </action>
+        <action input="/mercado/mercado_venta_2.jsp" name="VentaForm" path="/mercado_vender_fin"
+                type="org.abbatia.action.VenderAction" parameter="vender">
+            <forward name="cerrarPopUp" path="/varios/cerrarPopUp.jsp"/>
+        </action>
+
+        <action name="VentaAgrupadaForm" path="/mercado_vender_agrupado_inicio"
+                type="org.abbatia.action.VenderAgrupadoAction" parameter="inicio">
+            <forward name="success" path="/mercado/mercado_venta_agrupado.jsp"/>
+            <forward name="cerrarPopUp" path="/varios/cerrarPopUp.jsp"/>
+        </action>
+        <action name="VentaAgrupadaForm" path="/mercado_vender_agrupado_fin"
+                type="org.abbatia.action.VenderAgrupadoAction" parameter="vender">
+            <forward name="cerrarPopUp" path="/varios/cerrarPopUp.jsp"/>
+        </action>
+
+        <action name="DatosVentaForm" path="/cancelar_venta_inicio" type="org.abbatia.action.CancelarVentaAction"
+                parameter="inicio">
+            <forward name="failure" path="/mercado/mercado_venta_cancelar.jsp"/>
+            <forward name="mostrar" path="/mercado/mercado_venta_cancelar.jsp"/>
+            <forward name="success" path="/mercado/mercado_venta.jsp"/>
+        </action>
+        <action name="DatosVentaForm" path="/cancelar_venta_fin" type="org.abbatia.action.CancelarVentaAction"
+                parameter="cancelar">
+            <forward name="outbox" path="/correos/outbox.jsp"/>
+        </action>
+
+        <action input="/correos/mensaje_nuevo.jsp" name="MensajeForm" path="/mensaje_nuevo"
+                type="org.abbatia.action.MensajesAction">
+            <forward name="nuevo" path="/correos/mensaje_nuevo.jsp"/>
+            <forward name="validar" path="/correos/confirmar_mensaje.jsp"/>
+            <forward name="inbox" path="/correos/inbox.jsp"/>
+            <forward name="outbox" path="/correos/outbox.jsp"/>
+        </action>
+        <action input="/correos/outbox.jsp" name="MensajeForm" path="/mostrar_correo"
+                type="org.abbatia.action.MensajesAction" scope="request">
+            <forward name="success" path="/correos/mensaje_nuevo.jsp"/>
+        </action>
+        <action input="/correos/outbox.jsp" name="MensajeForm" path="/mensajes_enviados"
+                type="org.abbatia.action.MensajesEnviadosAction" scope="request">
+            <forward name="outbox" path="/correos/outbox.jsp"/>
+            <forward name="mostrar" path="/correos/mensaje_nuevo.jsp"/>
+        </action>
+        <action input="/correos/outbox.jsp" name="MensajeForm" path="/borrarMensajesEnviados"
+                type="org.abbatia.action.MensajesEnviadosAction" scope="request" parameter="borrar">
+            <forward name="outbox" path="/correos/outbox.jsp"/>
+            <forward name="mostrar" path="/correos/mensaje_nuevo.jsp"/>
+        </action>
+        <action input="/correos/inbox.jsp" name="MensajeForm" path="/mensajes_recibidos"
+                type="org.abbatia.action.MensajesRecibidosAction">
+            <forward name="inbox" path="/correos/inbox.jsp"/>
+            <forward name="mostrar" path="/correos/mensaje_nuevo.jsp"/>
+        </action>
+        <action input="/correos/inbox.jsp" name="MensajeForm" path="/borrarMensajes"
+                type="org.abbatia.action.MensajesRecibidosAction" parameter="borrar">
+            <forward name="inbox" path="/correos/inbox.jsp"/>
+            <forward name="mostrar" path="/correos/mensaje_nuevo.jsp"/>
+        </action>
+
+        <action path="/controlAltas" type="org.abbatia.action.ControlAltasAction" parameter="inicio">
+            <forward name="success" path="/admin/admin_altas.jsp"/>
+        </action>
+        <action path="/autorizarAlta" type="org.abbatia.action.ControlAltasAction" parameter="aceptar">
+            <forward name="success" path="/admin/admin_altas.jsp"/>
+        </action>
+        <action path="/denegarAlta" type="org.abbatia.action.ControlAltasAction" parameter="denegar">
+            <forward name="success" path="/admin/admin_altas.jsp"/>
+        </action>
+
+        <action path="/propagarLibros" type="org.abbatia.action.PropagarLibrosAction">
+            <forward name="success" path="/admin/distribucionLibros.jsp"/>
+        </action>
+
+        <action path="/ListarPeticionesBloqueo" type="org.abbatia.action.ListadoPeticionesBloqueoAction">
+            <forward name="success" path="/admin/admin_peticiones_bloqueo.jsp"/>
+        </action>
+        <action path="/AutorizarBloqueo" type="org.abbatia.action.ListadoPeticionesBloqueoAction" parameter="aceptar">
+            <forward name="success" path="/admin/admin_peticiones_bloqueo.jsp"/>
+        </action>
+        <action path="/DenegarBloqueo" type="org.abbatia.action.ListadoPeticionesBloqueoAction" parameter="denegar">
+            <forward name="success" path="/admin/admin_peticiones_bloqueo.jsp"/>
+        </action>
+
+        <action name="BuscarAbadiasForm" path="/buscar_abadias" scope="request"
+                type="org.abbatia.action.BuscarAbadiasAction">
+            <forward name="inicio" path="/abadias/buscar_abadias.jsp"/>
+            <forward name="mostrar" path="/abadias/buscar_abadias.jsp"/>
+            <forward name="aceptar" path="/correos/mensaje_nuevo.jsp"/>
+            <forward name="cancelar" path="/correos/mensaje_nuevo.jsp"/>
+        </action>
+        <action name="BuscarAbadiaForm" path="/buscar_abadia" scope="request"
+                type="org.abbatia.action.BuscarAbadiaAction">
+            <forward name="success" path="/abadias/buscar_abadia.jsp"/>
+        </action>
+        <action path="/buscar_eminencias" type="org.abbatia.action.BuscarEminenciasAction">
+            <forward name="success" path="/sicarios/buscar_eminencias.jsp"/>
+        </action>
+        <action input="/edificios/confirmar_construccion.jsp" name="DatosEdificioForm" path="/crear_edificio"
+                scope="request" type="org.abbatia.action.CrearEdificioAction">
+            <forward name="lista" path="/edificios/CrearEdificio.jsp"/>
+            <forward name="confirmar" path="/edificios/confirmar_construccion.jsp"/>
+            <forward name="success" path="/listarEdificios.do"/>
+        </action>
+        <action path="/cabecera" type="org.abbatia.action.CabeceraAction">
+            <forward name="success" path="/index_head.jsp"/>
+        </action>
+        <action path="/reclutarMonje" type="org.abbatia.action.ReclutarMonjeAction">
+            <forward name="success" path="/monjes/monjes_recluta.jsp"/>
+        </action>
+        <action path="/arar_campo" type="org.abbatia.action.ArarCampoAction" parameter="inicio">
+            <forward name="confirmar" path="/varios/confirmacion.jsp"/>
+        </action>
+
+        <action path="/confirmarArado" type="org.abbatia.action.ArarCampoAction" parameter="confirmar"/>
+
+        <action path="/cancelar_campo" type="org.abbatia.action.CancelarCampoAction"/>
+        <action path="/nuevo_campo" type="org.abbatia.action.NuevoCampoAction"/>
+        <action name="SiembraActForm" path="/sembrar_campo" type="org.abbatia.action.SembrarCampoAction"
+                parameter="inicio">
+            <forward name="cerrarPopUp" path="/varios/cerrarPopUp.jsp"/>
+            <forward name="seleccion" path="/edificios/seleccionarSemilla.jsp"/>
+            <forward name="confirmar" path="/edificios/seleccionarSemilla.jsp"/>
+        </action>
+        <action name="SiembraActForm" path="/siembraPrematura" type="org.abbatia.action.SembrarCampoAction"
+                parameter="prematura">
+            <forward name="confirmar" path="/varios/confirmacion.jsp"/>
+        </action>
+
+        <action path="/Publicidad" type="org.abbatia.action.PublicidadAction">
+            <forward name="info" path="/ayudas/publicidad.jsp"/>
+            <forward name="redirect" path="/ayudas/publicidad1.jsp"/>
+        </action>
+        <action path="/varios/publicidad" forward="/varios/publicidad.jsp"/>
+
+        <action path="/aislarAnimal" type="org.abbatia.action.AislarAnimalAction"/>
+        <action path="/devolverAnimal" type="org.abbatia.action.DevolverAnimalAction"/>
+        <action path="/caparToro" type="org.abbatia.action.CaparToroAction"/>
+        <action path="/asignarAnimalAgricultura" type="org.abbatia.action.AsignarAnimalAgriculturaAction"/>
+        <action name="ActividadesMonjeForm" path="/mostrar_produccion"
+                type="org.abbatia.action.MostrarActividadMonjeAction">
+            <forward name="success" path="/monjes/MostrarMonjeActividad.jsp"/>
+        </action>
+        <action path="/planificador" type="org.abbatia.action.GestionPlanificador"/>
+        <action name="DatosVotacion" path="/votar_obispado" scope="request"
+                type="org.abbatia.action.VotarObispadoAction">
+            <forward name="success" path="/diplomacia/votarObispado.jsp"/>
+        </action>
+        <action name="DatosVotacionPapa" path="/votar_papa" scope="request" type="org.abbatia.action.VotarPapaAction">
+            <forward name="success" path="/diplomacia/votarPapa.jsp"/>
+        </action>
+        <action path="/mostrarDiplomacia" type="org.abbatia.action.MostrarDiplomaciaAction" name="DiplomaciaForm"
+                scope="session">
+            <forward name="success" path="/diplomacia/MostrarDiplomacia.jsp"/>
+            <forward name="success1" path="/diplomacia/MostrarDiplomacia_regional.jsp"/>
+            <forward name="success2" path="/diplomacia/MostrarDiplomacia_jerarquia.jsp"/>
+        </action>
+        <action name="ObispadoImpuestos" path="/obispadoImpuestos" scope="request"
+                type="org.abbatia.action.ObispadoImpuestosAction">
+            <forward name="success" path="/diplomacia/ObispadoImpuestos.jsp"/>
+        </action>
+        <action name="CardenalesImpuestos" path="/cardenalesImpuestos" scope="request"
+                type="org.abbatia.action.CardenalesImpuestosAction">
+            <forward name="success" path="/diplomacia/CardenalesImpuestos.jsp"/>
+        </action>
+        <action name="PapadoImpuestos" path="/papadoImpuestos" scope="request"
+                type="org.abbatia.action.PapadoImpuestosAction">
+            <forward name="success" path="/diplomacia/PapadoImpuestos.jsp"/>
+        </action>
+        <action path="/nombrarAbad" type="org.abbatia.action.NombrarAbadAction">
+            <forward name="success" path="/monjes/MostrarMonje.jsp"/>
+        </action>
+        <action name="MostrarComisiones" path="/mostrarComisiones" scope="request"
+                type="org.abbatia.action.MostrarComisionesAction">
+            <forward name="success" path="/diplomacia/MostrarComisiones.jsp"/>
+        </action>
+        <action path="/popularidadMonje" type="org.abbatia.action.PopularidadMonjeAction">
+            <forward name="success" path="/diplomacia/MostrarDiplomacia_regional.jsp"/>
+        </action>
+        <action path="/poblacion" type="org.abbatia.action.PoblacionAction">
+            <forward name="success" path="/abadias/poblacion.jsp"/>
+        </action>
+        <action path="/contratarSicario" type="org.abbatia.action.ContratarSicarioAction">
+            <forward name="success" path="/sicarios/contratar_sicario.jsp"/>
+            <forward name="confirmar" path="/sicarios/contratar_sicario_confirmar.jsp"/>
+        </action>
+        <action name="datosMolino" path="/molerCereales_inicio" type="org.abbatia.action.MolerCerealesAction"
+                parameter="inicio">
+            <forward name="seleccion" path="/edificios/listaCereales.jsp"/>
+        </action>
+        <action name="datosMolino" path="/molerCereales_fin" type="org.abbatia.action.MolerCerealesAction"
+                parameter="moler">
+            <forward name="seleccion" path="/edificios/listaCereales.jsp"/>
+        </action>
+
+        <action name="datosElaboracion" path="/mostrarRequisitosElaboracionAlimentos"
+                type="org.abbatia.action.ElaborarProductosAction" parameter="requisitos">
+            <forward name="requisitos" path="/edificios/requisitosElaboracion.jsp"/>
+        </action>
+        <action name="datosElaboracion" path="/elaborarAlimentos" type="org.abbatia.action.ElaborarProductosAction"
+                parameter="elaborar">
+            <forward name="requisitos" path="/edificios/requisitosElaboracion.jsp"/>
+        </action>
+
+        <action path="/eliminar_abadia" type="org.abbatia.action.EliminarAbadiaAction" name="AdminForm" scope="request">
+            <forward name="principal" path="/abadias/principal.jsp"/>
+            <forward name="success" path="/abadias/eliminarAbadia.jsp"/>
+            <forward name="registroabadia" path="/abadias/registroAbadia_1.jsp"/>
+        </action>
+        <action path="/bloquear_abadia" type="org.abbatia.action.CongelarAbadiaAction"/>
+
+        <action name="ViajarForm" path="/viajar" scope="request" type="org.abbatia.action.ViajarAction">
+            <forward name="success" path="/abadias/viajar.jsp"/>
+        </action>
+        <action path="/visita" type="org.abbatia.action.VisitaAction" parameter="inicio">
+            <forward name="confirmar" path="/varios/confirmacion.jsp"/>
+        </action>
+        <action path="/visitaConfirmar" type="org.abbatia.action.VisitaAction" parameter="confirmar"/>
+
+        <action path="/elaboracion_pausar" type="org.abbatia.action.ElaborarProductosPausarAction"/>
+        <action path="/elaboracion_reanudar" type="org.abbatia.action.ElaborarProductosReanudarAction"/>
+        <action path="/enviar_password" type="org.abbatia.action.EnviarPasswordAction" name="RegistroForm"
+                scope="request" validate="false">
+            <forward name="success" path="/usuarios/enviar_password.jsp"/>
+        </action>
+
+        <!--
+        <action input="/mercado_compra.jsp" name="CompraForm" path="/mercado_compra" type="org.abbatiaa.action.MercadoCompraAction">
+          <forward name="comprar2" path="/mercado_compra_2.jsp" />
+          <forward name="success" path="/mercado_compra.jsp" />
+        </action>
+        -->
+        <action input="/mercado/mercado_compra_agrupado.jsp" name="BuscarMercadoAgrupadoCompraForm"
+                path="/mercado_compra_agrupado" type="org.abbatia.action.MercadoAgrupadoCompraAction">
+            <forward name="success" path="/mercado/mercado_compra_agrupado.jsp"/>
+        </action>
+        <action input="/mercado/mercado_compra_detalle.jsp" name="BuscarMercadoCompraForm"
+                path="/mercado_compra_detalle" type="org.abbatia.action.MercadoCompraAction">
+            <forward name="success" path="/mercado/mercado_compra_detalle.jsp"/>
+        </action>
+        <action input="/mercado/lista_mercado_admin.jsp" name="MercadoAdminForm" path="/lista_mercado_admin"
+                type="org.abbatia.action.listarMercadoAdminAction" scope="request">
+            <forward name="success" path="/mercado/lista_mercado_admin.jsp"/>
+        </action>
+        <action input="/mercado/modificar_mercado_admin.jsp" name="datosMercadoAdmin" path="/modificarMercadoAdmin"
+                type="org.abbatia.action.ModificarMercadoAdminAction" scope="request">
+            <forward name="success" path="/mercado/modificar_mercado_admin.jsp"/>
+            <forward name="actualizado" path="/lista_mercado_admin.do"/>
+        </action>
+        <action name="datosMercadoAdmin" path="/altaMercadoAdmin" type="org.abbatia.action.AltaProductoMercadoAction"
+                scope="request">
+            <forward name="success" path="/mercado/altaProductoMercado.jsp"/>
+            <forward name="alta" path="/mercado/modificar_mercado_admin.jsp"/>
+        </action>
+        <action path="/gestionGuardias" type="org.abbatia.action.GestionGuardiasAction" parameter="inicio">
+            <forward name="mostrar" path="/guardias/gestionGuardias.jsp"/>
+        </action>
+        <action path="/contratarGuardia" type="org.abbatia.action.GestionGuardiasAction" parameter="contratar">
+            <forward name="mostrar" path="/guardias/gestionGuardias.jsp"/>
+        </action>
+        <action path="/despedirGuardia" type="org.abbatia.action.GestionGuardiasAction" parameter="despedir">
+            <forward name="mostrar" path="/guardias/gestionGuardias.jsp"/>
+        </action>
+
+        <action path="/lista_solicitudes" type="org.abbatia.action.ListaSolicitudesAction"/>
+        <action path="/solicitudSi" type="org.abbatia.action.SolicitudSiAction"/>
+        <action path="/solicitudNo" type="org.abbatia.action.SolicitudNoAction"/>
+        <action path="/solicitudEliminar" type="org.abbatia.action.SolicitudCancelarAction"/>
+        <action path="/eliminarCopiaPeriodo" type="org.abbatia.action.EliminarPeriodoLibroCopiaAction"/>
+        <action path="/mostrarMonjesCopia" type="org.abbatia.action.MostrarMonjesParaCopiarAction"
+                name="datosCopiaLibro" input="/monjes/seleccionarMonjesCopia.jsp">
+            <forward name="mostrarmonjes" path="/monjes/seleccionarMonjesCopia.jsp"/>
+            <forward name="datosviaje" path="/libros/viajar_para_copia.jsp"/>
+        </action>
+        <action path="/mostrarMonjesSubirNivelCopia" type="org.abbatia.action.MostrarMonjesParaSubirNivelCopiaAction"
+                name="datosCopiaLibro" input="/monjes/seleccionarMonjesSubirNivelCopia.jsp">
+            <forward name="mostrarmonjes" path="/monjes/seleccionarMonjesSubirNivelCopia.jsp"/>
+        </action>
+
+        <action path="/mostrarDetalleLibro" type="org.abbatia.action.MostrarDetalleLibroAction" name="libroDetalle">
+            <forward name="success" path="/libros/detalle_libro.jsp"/>
+        </action>
+        <action path="/eliminarLibro" type="org.abbatia.action.EliminarLibroAction"/>
+        <action path="/encuadernarLibro" type="org.abbatia.action.EncuadernarLibroAction"/>
+        <action path="/restaurarLibro" type="org.abbatia.action.RestaurarLibroAction"/>
+        <action path="/cancelarRestauracionLibro" type="org.abbatia.action.CancelarRestaurarLibroAction"/>
+        <action path="/elaboracion_eliminar" type="org.abbatia.action.ElaborarProductosEliminarAction"/>
+
+        <action path="/actualizarPrecioCopia" type="org.abbatia.action.AsignarPrecioCopiaAction" name="libroDetalle"
+                scope="request">
+            <forward name="success" path="/libros/asignar_precio_copia_libro.jsp"/>
+            <forward name="cerrarPopUp" path="/varios/cerrarPopUp.jsp"/>
+        </action>
+        <action path="/viajar_copia" type="org.abbatia.action.ViajarParaCopiarAction" name="ViajarForm"
+                scope="request"/>
+        <action path="/mostrar_mensaje" type="org.abbatia.action.MostrarMensajeAction"/>
+
+        <action path="/mostrarHistoricoProducto" type="org.abbatia.action.MercadoHistoricoProductoAction">
+            <forward name="success" path="/mercado/mercado_historico.jsp"/>
+        </action>
+        <action path="/obispo_dimitir" type="org.abbatia.action.DimitirObispoAction">
+            <forward name="confirmar" path="/varios/confirmacion.jsp"/>
+        </action>
+
+
+        <action path="/cardenal_dimitir" type="org.abbatia.action.DimitirCardenalAction">
+            <forward name="confirmar" path="/varios/confirmacion.jsp"/>
+        </action>
+
+
+        <action path="/cargo_seleccionable" type="org.abbatia.action.CargoSeleccionableAction" name="DiplomaciaForm"
+                scope="request"/>
+
+        <action path="/mostrarListaMonjesAgricultura" type="org.abbatia.action.MostrarMonjesAgricultura"
+                name="DatosCampoForm" scope="request">
+            <forward name="mostrarmonjes" path="/monjes/seleccionarMonjesAgricultura.jsp"/>
+            <forward name="cerrarPopUp" path="/varios/cerrarPopUp.jsp"/>
+        </action>
+
+        <action path="/mostrarPuntuaciones" type="org.abbatia.action.MostrarPuntuacionAction">
+            <forward name="success" path="/puntuacion/detallePuntuacion.jsp"/>
+        </action>
+
+        <action path="/CancelarEliminacion" type="org.abbatia.action.CancelarEliminacionAbadiaAction"/>
+        <action path="/Continuar" type="org.abbatia.action.ContinuarAction"/>
+        <action path="/mantenimientoEdificio" type="org.abbatia.action.MantenimientoEdificiosAction"
+                name="DatosEdificioForm">
+            <forward name="success" path="/edificios/GestionMantenimientoEdificios.jsp"/>
+        </action>
+        <action path="/expulsarMonje" type="org.abbatia.action.ExpulsarMonjeAction" parameter="inicio">
+            <forward name="confirmar" path="/varios/confirmacion.jsp"/>
+        </action>
+        <action path="/expulsarMonjeConfirmacion" type="org.abbatia.action.ExpulsarMonjeAction" parameter="confirmar"/>
+
+        <action path="/BuscarAbadiaBloqueo" type="org.abbatia.action.CrearPeticionBloqueoAction"
+                name="DatosPeticionBloqueo" parameter="BuscarAbadia">
+            <forward name="success" path="/admin/buscar_abadias_bloqueo.jsp"/>
+        </action>
+        <action path="/ParametrosBloqueo" type="org.abbatia.action.CrearPeticionBloqueoAction"
+                name="DatosPeticionBloqueo" parameter="FijarParametros">
+            <forward name="success" path="/admin/parametros_bloqueo.jsp"/>
+        </action>
+        <action path="/CrearPeticionBloqueo" type="org.abbatia.action.CrearPeticionBloqueoAction"
+                name="DatosPeticionBloqueo" parameter="CrearPeticion">
+            <forward name="success" path="/varios/cerrarPopUp.jsp"/>
+        </action>
+        <action path="/MostrarMensaje" forward="/abadias/MostrarMensaje.jsp"/>
+        <action path="/condiciones" forward="/ayudas/docs/Normas.pdf"/>
+        <action path="/cerrarPopUp" forward="/varios/cerrarPopUp.jsp"/>
+
+        <!--configuración para struts-layout-->
+        <action path="/sort" type="fr.improve.struts.taglib.layout.sort.SortAction"/>
+
+        <action path="/treeview" type="fr.improve.struts.taglib.layout.treeview.TreeviewAction"/>
+        <action path="/mapaGeneral" forward="/diplomacia/MapaGeneral.jsp"/>
+        <action path="/salar_alimento" type="org.abbatia.action.SalarAlimentoAction" parameter="todo"/>
+        <action path="/salar_alimento_lote" type="org.abbatia.action.SalarAlimentoAction" parameter="lote"/>
+
+        <action path="/json/actualizarValoresMantenimiento"
+                type="org.abbatia.action.ActualizarCosteMantenimientoAction">
+            <forward name="success" path="/varios/empty.jsp"/>
+        </action>
+        <action path="/json/restaurarLibro"
+                type="org.abbatia.action.exception.RestaurarLibroAjaxAction">
+            <forward name="success" path="/varios/empty.jsp"/>
+        </action>
+
+    </action-mappings>
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+
+    <message-resources parameter="org.abbatia.abbatia"/>
+
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames" value="/WEB-INF/validation.xml, /WEB-INF/validator-rules.xml"/>
+    </plug-in>
+    <plug-in className="org.apache.struts.tiles.TilesPlugin">
+        <set-property value="/WEB-INF/tiles-defs.xml" property="definitions-config"/>
+    </plug-in>
+</struts-config>

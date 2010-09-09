@@ -1,0 +1,57 @@
+var noItiRep = "No existen itinerarios reprogramados disponibles para la generación local";
+var noItiLect = "No existen itinerarios de lectura disponibles para la generación local";
+var itRango = "El Itinerario Inicial del rango para generar debe ser un Itinerario de Lectura ( tipo = L ) o el primer Reprogramado  ( tipo = R ) de la lista";
+var mismoCiclo = "Los itinerarios elegidos como Desde y Hasta deben ser del mismo Ciclo de Lectura";
+var copiaRep = "La copia debe hacerse con Itinerarios Reprogramados (Tipo=R)";
+var itFinRep = "El itinerario final del rango para generar debe ser un Reprogramado (Tipo=R)";
+var itFinPos = "El itinerario Final del rango para generar debe ser igual o posterior al itinerario Inicial";
+var confCop = "Confirmar la generación por copia de los itinerarios de Lectura indicados";
+var itirAsig = "El lector asignado tiene ya otros itinerarios asignados en la fecha de lectura del itinerario que se está tratando. Confirmar la elección del lector.?";
+//var devForz = "Devolución forzada: ¿Desea forzar también la devolución en caso de existir en la ruta PL's no leídos sin marcar y/o susceptibles de tomar lectura y/o PL's de lectura obligatoria sin marcar?";
+var confDisk = "¿Desea crear el disquete de instalación del CRL?"
+var noElimCrlCon = "No puede eliminar un CRL perteneciente a otra contrata"
+var confElimCrl = "¿Esta seguro de que quiere borrar el registro seleccionado?"
+var noElimCrlTar = "No se puede eliminar el Remoto, tiene tarjetas asignadas."
+var noAgregarCrl = "No es posible añadir un nuevo CRL al haberse alcanzado el máximo permitido."
+var errCrearDisco = "Se ha producido un error al generar los ficheros de descarga."
+var noAsigFALLector = "No se puede asignar lector al no existir FAL para una determinada FRL";
+var noAsigFALTarjeta = "No se puede asignar tarjeta al no existir FAL para una determinada FRL";
+var controlTPL1 = "Un Usuario va a realizar el proceso de carga de TPLs";
+var controlTPL2 = "Quedan <font color=#EE0000 id=\"tiempo\">00:00</font> minutos para bloquear el proceso de Carga de Tarjetas";
+var continuarTPL = "Continuar > > >";
+var usuariosOperando = "Existen otros usuarios operando en su mismo COL, deberá esperar mientras abandonan la aplicación o finaliza el periodo de latencia.";
+var tiempoRestanteTPL = "Tiempo Restante: ";
+var errFecAsignada = "Existen en la lista itinerarios con la misma fecha reprogramada, pero sin fecha de lectura asignada";
+var errTarjetaAsignada = "Existen en la lista itinerarios con la fecha de lectura tratada y sin tarjeta asignada";
+var warLectorAsignado = "Existen en la lista itinerarios con la fecha de lectura tratada y sin lector asignado";
+var conActTarjetas = "Confirmar la Actualización de la B.D. con las fechas de lectura, lectores y tarjetas asignadas durante el proceso";
+var noContratos = "No existen contratos de extracción individual no leidos para devolver hoy o mañana";
+var siContratos = "Existen extracciones individuales sin incidencia para facturación S172";
+var TarjetasErroneas = "El proceso de generación no terminó correctamente, en la pantalla se presentan las tarjetas que no se han generado correctamente";
+var TarjetasErroneasReasignadas = "El proceso de reasignación no terminó correctamente, las siguientes tarjetas produjeron algun error";
+var TarjetasOK = "La preparación de las tarjetas seleccionadas se ha realizado correctamente.";
+var borrInc = "¿Confirma el borrado de la incidencia?";
+var borrAv = "¿Confirma el borrado del aviso?";
+var tarjNoCargadas = "Las siguientes tarjetas no se han descomprimido correctamente: \n\n";
+var observObl = "Observaciones obligatorias";
+var respObl = "Responsable obligatorio";
+var fechaObl = "Fecha obligatoria";
+var FicheroNoEncontrado = "No se puede leer el fichero HISTOR.LOG";
+var FALposterior = "FAL debe ser posterior o igual a ";
+var FALanterior = "FAL debe ser anterior o igual a ";
+var FDevolPosteriorAFActual = "La fecha de devolución debe ser posterior o igual a la fecha actual";
+var FDevolContrato = "¿Confirma que quiere forzar la devolución del contrato al Host?\n De ser así, se generará una incidencia de Facturación a nivel de suministro.";
+var DevolContratoHost= "Hoy se cumple la fecha de permanencia tope en el CGL. El contrato se devolverá al Host con estado \"No Visitado\"";
+var codigoNumerico = "El código debe ser numérico";
+var campoObligatorio = "Campo Obligatorio";
+var digitoIncorrecto = "Dígito incorrecto";
+var LaTarjeta = "La tarjeta Nº ";
+var NoCambioDestino = " no ha cambiado de destino";
+var CambiaraDestino = " va a cambiar de destino. Desea continuar?";
+var NoCreadoIX = "No se ha creado ningún itinerario de extracción individual";
+var ConfirCrearIX = "Se van a generar los itinerarios de extracción individual seleccionados. ¿Desea continuar?";
+var ConfirAnulSelec = "Se van a deshacer los itinerarios de extracción individual seleccionados. ¿Desea continuar?"
+var pulsarAceptar = "Se ha de pulsar el botón Aceptar antes de pasar a tratar otra fecha";
+var iniMayorFin = "El Recorrido Inicial debe ser Menor que el Recorrido Final"
+var NoTjDescFueraplazo = "No existen Tarjetas."
+var nombreExistente = "El nombre de CRL introducido ya existe";

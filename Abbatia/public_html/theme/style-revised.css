@@ -1,0 +1,1063 @@
+/* CSS Document */
+div#container {
+    margin: 1em auto 2em auto;
+    text-align: center;
+    width: 90%;
+}
+
+body.waiting {
+    cursor: wait;
+}
+
+/************* LISTADO DIPLOMACIA: PAPA CARDENALES OBISPOS ****************/
+
+div.dataDiplomacy {
+    width: auto;
+    height: auto;
+    float: left;
+    padding: 10px;
+}
+
+div.dataDiplomacy table {
+    width: 180px;
+    height: 70px;
+    text-align: center;
+    border-collapse: collapse;
+    border: 1px solid #666;
+}
+
+div.dataDiplomacy table thead th {
+    background-color: #F0AF1C;
+    border-bottom: 1px solid #000;
+    padding: 1em 1em .2em 1em;
+    font-family: Arial, Georgia, trebuched-ms, serif;
+    font-size: 0.8em;
+    font-weight: normal;
+
+}
+
+div.dataDiplomacy table thead th.pope {
+    background: url(/images/backgrounds/fonpope.png) no-repeat;
+}
+
+div.dataDiplomacy table thead th.cardinal {
+    background: url(/images/backgrounds/foncard.png) no-repeat;
+}
+
+div.dataDiplomacy table thead th.bishop {
+    background: url(/images/backgrounds/fonbishop.png) no-repeat;
+}
+
+div.dataDiplomacy table thead th.abad {
+    background: url(/images/backgrounds/fonabbas.png) no-repeat;
+}
+
+div.dataDiplomacy table thead th.monje {
+    background: url(/images/backgrounds/fondomon.png) no-repeat;
+}
+
+div.dataDiplomacy table thead th.novicio {
+    background: url(/images/backgrounds/fonnov.png) no-repeat;
+}
+
+div.dataDiplomacy table tfoot td {
+    border-bottom: 1px solid #000;
+    text-align: center;
+    background-color: #e4cfa2;
+    font-size: .8em !important;
+    padding: .3em 0;
+}
+
+div.dataDiplomacy table tbody td {
+    border-bottom: 1px solid #000;
+    text-align: left;
+    font-size: .8em !important;
+    padding: 0.5em .5em;
+}
+
+div.dataDiplomacy table tbody tr.content {
+    background: #fff url(/images/backgrounds/background-pergamino.jpg) top left;
+    height: 50px;
+}
+
+div.dataDiplomacy table tbody tr.image {
+    background: #e4cfa2;
+    font-size: .8em !important;
+}
+
+div.dataDiplomacy dl {
+    position: relative;
+    font: 1em tahoma, sans-serif !important;
+}
+
+div.dataDiplomacy dl dt {
+    width: 10em;
+    float: left;
+    left: 0;
+}
+
+div.dataDiplomacy dl dd {
+    margin-left: 10em;
+    text-align: right;
+}
+
+/************* LISTADO EDIFICIOS: EDIFICAR O SUBIR NIVEL ****************/
+
+div.dataBuilding {
+    width: 180px;
+    height: 310px;
+    float: left;
+    padding: 10px;
+}
+
+div.dataBuilding table {
+    width: 100%;
+    height: 280px;
+    text-align: center;
+    border-collapse: collapse;
+    border: 1px solid #666;
+}
+
+div.dataBuilding table thead th {
+    background: #F0AF1C;
+    border-bottom: 1px solid #000;
+    padding: .3em 0;
+    font-family: georgia, trebuched-ms, serif;
+}
+
+div.dataBuilding table tfoot td {
+    border-bottom: 1px solid #000;
+    text-align: center;
+    background: #F0AF1C;
+    font-size: .8em !important;
+    padding: .3em 0;
+}
+
+div.dataBuilding table tbody td {
+    border-bottom: 1px solid #000;
+    text-align: left;
+    font-size: 1em !important;
+    padding: 0.5em .5em;
+}
+
+div.dataBuilding table tbody tr.content {
+    background: #fff url(/images/background-pergamino.jpg) top left;
+    height: 75px;
+}
+
+div.dataBuilding table tbody tr.image {
+    background: #e4cfa2;
+    font-size: .8em !important;
+}
+
+div.dataBuilding dl {
+    position: relative;
+    font: .8em tahoma, sans-serif !important;
+}
+
+div.dataBuilding dl dt {
+    width: 13em;
+    float: left;
+    left: 0;
+}
+
+div.dataBuilding dl dd {
+    margin-left: 13em;
+    text-align: right;
+}
+
+/************* LISTADO EDIFICIOS: EDIFICAR O SUBIR NIVEL ****************/
+
+table.maintenance {
+    width: 100%;
+    border-collapse: collapse;
+    background: #e4cfa2;
+}
+
+table.maintenance thead tr, table.maintenance tfoot tr {
+    background: #996633;
+    color: #fff;
+}
+
+table.maintenance thead th, table.maintenance tfoot th {
+    background: #f90 url(/images/background-wood.jpg) repeat-x top left;
+    padding: .5em;
+}
+
+table.maintenance td, table.maintenance th {
+    border: 1px solid #999;
+    padding: .2em 1em;
+}
+
+/************* ACCESO LOGIN  ****************/
+
+#loginPanel {
+    color: #fff;
+    margin: 1em auto;
+    width: 342px;
+    height: 406px;
+    background: #b7884c url(/images/background-login.jpg) no-repeat top left;
+    padding-top: 20px;
+}
+
+#loginAccess {
+    margin: 250px 10px 1em 10px;
+    border-bottom: 1px solid #333;
+}
+
+#loginAccess .row {
+    margin-top: .5em;
+    clear: both;
+}
+
+#loginAccess .rowRed {
+    margin-top: .5em;
+    clear: both;
+    color: #FF0000;
+    background: #FF0000
+}
+
+#loginAccess label {
+    text-align: left;
+    float: left;
+    width: 90px;
+    height: 20px;
+    padding-top: .5em;
+    text-align: right;
+}
+
+#loginOption ul li {
+    display: inline;
+    padding: 0 1em;
+}
+
+#loginOption a {
+    color: #fff !important;
+}
+
+#loginOption a:hover {
+    color: #ff0 !important;
+}
+
+/*********** PANTALLA GENERAL ****************/
+
+#events {
+    border: 1px solid #666;
+    padding: .5em;
+    background: #fff url(/images/background-pergamino.jpg) top left;
+}
+
+#events h4 {
+    margin: 0 0 1em 0;
+    color: #fff;
+    background: #fff url(/images/background-wood.jpg) repeat-x top left;
+}
+
+#events h5 {
+    margin: 0 0 .5em 0;
+    background: #ccc;
+    padding: .5em 0;
+}
+
+#events dt {
+    width: 15em;
+    color: #666;
+    font-weight: bold;
+    line-height: 1.1em;
+}
+
+#events dd {
+    margin-left: 16em;
+    line-height: 1.1em;
+}
+
+#resources dt {
+    width: 40px;
+    line-height: 1.5em;
+}
+
+#resources dd {
+    margin-left: 45px;
+    text-align: right;
+    line-height: 1.5em;
+}
+
+#opcionesPrincipal {
+    margin: 1em auto 0 auto;
+    padding: .5em;
+    border-top: 1px solid #999;
+}
+
+#opcionesPrincipal h5 {
+    background: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+#opcionesPrincipal ul li {
+    display: inline;
+    float: left;
+    margin-left: 1em;
+}
+
+#opcionesPrincipal li a {
+    display: block;
+    text-align: center;
+}
+
+.column {
+    width: 160px;
+    margin: 2em 1em 0 0;
+    padding: .5em;
+    border: 1px solid #666;
+    background: #fff url(/images/background-pergamino.jpg) top left;
+}
+
+.column h4 {
+    margin: 0 0 1em 0;
+    color: #fff;
+    background: #fff url(/images/background-wood.jpg) repeat-x top left;
+}
+
+.column h5 {
+    margin: .4em 0;
+}
+
+.column ul, .column p {
+    padding-bottom: 1em;
+}
+
+.column li {
+    line-height: 1.2em;
+}
+
+.column hr {
+    width: 100%;
+}
+
+.water {
+    display: block;
+    background: transparent url(/images/iconos/16/agua-tran.png) no-repeat left top;
+}
+
+.wood {
+    display: block;
+    background: transparent url(/images/iconos/16/madera-tran.png) no-repeat left top;
+}
+
+.coin {
+    display: block;
+    background: transparent url(/images/iconos/16/monedas-tran.png) no-repeat 4px top;
+}
+
+.stone {
+    display: block;
+    background: transparent url(/images/iconos/16/piedra-tran.png) no-repeat 10px top;
+}
+
+.iron {
+    display: block;
+    background: transparent url(/images/iconos/16/hierro-tran.png) no-repeat 10px top;
+}
+
+.monk {
+    display: block;
+    height: 16px;
+    background: transparent url(/images/iconos/16/monjes.gif) no-repeat left top;
+}
+
+.guards {
+    display: block;
+    height: 16px;
+    background: transparent url(/images/iconos/16/guardias.gif) no-repeat left top;
+}
+
+.people {
+    display: block;
+    height: 16px;
+    background: transparent url(/images/iconos/16/aldeanos.gif) no-repeat left top;
+}
+
+/*********** PANTALLA ENTRADA ****************/
+
+.infoEntrada {
+    width: 100%;
+    padding: .5em;
+    margin: 0 auto .5em auto;
+    background: #fff url(/images/background-pergamino2.jpg) top left;
+    text-align: left;
+    border: 1px solid #999;
+}
+
+.infoEntrada p {
+    padding: 1em 0;
+}
+
+.infoEntrada h4 {
+    text-align: center;
+    color: #fff;
+    background: #fff url(/images/background-wood.jpg) repeat-x top left;
+    margin: 0 0 1em 0;
+}
+
+.infoEntrada h5 {
+    margin: 1em 0 .4em 0;
+    text-decoration: underline;
+}
+
+.infoEntrada ol {
+    list-style: decimal;
+    text-align: left !important;
+}
+
+.infoEntrada hr {
+    margin: .5em auto;
+    width: 90%;
+}
+
+#novedades  dt {
+    width: 1em;
+    line-height: 1.5em;
+    color: #f00;
+}
+
+#novedades  dd {
+    margin-left: 1.4em;
+    line-height: 1.5em;
+}
+
+#mensajes  dt {
+    width: 12em;
+    line-height: 1.5em;
+    color: #f00;
+}
+
+#mensajes  dd {
+    margin-left: 13em;
+    line-height: 1.5em;
+}
+
+#ultima_conexion  dt {
+    width: 3.5em;
+    line-height: 1.5em;
+    color: #f00;
+}
+
+#ultima_conexion  dd {
+    margin-left: 4em;
+    line-height: 1.5em;
+}
+
+#tecnologias {
+    width: 100%;
+    margin: 0 auto 1em auto;
+    padding: 1em 0;
+    background: #fff;
+    text-align: center;
+}
+
+/************* Pantalla de registro - registro.jsp ****************/
+
+#registroUsuario {
+    margin: 1em auto 2em auto;
+    width: 50%;
+    border: 1px solid #666;
+    padding: .5em;
+    background: #fff url(/images/background-pergamino.jpg) top left;
+}
+
+#registroUsuario .image {
+    color: #fff;
+    margin: 0.1em auto;
+    width: 226px;
+    height: 300px;
+    background: url(/images/registro.gif) no-repeat top left;
+    padding-top: 20px;
+}
+
+#registroUsuario h4 {
+    margin: 0 0 1em 0;
+    color: #fff;
+    background: #fff url(/images/background-wood.jpg) repeat-x top left;
+}
+
+#registroUsuario h5 {
+    margin: 0 0 .5em 0;
+    padding: .5em 0;
+    background-color: #f0af1c
+}
+
+#registroUsuario dl {
+    margin-left: 5em;
+    padding: 1em 0;
+}
+
+#registroUsuario dt {
+    width: 12em;
+    color: #666;
+    font-weight: bold;
+    line-height: 1.1em;
+    margin-top: 1em;
+}
+
+#registroUsuario dd {
+    margin-left: 9em;
+    line-height: 1.3em;
+    margin-top: 1em;
+}
+
+#registroUsuario .row {
+    margin-top: .5em;
+    clear: both;
+}
+
+#registroUsuario label {
+    float: left;
+    font-weight: bold;
+    color: #666;
+    width: 12em;
+    height: 20px;
+    padding-top: .5em;
+    text-align: right;
+}
+
+#registroUsuario .field {
+    float: left;
+    margin-left: 1em;
+    padding-top: .1em;
+}
+
+/************* CABECERA EDIFICIOS - MostrarEdificio.jsp ****************/
+
+#edificioHeader {
+    margin: 1em auto 2em auto;
+    width: 50%;
+    border: 1px solid #666;
+    padding: .5em;
+    background: #fff url(/images/background-pergamino.jpg) top left;
+}
+
+#edificioHeader h4 {
+    margin: 0 0 1em 0;
+    color: #fff;
+    background: #fff url(/images/background-wood.jpg) repeat-x top left;
+}
+
+#edificioHeader h5 {
+    margin: 0 0 .5em 0;
+    padding: .5em 0;
+    background-color: #f0af1c
+}
+
+#edificioHeader h6 {
+    margin: 0 0 .5em 0; /*padding: .5em 0;*/
+    font: bold 1.3em georgia, times new roman, serif;
+    padding: 0.2em;
+}
+
+#edificioHeader dl {
+    padding: 1em 0;
+}
+
+#edificioHeader dt {
+    width: 16em;
+    color: #666;
+    font-weight: bold;
+    line-height: 1.1em;
+}
+
+#edificioHeader dd {
+    margin-left: 16em;
+    line-height: 1.1em;
+}
+
+#edificioHeader .row {
+    margin-top: .5em;
+    clear: both;
+}
+
+#edificioHeader .rowRed {
+    margin-top: .5em;
+    clear: both;
+    color: #FF0000;
+    background: #FF0000
+}
+
+/************* CABECERA MONJE - MostrarMonje.jsp ****************/
+
+#monjeHeader {
+    margin: 1em auto 2em auto;
+    width: 50%;
+    border: 1px solid #666;
+    padding: .5em;
+    background: #fff url(/images/background-pergamino.jpg) top left;
+}
+
+#monjeHeader h4 {
+    margin: 0 0 1em 0;
+    color: #fff;
+    background: #fff url(/images/background-wood.jpg) repeat-x top left;
+}
+
+#monjeHeader h5 {
+    margin: 0 0 .5em 0;
+    padding: .5em 0;
+    background-color: #f0af1c
+}
+
+#monjeHeader h6 {
+    margin: 0 0 .5em 0; /*padding: .5em 0;*/
+    font: bold 1.3em georgia, times new roman, serif;
+    padding: 0.2em;
+}
+
+#monjeHeader dl {
+    padding: 1em 0;
+}
+
+#monjeHeader dt {
+    width: 12em;
+    color: #666;
+    font-weight: bold;
+    line-height: 1.1em;
+}
+
+#monjeHeader dt.corto {
+    width: 8em;
+    text-align: right !important;
+
+}
+
+#monjeHeader dd {
+    margin-left: 9em;
+    line-height: 1.3em;
+}
+
+#monjeHeader .row {
+    margin-top: .5em;
+    clear: both;
+}
+
+#monjeHeader .rowRed {
+    margin-top: .5em;
+    clear: both;
+    color: #FF0000;
+    background: #FF0000
+}
+
+#monjeHeader .alignCenter {
+
+}
+
+/************* Pantalla Detalle de Compra mercado_compra_1.jsp ****************/
+
+#detalleCompra {
+    margin: 1em auto 2em auto; /*width: 50%;*/
+    border: 1px solid #666;
+    padding: .5em;
+    background: #fff url(/images/background-pergamino.jpg) top left;
+}
+
+#detalleCompra h4 {
+    margin: 0 0 1em 0;
+    color: #fff;
+    background: #fff url(/images/background-wood.jpg) repeat-x top left;
+}
+
+#detalleCompra h5 {
+    margin: 0 0 .5em 0;
+    padding: .5em 0;
+    background-color: #f0af1c
+}
+
+#detalleCompra h6 {
+    margin: 0 0 1em 0; /*padding: .5em 0;*/
+    font: bold 1em georgia, times new roman, serif; /*    padding: 0.5em 0;*/
+}
+
+#detalleCompra dl {
+    margin-left: 5em;
+    padding: 1em 0;
+}
+
+#detalleCompra dt {
+    width: 12em;
+    color: #666;
+    font-weight: bold;
+    line-height: 1.1em;
+}
+
+#detalleCompra dt.corto {
+    width: 8em;
+    text-align: right !important;
+
+}
+
+#detalleCompra dd {
+    margin-left: 9em;
+    line-height: 1.3em;
+}
+
+#detalleCompra .row {
+    margin-top: .5em;
+    clear: both;
+}
+
+#detalleCompra .rowRed {
+    margin-top: .5em;
+    clear: both;
+    color: #FF0000;
+    background: #FF0000
+}
+
+/************* FIN - Pantalla Detalle de Compra mercado_compra_1.jsp ****************/
+
+.topLineBorder {
+    border-top: 2px solid #999;
+}
+
+.downSpace {
+    margin-bottom: 1em;
+}
+
+.topSpace {
+    margin-top: 1em;
+}
+
+/************* MAPA DE TU ABADIA - ListadoEdificios.jsp ****************/
+
+#mapaAbadia {
+    margin: 1em auto 2em auto;
+    width: 40%;
+    border: 1px solid #666;
+    padding: .5em;
+    background: #fff url(/images/mapas/fondo_vacio.jpg) top left; /*background: transparent url(/images/mapas/fondo_vacio.jpg) no-repeat left top;*/
+}
+
+#mapaAbadia h4 {
+    margin: 0 0 1em 0;
+    color: #fff;
+    background: #fff url(/images/background-wood.jpg) repeat-x top left;
+}
+
+#mapaAbadia h5 {
+    margin: 0 0 .5em 0;
+    padding: .5em 0;
+    background-color: #f0af1c
+}
+
+#mapaAbadia h6 {
+    margin: 0 0 .5em 0;
+    padding: .5em 0;
+}
+
+#mapaAbadia dt {
+    width: 15em;
+    color: #666;
+    font-weight: bold;
+    line-height: 1.1em;
+}
+
+#mapaAbadia dd {
+    margin-left: 16em;
+    line-height: 1.1em;
+}
+
+.arbol {
+    display: block;
+    height: 16px;
+    background: transparent url(/images/mapas/arbol2.gif) no-repeat left top;
+}
+
+.arbolAnimado {
+    display: block;
+    height: 16px;
+    background: transparent url(/images/mapas/arbolanimado1.gif) no-repeat left top;
+}
+
+.rioAnimado {
+    display: block;
+    height: 16px;
+    background: transparent url(/images/mapas/rio_animado.gif) no-repeat left top;
+}
+
+.fondoVacio {
+    display: block;
+    height: 16px;
+    background: transparent url(/images/mapas/fondo_vacio.jpg) no-repeat left top;
+}
+
+.fondoNieve {
+    display: block;
+    height: 16px;
+    background: transparent url(/images/mapas/nieve/fondo.gif) no-repeat left top;
+}
+
+/************* LISTADO EDIFICIOS: EDIFICAR O SUBIR NIVEL ****************/
+div.listBuilding {
+    margin-top: 400px;
+}
+
+div.viewBuilding {
+    width: 220px;
+    height: 170px;
+    float: left;
+    padding: 14px;
+}
+
+div.viewBuilding table {
+    width: 100%;
+    height: 170px;
+    text-align: center;
+    border-collapse: collapse;
+    border: 1px solid #666;
+}
+
+div.viewBuilding table thead th {
+    background: #F0AF1C;
+    border-bottom: 1px solid #000;
+    padding: .3em 0;
+    font-family: georgia, trebuched-ms, serif;
+}
+
+div.viewBuilding table tfoot td {
+    border-bottom: 1px solid #000;
+    text-align: center;
+    background: #F0AF1C;
+    font-size: .6em !important;
+    padding: .3em 0;
+}
+
+div.viewBuilding table tbody td {
+    border-bottom: 1px solid #000;
+    text-align: left;
+    font-size: 1em !important;
+    padding: 0.5em .5em;
+}
+
+div.viewBuilding table tbody tr.content {
+    background: #fff url(/images/background-pergamino.jpg) top left;
+    height: 120px;
+}
+
+div.viewBuilding dl {
+    position: relative;
+    font: .6em tahoma, sans-serif !important;
+}
+
+div.viewBuilding dl dt {
+    width: 13em;
+    float: left;
+    left: 0;
+}
+
+div.viewBuilding dl dd {
+    margin-left: 13em;
+    text-align: right;
+}
+
+/************* EDIFICIOS: COMEDOR ****************/
+
+table.comedor {
+    width: 100%;
+    border-collapse: collapse;
+    background: #e4cfa2;
+}
+
+table.comedor thead tr, table.comedor tfoot tr {
+    background: #996633;
+    color: #fff;
+}
+
+table.comedor thead th, table.comedor tfoot th {
+    background: #f90 url(/images/background-wood.jpg) repeat-x top left;
+    padding: .5em;
+}
+
+table.comedor td, table.comedor th {
+    border: 1px solid #999;
+    padding: .2em 1em;
+}
+
+/************* MONJE: DETALLE MONJE****************/
+
+table.detallemonje {
+    width: 100%;
+    border-collapse: collapse;
+    background: #e4cfa2;
+    border: 1px solid #999;
+}
+
+table.detallemonje thead tr, table.detallemonje tfoot tr {
+/*    background: #996633;*/
+/*    background: #ffffff;*/
+    color: #000000;
+}
+
+table.detallemonje thead th {
+    background: #f90 url(/images/background-wood.jpg) repeat-x top left;
+    padding: .5em;
+    color: #ffffff;
+    font-family: georgia, times new roman, serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+table.detallemonje tfoot th {
+    background: #eee6d5;
+    border: 1px solid #999;
+}
+
+table.detallemonje td, table.detallemonje th {
+/*    border: 1px solid #999;*/
+    padding: .2em 1em;
+    text-align: center;
+}
+
+#eventsMonje {
+/*    width: 100%;*/
+    border: 1px solid #666;
+    padding: .5em;
+    background: #fff url(/images/background-pergamino.jpg) top left;
+}
+
+#eventsMonje h4 {
+    margin: 0 0 1em 0;
+    color: #fff;
+    background: #fff url(/images/background-wood.jpg) repeat-x top left;
+    text-align: center;
+}
+
+#eventsMonje h5 {
+    margin: 0 0 .5em 0;
+    background: #ccc;
+    padding: .5em 0;
+}
+
+#eventsMonje ul {
+/*float: left;*/
+/*  width: 60em;*/
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#eventsMonje li {
+/*  float: left;*/
+/*width: 6em;*/
+    display: list-item;
+    margin: 0;
+    padding: 0;
+}
+
+/************* FILTRO LIBROS BIBLIOTECA ****************/
+
+#bookFilter {
+    margin: 1em auto 0 auto;
+    padding: .5em;
+    height: auto; /*border-top: 1px solid #999;*/
+/*    height: 2em; *//*border-top: 1px solid #999;*//**/
+}
+
+#bookFilter h5 {
+    background: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+#bookFilter ul li {
+    display: inline;
+    float: left;
+    margin-left: 1em;
+}
+
+#bookFilter li a {
+    display: block;
+    text-align: center;
+}
+
+/************* FILTRO MERCADO INICIO ****************/
+
+/*
+    margin: 1em auto 2em auto;
+    width: 50%;
+    border: 1px solid #666;
+    padding: .5em;
+    background: #fff url(/images/background-pergamino.jpg) top left;
+
+
+*/
+
+#mercadoFiltro {
+    width: 50%;
+    margin: 1em auto 1em auto;
+    padding: .5em;
+    border: 1px solid #666;
+    height: 7em;
+    background: #fff url(/images/background-pergamino.jpg) top left;
+}
+
+#mercadoFiltro h4 {
+    margin: 0 0 1em 0;
+    color: #fff;
+    background: #fff url(/images/background-wood.jpg) repeat-x top left;
+}
+
+#mercadoFiltro h5 {
+    background: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+#mercadoFiltro ul li {
+    display: inline;
+    float: left;
+    margin-left: 1em;
+}
+
+#mercadoFiltro li a {
+    display: block;
+    text-align: center;
+}
+
+/************* EDIFICIOS: CONTENIDO ****************/
+
+table.contenidoedificio {
+    width: 100%;
+    border-collapse: collapse;
+    background: #e4cfa2;
+}
+
+table.contenidoedificio thead tr, table.contenidoedificio tfoot tr {
+    background: #996633;
+    color: #fff;
+}
+
+table.contenidoedificio thead th, table.contenidoedificio tfoot th {
+    background: #f90 url(/images/background-wood.jpg) repeat-x top left;
+    padding: .5em;
+}
+
+table.contenidoedificio caption {
+    margin: 0.5em 0 .1em 0;
+    color: #fff;
+    background: #fff url(/images/background-wood.jpg) repeat-x top left;
+    border-bottom: 1px solid #000;
+    padding: 0.5em;
+    font: bold 1.2em georgia, times new roman, serif;
+}
+
+table.contenidoedificio td, table.contenidoedificio th {
+    border: 1px solid #999;
+    padding: .2em 1em;
+}
+
+table.contenidoedificio tbody tr:hover {
+    background: #f2c40a;
+    color: #372c01;
+
+}
+
+}

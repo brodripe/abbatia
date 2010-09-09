@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<parametros_iniciales>
+    <escribas>
+        <abad>
+            <habilidades idioma="30" talento="50" sabiduria="30" fe="99" fuerza="10"
+                         comercio="30" destreza="30" carisma="60"/>
+            <propiedades proteinas="30" lipidos="30" hidratos="30" vitaminas="30"/>
+        </abad>
+        <monje_1>
+            <habilidades idioma="50" talento="70" sabiduria="30" fe="50" fuerza="10"
+                         comercio="30" destreza="70" carisma="30"/>
+            <propiedades proteinas="30" lipidos="30" hidratos="30" vitaminas="30"/>
+        </monje_1>
+        <monje_2>
+            <habilidades idioma="50" talento="70" sabiduria="30" fe="50" fuerza="10"
+                         comercio="30" destreza="70" carisma="30"/>
+            <propiedades proteinas="30" lipidos="30" hidratos="30" vitaminas="30"/>
+        </monje_2>
+        <monje_3>
+            <habilidades idioma="30" talento="70" sabiduria="30" fe="50" fuerza="10"
+                         comercio="30" destreza="70" carisma="30"/>
+            <propiedades proteinas="30" lipidos="30" hidratos="30" vitaminas="30"/>
+        </monje_3>
+        <novicio>
+            <habilidades idioma="50" talento="60" sabiduria="50" fe="50" fuerza="50"
+                         comercio="50" destreza="60" carisma="50"/>
+            <propiedades proteinas="30" lipidos="30" hidratos="30" vitaminas="30"/>
+        </novicio>
+    </escribas>
+    <ganaderia>
+        <abad>
+            <habilidades idioma="30" talento="30" sabiduria="30" fe="99" fuerza="30"
+                         comercio="30" destreza="30" carisma="60"/>
+            <propiedades proteinas="30" lipidos="30" hidratos="30" vitaminas="30"/>
+        </abad>
+        <monje_1>
+            <habilidades idioma="30" talento="30" sabiduria="30" fe="50" fuerza="50"
+                         comercio="30" destreza="90" carisma="30"/>
+            <propiedades proteinas="30" lipidos="30" hidratos="30" vitaminas="30"/>
+        </monje_1>
+        <monje_2>
+            <habilidades idioma="10" talento="10" sabiduria="10" fe="50" fuerza="50"
+                         comercio="10" destreza="90" carisma="10"/>
+            <propiedades proteinas="30" lipidos="30" hidratos="30" vitaminas="30"/>
+        </monje_2>
+        <monje_3>
+            <habilidades idioma="10" talento="10" sabiduria="10" fe="50" fuerza="50"
+                         comercio="30" destreza="90" carisma="10"/>
+            <propiedades proteinas="30" lipidos="30" hidratos="30" vitaminas="30"/>
+        </monje_3>
+        <novicio>
+            <habilidades idioma="50" talento="50" sabiduria="50" fe="50" fuerza="50"
+                         comercio="50" destreza="60" carisma="50"/>
+            <propiedades proteinas="30" lipidos="30" hidratos="30" vitaminas="30"/>
+        </novicio>
+    </ganaderia>
+    <agricultura>
+        <abad>
+            <habilidades idioma="10" talento="30" sabiduria="30" fe="99" fuerza="30"
+                         comercio="30" destreza="30" carisma="60"/>
+            <propiedades proteinas="30" lipidos="30" hidratos="30" vitaminas="30"/>
+        </abad>
+        <monje_1>
+            <habilidades idioma="10" talento="10" sabiduria="10" fe="50" fuerza="70"
+                         comercio="10" destreza="70" carisma="10"/>
+            <propiedades proteinas="30" lipidos="30" hidratos="30" vitaminas="30"/>
+        </monje_1>
+        <monje_2>
+            <habilidades idioma="10" talento="30" sabiduria="30" fe="50" fuerza="70"
+                         comercio="10" destreza="70" carisma="10"/>
+            <propiedades proteinas="30" lipidos="30" hidratos="30" vitaminas="30"/>
+        </monje_2>
+        <monje_3>
+            <habilidades idioma="10" talento="10" sabiduria="10" fe="50" fuerza="70"
+                         comercio="10" destreza="70" carisma="10"/>
+            <propiedades proteinas="30" lipidos="30" hidratos="30" vitaminas="30"/>
+        </monje_3>
+        <novicio>
+            <habilidades idioma="50" talento="50" sabiduria="50" fe="50" fuerza="60"
+                         comercio="50" destreza="60" carisma="50"/>
+            <propiedades proteinas="30" lipidos="30" hidratos="30" vitaminas="30"/>
+        </novicio>
+    </agricultura>
+</parametros_iniciales>

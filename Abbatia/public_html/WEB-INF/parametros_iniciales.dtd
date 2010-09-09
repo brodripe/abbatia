@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!ELEMENT propiedades EMPTY >
+<!ATTLIST propiedades vitaminas NMTOKEN #FIXED "30" >
+<!ATTLIST propiedades lipidos NMTOKEN #FIXED "30" >
+<!ATTLIST propiedades hidratos NMTOKEN #FIXED "30" >
+<!ATTLIST propiedades proteinas NMTOKEN #FIXED "30" >
+
+<!ELEMENT novicio ( habilidades, propiedades ) >
+
+<!ELEMENT ganaderia ( abad, monje_1, monje_2, monje_3, novicio ) >
+
+<!ELEMENT habilidades EMPTY >
+<!ATTLIST habilidades destreza NMTOKEN #FIXED "10" >
+<!ATTLIST habilidades fuerza NMTOKEN #FIXED "10" >
+<!ATTLIST habilidades idioma NMTOKEN #FIXED "10" >
+<!ATTLIST habilidades comercio NMTOKEN #FIXED "10" >
+<!ATTLIST habilidades fe NMTOKEN #FIXED "100" >
+<!ATTLIST habilidades talento NMTOKEN #FIXED "10" >
+<!ATTLIST habilidades sabiduria NMTOKEN #FIXED "10" >
+
+<!ELEMENT monje_3 ( habilidades, propiedades ) >
+
+<!ELEMENT monje_2 ( habilidades, propiedades ) >
+
+<!ELEMENT monje_1 ( habilidades, propiedades ) >
+
+<!ELEMENT escribas ( abad, monje_1, monje_2, monje_3, novicio ) >
+
+<!ELEMENT abad ( habilidades, propiedades ) >
+
+<!ELEMENT parametros_iniciales ( escribas, ganaderia, agricultura ) >
+
+<!ELEMENT agricultura ( abad, monje_1, monje_2, monje_3, novicio ) >
+

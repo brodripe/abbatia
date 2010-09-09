@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="ABBATIA" default="usage" basedir=".">
+    <description>Fichero para preparar un deploy basico Abbatia</description>
+
+    <property name="path" value="/"/>
+
+    <!-- Configure properties to access the Manager application -->
+    <!--
+        <property name="url" value="http://localhost:8080/manager"/>
+        <property name="username" value="admin"/>
+        <property name="password" value="cyborg"/>
+    -->
+    <!-- Configure the custom Ant tasks for the Manager application -->
+    <taskdef name="deploy" classname="org.apache.catalina.ant.DeployTask"/>
+    <taskdef name="list" classname="org.apache.catalina.ant.ListTask"/>
+    <taskdef name="reload" classname="org.apache.catalina.ant.ReloadTask"/>
+    <taskdef name="resources" classname="org.apache.catalina.ant.ResourcesTask"/>
+    <taskdef name="roles" classname="org.apache.catalina.ant.RolesTask"/>
+    <taskdef name="start" classname="org.apache.catalina.ant.StartTask"/>
+    <taskdef name="stop" classname="org.apache.catalina.ant.StopTask"/>
+    <taskdef name="undeploy" classname="org.apache.catalina.ant.UndeployTask"/>
+
+
+    <target name="deploy" description="Install web application" depends="make-war">
+        <deploy url="${tomcat.manager.url}" username="${tomcat.username}" password="${tomcat.password}"
+                path="${path}" war="file:${config.home}/${entorno}/${config.WarName}.war"/>
+    </target>
+
+    <target name="reload" description="Reload web application"
+            depends="make-war">
+        <reload url="${tomcat.manager.url}" username="${tomcat.username}" password="${tomcat.password}"
+                path="${path}"/>
+    </target>
+
+    <!-- ======================================================================================== -->
+    <!-- Leemos toda la configuración del fichero de propiedades                                  -->
+    <!-- ======================================================================================== -->
+    <target name="get-properties" if="entorno" description="Lee el fichero de propiedades correspondiente al entorno">
+        <!-- Referencia al fichero de properties para su posterior uso -->
+        <property name="propertiesFile" value="config_${entorno}.properties"/>
+        <property file="${propertiesFile}"/>
+        <echo>Leidas propiedades del fichero especifico para ${config.SVNTAG} ...</echo>
+    </target>
+
+    <target name="set-config" depends="get-properties">
+        <!-- Configuracion de directorios para el deploy total -->
+        <property name="app.compiled_classes" value="tmp_${entorno}/compiled_classes"/>
+        <!-- ======================================================================================== -->
+        <!-- Configuracion de las librerias auxiliares                                                -->
+        <!-- ======================================================================================== -->
+        <property name="aux.lib" value="${config.libs}"/>
+        <path id="compila.path.clases">
+            <pathelement location="${config.SVNDestDir}/lib/servlet-api.jar"/>
+            <pathelement location="${config.SVNDestDir}/lib/xerces.jar"/>
+            <pathelement location="${config.SVNDestDir}/lib/commons-fileupload-1.0.jar"/>
+            <pathelement location="${config.SVNDestDir}/lib/commons-beanutils.jar"/>
+            <pathelement location="${config.SVNDestDir}/lib/commons-collections-3.2.1.jar"/>
+            <pathelement location="${config.SVNDestDir}/lib/commons-digester.jar"/>
+            <pathelement location="${config.SVNDestDir}/lib/commons-logging.jar"/>
+            <pathelement location="${config.SVNDestDir}/lib/struts.jar"/>
+            <pathelement location="${config.SVNDestDir}/lib/struts-adapter.jar"/>
+            <pathelement location="${config.SVNDestDir}/lib/log4j-1.2.8.jar"/>
+            <pathelement location="${config.SVNDestDir}/lib/commons-lang-2.1.jar"/>
+            <pathelement location="${config.SVNDestDir}/lib/jsp-api.jar"/>
+            <pathelement location="${config.SVNDestDir}/lib/displaytag-export-poi-1.1.jar"/>
+            <pathelement location="${config.SVNDestDir}/lib/jakarta-oro.jar"/>
+            <pathelement location="${config.SVNDestDir}/lib/displaytag-1.1.jar"/>
+            <pathelement location="${config.SVNDestDir}/lib/poi-2.5.1.jar"/>
+            <pathelement location="${config.SVNDestDir}/lib/itext-1.3.jar"/>
+            <pathelement location="${config.SVNDestDir}/lib/jta.jar"/>
+            <pathelement location="${config.SVNDestDir}/lib/json-lib-2.2.3-jdk15.jar"/>
+
+            <!--librerías para ajaxtag-->
+            <pathelement location="${config.SVNDestDir}/lib/ajaxtags-1.3-beta-rc7.jar"/>
+            <pathelement location="${config.SVNDestDir}/lib/jericho-html-2.4.jar"/>
+            <!--librerías para procesos de carga-->
+            <pathelement location="${config.SVNDestDir}/lib/file_delimited.jar"/>
+            <pathelement location="${config.SVNDestDir}/lib/mail.jar"/>
+            <pathelement location="${config.SVNDestDir}/lib/activation.jar"/>
+        </path>
+
+    </target>
+
+    <!-- Muestra el modo de uso -->
+    <target name="usage">
+        <echo>
+            ==================================================================================
+            Proyecto Arquitectura
+            Opciones de construccion:
+            ant -> muestra esta ayuda
+            ant -Dentorno=XX deploy-tomcat -> Hace un deploy de la SGC para el entorno XX, compilando
+            todo el código.
+            ant -Dentorno=XX pack-app-tomcat -> Hace un deploy y empaquetado de la WebCo para el entorno XX,
+            compilando todo el código.
+            ant -Dentorno=XX svn-update -> Actualiza el código utilizando la etiqueta correspondiente
+            al entorno XX.
+            ant -Dentorno=XX svn-chekout -> Hace un checkout del código utilizando la etiqueta
+            correspondiente al entorno XX.
+
+            * Los entornos (XX) son: DV (Desarrollo), ST (System Test), IT (Integracion), PP (Preproduccion), PR
+            (Produccion)
+
+            * Deben existir los ficheros de propiedades correspondientes a cada entorno.
+            =================================================================================
+        </echo>
+    </target>
+
+
+    <!-- ======================================================================================== -->
+    <!-- Obtiene el módulo del SVN para el deploy (sólo para entornos integrados)      				                            -->
+    <!-- ======================================================================================== -->
+    <!--target name="svn-checkout" depends="set-config">
+        <echo message="Obteniendo WebCo del SVN de ${config.SVNTAG} a ${config.SVNDestDir}..."/>
+        <mkdir dir="${config.SVNDestDir}"/>
+
+        <svncheckout destpath="${config.SVNDestDir}" url="${config.SVNUrl}" revision="${config.SVNTAG}"/>
+
+    </target-->
+
+    <!-- ======================================================================================== -->
+    <!-- Obtiene el módulo del SVN para el deploy (Sólo para entornos integrados)                 -->
+    <!-- ======================================================================================== -->
+    <!--target name="svn-update" depends="set-config">
+        <echo message="Obteniendo WebCo del SVN de ${config.SVNTAG} a ${config.SVNDestDir}..."/>
+        <mkdir dir="${config.SVNDestDir}"/>
+        
+        <svnupdate dir="${config.SVNDestDir}" revision="${config.SVNTAG}"/>
+    </target-->
+
+    <!-- ======================================================================================== -->
+    <!-- Compila los fuentes de los módulos descargados de la WebCo							    							-->
+    <!-- ======================================================================================== -->
+    <target name="compilar" depends="set-config">
+        <mkdir dir="${app.compiled_classes}"/>
+
+        <javac destdir="${app.compiled_classes}" debug="on" optimize="off" MemoryInitialSize="128M"
+               MemoryMaximumSize="256M" fork="true">
+            <classpath refid="compila.path.clases"/>
+            <src path="${config.SVNDestDir}/src"/>
+        </javac>
+    </target>
+
+
+    <target name="deploy-properties" depends="set-config" description="Despliega los ficheros de properties">
+        <property name="config.common_properties" value="${config.TomcatWebAppsDir}"/>
+
+        <zip destfile="${config.home}/public_html/ayudas/docs/abadia_properties.zip"
+             update="false"
+             basedir="${config.home}/src/org/abbatia/"
+             includes="*.properties"/>
+        <echo>Copiando ficheros de propiedades de ${config.SVNDestDir} a ${config.common_properties}...</echo>
+
+        <copy todir="${config.common_properties}/${config.AppName}/WEB-INF" overwrite="yes">
+            <fileset dir="${config.SVNDestDir}/public_html/WEB-INF"/>
+            <filterset>
+                <filtersfile file="${propertiesFile}"/>
+            </filterset>
+        </copy>
+        <delete dir="${config.common_properties}/${config.AppName}/META-INF/context.xml"/>
+        <copy todir="${config.common_properties}/${config.AppName}/META-INF" overwrite="yes">
+            <fileset dir="${config.SVNDestDir}/public_html/META-INF">
+                <include name="**/context.xml"/>
+            </fileset>
+            <filterset>
+                <filtersfile file="${propertiesFile}"/>
+            </filterset>
+        </copy>
+
+        <!--
+        <copyfile src="${config.SVNDestDir}/public_html/META-INF/context.xml"
+                  dest="${config.common_properties}/${config.AppName}/META-INF/context.xml">
+        </copyfile>
+        -->
+        <copy todir="${config.common_properties}/${config.AppName}/WEB-INF/classes">
+            <fileset dir="${config.SVNDestDir}/src/">
+                <include name="**/*.properties"/>
+                <include name="**/*.configuracion"/>
+            </fileset>
+            <filterset>
+                <filtersfile file="${propertiesFile}"/>
+            </filterset>
+        </copy>
+
+
+    </target>
+
+    <target name="deploy_themes" depends="set-config" description="Deploy de contenidos estáticos..">
+
+        <!-- Eliminamos los recursos originales -->
+        <delete dir="${config.TomcatWebAppsDir}/${config.AppName}/theme"/>
+        <!-- Copiamos los recursos estaticos destinados al web server -->
+        <echo>Copiando js's y css's de ${config.SVNDestDir} a
+            ${config.TomcatWebAppsDir}/${config.AppName}...
+        </echo>
+
+        <copy todir="${config.TomcatWebAppsDir}/${config.AppName}/theme">
+            <fileset dir="${config.SVNDestDir}/public_html/theme"/>
+            <filterset>
+                <filtersfile file="${propertiesFile}"/>
+            </filterset>
+        </copy>
+
+    </target>
+
+    <target name="deploy_images" depends="set-config" description="Deploy de contenidos estáticos..">
+
+        <!-- Eliminamos los recursos originales -->
+        <delete dir="${config.TomcatWebAppsDir}/${config.AppName}/images"/>
+        <!-- Copiamos los recursos estaticos destinados al web server -->
+        <echo>Copiando js's y css's de ${config.SVNDestDir} a
+            ${config.TomcatWebAppsDir}/${config.AppName}...
+        </echo>
+
+        <copy todir="${config.TomcatWebAppsDir}/${config.AppName}/images">
+            <fileset dir="${config.SVNDestDir}/public_html/images"/>
+            <filterset>
+                <filtersfile file="${propertiesFile}"/>
+            </filterset>
+        </copy>
+
+    </target>
+
+    <target name="deploy_webserver_files" depends="set-config" description="Deploy de contenidos estáticos..">
+
+        <!-- Eliminamos los recursos originales -->
+        <delete dir="${config.TomcatWebAppsDir}/${config.AppName}/images"/>
+        <delete dir="${config.TomcatWebAppsDir}/${config.AppName}/theme"/>
+        <!-- Copiamos los recursos estaticos destinados al web server -->
+        <echo>Copiando recursos estáticos de ${config.SVNDestDir} a
+            ${config.TomcatWebAppsDir}/${config.AppName}...
+        </echo>
+
+        <copy todir="${config.TomcatWebAppsDir}/${config.AppName}/theme">
+            <fileset dir="${config.SVNDestDir}/public_html/theme"/>
+            <filterset>
+                <filtersfile file="${propertiesFile}"/>
+            </filterset>
+        </copy>
+        <copy todir="${config.TomcatWebAppsDir}/${config.AppName}/images">
+            <fileset dir="${config.SVNDestDir}/public_html/images"/>
+        </copy>
+        <copy todir="${config.TomcatWebAppsDir}/${config.AppName}">
+            <fileset dir="${config.SVNDestDir}/public_html">
+                <include name="**/*html"/>
+            </fileset>
+        </copy>
+        <!-- Copiamos los pdf de ayudas -->
+        <copy todir="${config.TomcatWebAppsDir}/${config.AppName}/ayudas/docs">
+            <fileset dir="${config.SVNDestDir}/public_html/ayudas/docs">
+                <include name="**/*"/>
+            </fileset>
+        </copy>
+
+    </target>
+    <target name="deploy_jsp" depends="set-config" description="Copia JSP's al directorio de deploy">
+        <echo>Copiando páginas jsp de ${config.SVNDestDir} a ${config.TomcatWebAppsDir}/${config.AppName}...</echo>
+
+        <copy todir="${config.TomcatWebAppsDir}/${config.AppName}" overwrite="true">
+            <fileset dir="${config.SVNDestDir}/public_html">
+                <include name="**/*jsp"/>
+            </fileset>
+            <filterset>
+                <filtersfile file="${propertiesFile}"/>
+            </filterset>
+        </copy>
+    </target>
+
+    <target name="deploy_abbatia_war" depends="set-config, compilar" description="Monta el paquete Abbatia">
+
+        <!--<delete dir="${config.TomcatWebAppsDir}/${config.AppName}"/>-->
+        <!--<delete dir="${config.TomcatHome}/logs_${entorno}"/>-->
+        <mkdir dir="${config.TomcatWebAppsDir}/${config.AppName}"/>
+        <mkdir dir="${config.TomcatWebAppsDir}/${config.AppName}/WEB-INF"/>
+        <!--<mkdir dir="${config.TomcatWebAppsDir}/${config.AppName}/WEB-INF/lib"/>-->
+        <mkdir dir="${config.TomcatWebAppsDir}/${config.AppName}/WEB-INF/classes"/>
+        <property name="config.common_classes" value="${config.TomcatWebAppsDir}/${config.AppName}/WEB-INF/classes"/>
+        <!--property name="config.common_lib" value="${config.TomcatWebAppsDir}/${config.AppName}/WEB-INF/lib"/-->
+        <!-- Copiamos los recursos destinados al servidor de aplicaciones -->
+
+        <antcall target="deploy_jsp"/>
+
+        <echo>Copiando clases...</echo>
+        <copy todir="${config.common_classes}">
+            <fileset dir="${app.compiled_classes}"/>
+        </copy>
+        <!--
+                <echo>Copiando librerías...</echo>
+                <copy todir="${config.common_lib}">
+                    <fileset dir="${config.SVNDestDir}/lib">
+                        <exclude name="servlet-api.jar"/>
+                        <exclude name="ant.jar"/>
+                        <exclude name="antlr.jar"/>
+                        <exclude name="svnant.jar"/>
+                        <exclude name="svnClientAdapter.jar"/>
+                        <exclude name="svnjavahl.jar"/>
+                        <exclude name="commons-lang.jar"/>
+                        <exclude name="jsp-api.jar"/>
+                        <exclude name="tools.jar"/>
+                        <exclude name="axis.jar"/>
+                        <exclude name="hibernate3.jar"/>
+                        <exclude name="xerces.jar"/>
+                    </fileset>
+                </copy>
+        -->
+    </target>
+
+    <target name="deploy_classes" depends="set-config, compilar" description="Monta el paquete abbatia.ear">
+        <!--delete dir="${config.TomcatWebAppsDir}/${config.AppName}/WEB-INF/classes"/-->
+        <mkdir dir="${config.TomcatWebAppsDir}/${config.AppName}/WEB-INF/classes"/>
+        <property name="config.common_classes" value="${config.TomcatWebAppsDir}/${config.AppName}/WEB-INF/classes"/>
+        <!-- Copiamos los recursos destinados al servidor de aplicaciones -->
+        <echo>Copiando clases...</echo>
+        <copy todir="${config.common_classes}" overwrite="true">
+            <fileset dir="${app.compiled_classes}"/>
+        </copy>
+    </target>
+
+    <!-- ======================================================================================== -->
+    <!-- Instalaciones de la APLICACION: Deploy sobre Tomcat                                         -->
+    <!-- ======================================================================================== -->
+    <target name="deploy-tomcat-desplegado" depends="set-config"
+            description="Monta el kit de instalación sobre Tomcat / Desarrollo">
+        <!--antcall target="tomcat-stop" /-->
+        <antcall target="deploy_abbatia_war"/>
+        <antcall target="deploy_webserver_files"/>
+        <!-- Copia de los properties -->
+        <antcall target="deploy-properties"/>
+        <!--antcall target="tomcat-start" /-->
+        <echo>
+            ====================================================================
+            Proyecto ${config.AppName}
+            Aplicacion instalada en ${config.TomcatWebAppsDir}/${config.AppName}
+            ====================================================================
+        </echo>
+
+    </target>
+
+    <target name="tomcat-start" depends="set-config">
+        <java jar="${config.TomcatHome}/bin/bootstrap.jar" fork="true">
+            <jvmarg value="-Dcatalina.home=${config.TomcatHome} -Xdebug -Xrunjdwp:transport=dt_socket,address=2943,suspend=n,server=y"/>
+        </java>
+    </target>
+
+    <target name="tomcat-start-debug" depends="set-config">
+        <java jar="${config.TomcatHome}/bin/bootstrap.jar" fork="true">
+            <jvmarg value="-Dcatalina.home=${config.TomcatHome}"/>
+            <jvmarg value="-Xdebug"/>
+            <!--<jvmarg value="-Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n"/>-->
+            <jvmarg value="-Xrunjdwp:transport=dt_shmem,address=javadebug,suspend=n,server=y"/>
+        </java>
+    </target>
+
+    <target name="tomcat-stop" depends="set-config">
+        <java jar="${config.TomcatHome}/bin/bootstrap.jar" fork="true">
+            <jvmarg value="-Dcatalina.home=${config.TomcatHome}"/>
+            <arg line="stop"/>
+        </java>
+    </target>
+
+    <target name="make-war" depends="deploy-tomcat-desplegado">
+        <mkdir dir="${config.home}/${entorno}"/>
+        <war warfile="${config.home}/${entorno}/${config.WarName}.war"
+             webxml="${config.TomcatWebAppsDir}/${config.AppName}/WEB-INF/web.xml">
+            <fileset dir="${config.TomcatWebAppsDir}/${config.AppName}"/>
+        </war>
+    </target>
+
+    <!--
+        <taskdef resource="org/apache/catalina/ant/catalina.tasks" classpathref="project.class.path"  />
+        <target name="set-classpath-deploy" depends="get-properties">
+            <path id="project.class.path">
+                <fileset dir="${tomcat.dir}/common/lib">
+                    <include name="*.jar/" />
+                </fileset>
+                <fileset dir="${tomcat.dir}/bin">
+                    <include name="*.jar/" />
+                </fileset>
+                <pathelement path="${tomcat.dir}/server/lib/catalina-ant.jar" />
+            </path>
+        </target>
+        <target name="deploy" description="Install application in Tomcat" depends="set-classpath-deploy">
+            <deploy url="${tomcat.manager.url}"
+                username="${tomcat.username}"
+                password="${tomcat.password}"
+                path="/${app.name}"
+                war="file:${output.dir}/${entorno}/${app.name}.war" />
+        </target>
+
+        <target name="remove" description="Remove application in Tomcat" depends="set-classpath-deploy">
+            <undeploy url="${tomcat.manager.url}"
+                username="${tomcat.username}"
+                password="${tomcat.password}"
+                path="/"/>
+        </target>
+
+        <target name="reload" description="Reload application in Tomcat" depends="set-classpath-deploy">
+            <reload url="${tomcat.manager.url}"
+                username="${tomcat.username}"
+                password="${tomcat.password}"
+                path="/"/>
+        </target>
+
+        <target name="start" description="Start Tomcat application" depends="set-classpath-deploy">
+            <start url="${tomcat.manager.url}"
+                username="${tomcat.username}"
+                password="${tomcat.password}"
+                path="/"/>
+        </target>
+
+        <target name="stop" description="Stop Tomcat application" depends="set-classpath-deploy">
+            <stop url="${tomcat.manager.url}"
+                username="${tomcat.username}"
+                password="${tomcat.password}"
+                path="/"/>
+        </target>
+
+        <target name="list" description="List Tomcat applications" depends="set-classpath-deploy">
+            <list url="${tomcat.manager.url}"
+                username="${tomcat.username}"
+                password="${tomcat.password}"/>
+        </target>
+
+    -->
+
+</project>

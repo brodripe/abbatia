@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context displayName="Abbatia - Gestiona tu propia abadia" docBase="ROOT" path="/" >
+  <Resource name="jdbc/Abadias" auth="Container" type="javax.sql.DataSource"
+    url="jdbc:mysql://localhost:3306/abbatia?autoReconnect=true"
+    password="abd11TIA00"
+    maxActive="120"
+    maxWait="10"
+    driverClassName="com.mysql.jdbc.Driver"
+    username="abbatia_inet"
+    maxIdle="60"
+    removeAbandoned="true"
+    removeAbandonedTimeout="20"
+    logAbandoned="true"     
+    />
+  <Resource name="jdbc/Procesos" auth="Container" type="javax.sql.DataSource"
+    url="jdbc:mysql://localhost:3306/abbatia?autoReconnect=true"
+    password="abd11TIA00"
+    maxActive="20"
+    maxWait="50"
+    driverClassName="com.mysql.jdbc.Driver"
+    username="abbatia_procesos"
+    maxIdle="2"
+    />
+</Context>

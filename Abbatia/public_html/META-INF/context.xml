@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context displayName="Abbatia - Gestiona tu propia abadia" docBase="@config.AppName@" path="">
+  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" logAbandoned="true" maxActive="120" maxIdle="6" maxWait="10" name="jdbc/Abadias" password="@config.bdd.pwd@" removeAbandoned="true" removeAbandonedTimeout="20" type="javax.sql.DataSource" url="@config.bdd.url@" username="@config.bdd.user@"/>
+  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxActive="20" maxIdle="2" maxWait="50" name="jdbc/Procesos" password="@config.bdd.pwd.procesos@" type="javax.sql.DataSource" url="@config.bdd.url.procesos@" username="@config.bdd.user.procesos@"/>
+</Context>

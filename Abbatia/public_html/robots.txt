@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /Meta_inf/
+Disallow: /theme/
+Disallow: /Web-inf/

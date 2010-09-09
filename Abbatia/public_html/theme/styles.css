@@ -1,0 +1,21 @@
+
+P { font-family: Tahoma, Verdana, Arial; font-size:12px }
+TD { font-family: Tahoma, Verdana, Arial; font-size:12px }
+TH { font-family: Tahoma, Verdana, Arial; font-size:12px }
+A:link {text-decoration: none; color: #604208;  font-family: Tahoma, Verdana, Arial}
+A:visited {text-decoration: none; color: #604208;  font-family: Tahoma, Verdana, Arial}
+A:active {text-decoration: UNDERLINE; color: yellow;font-family: Tahoma, Verdana, Arial}
+A:hover { text-decoration: UNDERLINE; color: white; font-family: Tahoma, Verdana, Arial; }
+
+.sinborder{
+	border-top:solid 0px;
+	border-left:solid 0px;
+	border-bottom:solid 0px;
+	border-right:solid 0px;
+}
+
+.menu{
+border:1px solid #000000;
+background-color: #e4cfa2;
+}
+

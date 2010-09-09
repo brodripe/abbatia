@@ -1,0 +1,260 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #E1C08B;
+    color: #000000;
+    font: 75% / 1em verdana, arial, sans-serif;
+}
+
+/** Alineaciones de texto */
+.textCenter {
+    text-align: center !important;
+}
+
+.textRight {
+    text-align: right !important;
+}
+
+.textLeft {
+    text-align: left !important;
+}
+
+.textRightRed {
+    text-align: right !important;
+    color: red !important;
+}
+
+.textJustify {
+    text-align: justify !important;
+}
+
+/** Alineaciones de elementos */
+.floatLeft {
+    float: left;
+}
+
+.floatRight {
+    float: right;
+}
+
+.alignCenter {
+    margin: 0 auto;
+}
+
+td.ocultar, th.ocultar {
+    display: none; /*width: 0px !important;*/
+}
+
+/** Limpieza de linea */
+.break {
+    clear: both;
+}
+
+/* Colores */
+
+.advert {
+    color: #f00;
+}
+
+.destacado {
+    color: #009;
+}
+
+/*  reset */
+
+ul, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    border: none;
+}
+
+/**/
+
+a {
+    color: #663300;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #cc0000;
+    text-decoration: underline;
+}
+
+th.sorted {
+    background-color: orange;
+}
+
+th a, th a:visited {
+    color: black;
+}
+
+th a:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+/******************ESTILOS DE LOS LISTADOS DE DISPLAYTAG**********************/
+th.sorted a, th.sortable a {
+    background-position: right;
+    display: block;
+    width: 100%;
+}
+
+th.sortable a {
+    background: url(/images/iconos/16/arrow_off.png) no-repeat;
+    color: beige;
+}
+
+th.order1 a {
+    background: url(/images/iconos/16/arrow_down.png) no-repeat;
+}
+
+th.order2 a {
+    background: url(/images/iconos/16/arrow_up.png) no-repeat;
+}
+
+tr.odd {
+    background-color: #e4cfa2
+}
+
+tr.tableRowEven, tr.even {
+    background-color: #dfba93
+}
+
+/* Cabeceras */
+
+h3 {
+    font: bold 1.5em georgia, times new roman, serif;
+}
+
+h4 {
+    font: bold 1.3em georgia, times new roman, serif;
+    padding: 0.2em;
+}
+
+h5 {
+    font: bold 1.2em georgia, times new roman, serif;
+}
+
+/* Listas de definicion */
+
+dl {
+    clear: both;
+}
+
+dt {
+    float: left;
+    text-align: left;
+}
+
+dd {
+    text-align: left;
+}
+
+/* Alternacion tablas */
+
+tr.one {
+    background: #e4cfa2;
+}
+
+tr.two {
+    background: #d9c7a2;
+}
+
+/***************** PESTAÑAS ***********************/
+#header ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#header li {
+    display: inline;
+    margin: 0 2px 0 0;
+}
+
+#header a {
+    padding: 0 1em;
+    text-decoration: none;
+    color: #a80;
+    background: #ffcc66;
+    font: bold 1.2em georgia, times new roman, serif;
+}
+
+#header a:hover {
+    background: #f2c40a;
+    color: #372c01;
+}
+
+#header #selected {
+}
+
+#header #selected a {
+    padding-bottom: 2px;
+    font-weight: bold;
+    color: black;
+    background: #f2c40a;
+}
+
+#content {
+    border-top: 2px solid white; /*background: #fc0;*/
+    background: #fff url(/images/background-pergamino.jpg) top left;
+    padding: 1em;
+}
+
+#content p {
+    margin: 0;
+    padding: 1em;
+    background: white;
+}
+
+#content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#content li {
+    display: inline;
+    margin: 0 2px 0 0;
+}
+
+#content h4 {
+    margin: 0 0 1em 0;
+    color: #fff;
+    background: #fff url(/images/background-wood.jpg) repeat-x top left;
+}
+
+/*******************ERRORES**************************/
+h5.error {
+    font: bold 1.2em georgia, times new roman, serif;
+    color: #f00;
+    background: #f2c40a;
+}
+
+span.pagebanner {
+    background-color: #eee;
+    border: 1px dotted #999;
+    padding: 2px 4px 2px 4px; /*width: 79%;*/
+    margin-top: 10px;
+    display: block;
+    border-bottom: none;
+}
+
+span.pagelinks {
+    background-color: #eee;
+    border: 1px dotted #999;
+    padding: 2px 4px 2px 4px; /*width: 79%;*/
+    display: block;
+    border-top: none;
+    margin-bottom: -5px;
+}
+
+

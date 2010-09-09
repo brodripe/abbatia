@@ -1,0 +1,40 @@
+body {
+	font-family: GothicE;
+	font-weight: lighter;
+	font-variant: normal;
+	text-decoration: blink;
+}
+
+td {
+	font-family: GothicG, monospace;
+	font-size: 14px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	text-decoration: overline;
+	background-color: #009FFF;
+}
+
+th {
+	font-family: GothicG;
+	font-size: 18px;
+	font-style: normal;
+	color: #010000;
+	background-color: #FFFFFF;
+}
+h1 {
+	font-size: 120%;
+}
+h2 {
+	font-size: 100%;
+}
+th {
+
+	font-family: GothicG, monospace;
+	font-size: 14px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	text-decoration: overline;
+	background-color: #009FFF;
+}

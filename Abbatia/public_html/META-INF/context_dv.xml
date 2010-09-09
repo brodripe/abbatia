@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context displayName="Abbatia - Gestiona tu propia abadia" docBase="abbatia" path="/" >
+  <Resource auth="Container" description="DB Connection" name="jdbc/Abadias" type="javax.sql.DataSource"/>
+  <Resource name="jdbc/Procesos" type="javax.sql.DataSource"/>
+  <ResourceParams name="jdbc/Abadias"> 
+    <parameter>
+      <name>maxWait</name>
+      <value>15</value>
+    </parameter>
+    <parameter>
+      <name>maxActive</name>
+      <value>20</value>
+    </parameter>
+    <parameter>
+      <name>password</name>
+      <value>abd11TIA00</value>
+    </parameter>
+    <parameter>
+      <name>url</name>
+      <value>jdbc:mysql://localhost:3306/abbatia?autoReconnect=true</value>
+    </parameter>
+
+    <parameter>
+      <name>driverClassName</name>
+      <value>com.mysql.jdbc.Driver</value>
+    </parameter>
+    <parameter>
+      <name>maxIdle</name>
+      <value>10</value>
+    </parameter>
+    <parameter>
+      <name>username</name>
+      <value>abbatia_inet</value>
+    </parameter>
+    <parameter>
+      <name>removeAbandonedTimeout</name>
+      <value>60</value>
+    </parameter>
+    <parameter>
+      <name>removeAbandoned</name>
+      <value>true</value>
+    </parameter>
+    <parameter>
+      <name>logAbandoned</name>
+      <value>true</value>
+    </parameter>
+  </ResourceParams>
+  <ResourceParams name="jdbc/Procesos">
+    <parameter>
+      <name>url</name>
+      <value>jdbc:mysql://localhost:3306/abbatia?autoReconnect=true</value>
+    </parameter>
+    <parameter>
+      <name>password</name>
+      <value>abd11TIA00</value>
+    </parameter>
+    <parameter>
+      <name>maxActive</name>
+      <value>20</value>
+    </parameter>
+    <parameter>
+      <name>maxWait</name>
+      <value>50</value>
+    </parameter>
+    <parameter>
+      <name>driverClassName</name>
+      <value>com.mysql.jdbc.Driver</value>
+    </parameter>
+    <parameter>
+      <name>username</name>
+      <value>abbatia_procesos</value>
+    </parameter>
+    <parameter>
+      <name>maxIdle</name>
+      <value>10</value>
+    </parameter>
+  </ResourceParams>
+</Context>
