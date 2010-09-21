@@ -15,8 +15,8 @@ import org.abbatia.exception.AbadiaSQLException;
 import org.abbatia.exception.RestauracionLibroException;
 import org.abbatia.exception.base.AbadiaException;
 import org.abbatia.utils.Constantes;
-import org.abbatia.utils.Utilidades;
 import org.abbatia.utils.HTML;
+import org.abbatia.utils.Utilidades;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -26,6 +26,7 @@ import org.apache.struts.util.MessageResources;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Benjamín Rodríguez.
@@ -51,8 +52,7 @@ public class LibroBBean {
             con = ConnectionFactory.getConnection(Constantes.DB_CONEXION_ABADIAS);
             oLibroAD = new adLibros(con);
             oLibro = oLibroAD.recuperarDetalleLibro(p_iLibroId, p_oUsuario.getIdDeIdioma());
-            if (oLibro != null)
-            {
+            if (oLibro != null) {
                 afLibroDetalle.setIdLibro(oLibro.getIdLibro());
                 afLibroDetalle.setNombreLibro(oLibro.getNombreLibro());
                 afLibroDetalle.setDescLibro(oLibro.getDescLibro());
@@ -187,6 +187,61 @@ public class LibroBBean {
                 p_amMensajes.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("mensajes.aviso.libro.restaurar.abadiaincorrecta"));
                 af = p_amMapping.findForward("mensajes");
             }
+            return af;
+
+        } catch (AbadiaException e) {
+            throw new AbadiaSQLException(sTrace, e, log);
+        } finally {
+            DBMSUtils.cerrarObjetoSQL(con);
+            msgLog = "Saliendo de metodo: " + sTrace;
+            log.info(msgLog);
+        }
+
+    }
+
+    public ActionForward cancelarRestauraciones(Usuario p_oUsuario, Abadia p_oAbadia, ActionMessages p_amMensajes, ActionMapping p_amMapping, MessageResources p_oResource) throws AbadiaException {
+        String sTrace = this.getClass() + ".cancelarRestauraciones()";
+        String msgLog = "Entrando en metodo: " + sTrace;
+        log.info(msgLog);
+
+        adLibros oLibroAD;
+        adEdificio oEdificioAD;
+
+        List<Libro> alLibros;
+
+        ActionForward af;
+
+        Edificio oEdificio;
+
+        Connection con = null;
+        try {
+            con = ConnectionFactory.getConnection(Constantes.DB_CONEXION_ABADIAS);
+            //recuperamos el objeto libro
+            oLibroAD = new adLibros(con);
+            alLibros = oLibroAD.recuperarLibrosPropios(p_oAbadia, p_oUsuario, p_oResource);
+            for (Libro oLibro : alLibros) {
+                //verificamos si el estado del libro permite la cancelación de su restauración (En restauración = 8)
+                if (oLibro.getEstado() == Constantes.ESTADO_LIBRO_RESTAURANDO) {
+                    //verificamos el nivel de deterioro del libro
+                    //si el desgaste supera los 50 puntos...
+                    if (oLibro.getDesgaste() > 50) {
+                        //marcamos el libro como Deteriorado
+                        oLibroAD.actualizarEstadoLibro(oLibro.getIdLibro(), Constantes.ESTADO_LIBRO_DETERIORADO);
+                    } else // si el desgaste el inferior o igual a 50..
+                    {
+                        //marcamos el libro como Completo
+                        oLibroAD.actualizarEstadoLibro(oLibro.getIdLibro(), Constantes.ESTADO_LIBRO_COMPLETO);
+                    }
+
+                }
+            }
+
+            oEdificioAD = new adEdificio(con);
+            oEdificio = oEdificioAD.recuperarEdificioTipo(Constantes.EDIFICIO_BIBLIOTECA, p_oAbadia, p_oUsuario);
+            //debería mostrar una página con el resumen.
+            Utilidades.eliminarRegistroContext(p_oUsuario.getNick());
+            af = new ActionForward("/mostrarEdificio.do?clave=" + oEdificio.getIdDeEdificio());
+
             return af;
 
         } catch (AbadiaException e) {
@@ -534,7 +589,7 @@ public class LibroBBean {
         adEdificio oEdificioAD;
 
         Edificio oEdificio;
-        ArrayList<Libro> alLibros;
+        List<Libro> alLibros;
 
         Connection con = null;
 

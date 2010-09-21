@@ -80,7 +80,6 @@
         <display:column property="deterioro" titleKey="edificios.abadia.biblioteca.deterioro"/>
         <display:column property="ocupacion" titleKey="edificios.abadia.biblioteca.ocupacion"/>
         <display:column property="fecha_creacion" titleKey="edificios.abadia.biblioteca.fecha_creacion"/>
-        <display:column property="fecha_adquisicion" titleKey="edificios.abadia.biblioteca.fecha_adquisicion"/>
         <display:column titleKey="edificios.abadia.tabla.opciones">
             <c:if test="${edificio_biblioteca_region.estado == 2}">
                 <layout:link action="/mostrarMonjesCopia.do" paramName="edificio_biblioteca_region"

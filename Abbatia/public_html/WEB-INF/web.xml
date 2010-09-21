@@ -7,7 +7,6 @@
     <display-name>Abbatia</display-name>
     <description>Abbatia - Gestiona tu propia abadia</description>
 
-
     <jsp-config>
         <jsp-property-group>
             <description>Definicion de atributos</description>

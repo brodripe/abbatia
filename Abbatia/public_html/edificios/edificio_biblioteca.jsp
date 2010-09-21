@@ -2,6 +2,7 @@
 <%@ page import="org.abbatia.bean.Libro" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Iterator" %>
+<%@ page import="java.util.List" %>
 <%@ taglib uri="/WEB-INF/tld/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/tld/struts-bean.tld" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/tld/struts-logic.tld" prefix="logic" %>
@@ -39,7 +40,7 @@
 <div id="container">
 
     <%
-        ArrayList alLibrosTodos = ((Edificio) request.getAttribute("Edificio")).getContenido();
+        List alLibrosTodos = ((Edificio) request.getAttribute("Edificio")).getContenido();
         ArrayList alLibrosEnProceso = new ArrayList();
         ArrayList alLibrosCompletos = new ArrayList();
         Iterator itLibrosTodos;
@@ -96,6 +97,11 @@
                     <bean:message key="edificios.abadia.biblioteca.restaurar.todos"/>
                 </html:link>
             </li>
+            <li>
+                <html:link action="/cancelarRestauracionLibro">
+                    <bean:message key="edificios.abadia.biblioteca.no.restaurar.todos"/>
+                </html:link>
+            </li>
         </ul>
     </div>
     <div class="break"></div>
@@ -118,7 +124,6 @@
         <display:column property="deterioro" titleKey="edificios.abadia.biblioteca.deterioro"/>
         <display:column property="ocupacion" titleKey="edificios.abadia.biblioteca.ocupacion"/>
         <display:column property="fecha_creacion" titleKey="edificios.abadia.biblioteca.fecha_creacion"/>
-        <display:column property="fecha_adquisicion" titleKey="edificios.abadia.biblioteca.fecha_adquisicion"/>
         <display:column titleKey="edificios.abadia.tabla.opciones">
             <c:choose>
                 <c:when test="${edificio_biblioteca_local.estado == 2}">
