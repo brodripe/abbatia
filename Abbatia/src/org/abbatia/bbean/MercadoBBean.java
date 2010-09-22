@@ -555,8 +555,26 @@ public class MercadoBBean {
                     //Cambio muy importante, se guarda información en la tabla mercados_ciudad_variaciones también en las compras entre usuarios (antes solo aplicaba a las compras a la ciudad)
                     // Modificar las estadísticas de ventas de producto para así ir incrementando o decrementar los precios de la ciudad, el proceso de regulación de precios establecerá el nuevo precio del producto
                     oUtilsAD = new adUtils(con);
+                    //TODO llegados a este punto, para los casos en los que la venta se hace entre jugadores y no comprando directamente al mercado, debemos conseguir que el productoid se corresponda
+                    //TODO con el productoid con el que la ciudad está vendiendo ese mismo producto. De ese modo se computará la compra/venta para compras realizadas entre jugadores. ya que el control
+                    //TODO de número de ventas que hace fluctuar el mercado se registra en la tabla mercados_ciudad_variaciones pero sólo hay registros que actualizar si el productoid corresponde con el
+                    //TODO del mercado.
+
+                    /*
+                    En este punto, deberíamos poder recuperar el identificador del producto a la venta en el mercado por parte de la ciudad para utilizarlo en lugar del identificar de producto
+                    original
+                    String sSQLAlimentos = "SELECT m.productoid FROM  mercados m, mercados_alimentos ma WHERE m.productoid = ma.productoid and  ma.alimentoid=? and m.abadiaid=0";
+                    String sSQLAnimales = "SELECT m.productoid FROM  mercados m, mercados_animales ma WHERE m.productoid = ma.productoid and  ma.NIVEL=? and ma.TIPO_ANIMALID = ? and m.abadiaid=0";
+                    String sSQLRecursos = "SELECT m.productoid FROM  mercados m, mercados_recursos ma WHERE m.productoid = ma.productoid and  ma.recursoid=? and m.abadiaid=0";
+                    */
+                    int iProductoId;
+                    if (mercancia.getIdAbadia() != 0) {
+                        iProductoId = oMercadoCompraAD.getProductoIdMercado(mercancia);
+                    } else
+                        iProductoId = mercancia.getIdProducto();
+
                     oUtilsAD.execSQL("UPDATE `mercados_ciudad_variaciones` SET nr_ventas = nr_ventas + " + datosCompra.getCantidad() + " WHERE productoid = " +
-                            mercancia.getIdProducto() + " and mercancia = '" +
+                            iProductoId + " and mercancia = '" +
                             mercancia.getMercancia() + "'");
                     //Fin cambio importante.
 

@@ -427,4 +427,41 @@ public class adMercadoCompra extends adbeans {
     }
 
 
+    public int getProductoIdMercado(Mercado datos) throws AbadiaException {
+        String sSQLAlimentos = "SELECT m.productoid FROM  mercados m, mercados_alimentos ma WHERE m.productoid = ma.productoid and  ma.alimentoid=? and m.abadiaid=0";
+        String sSQLAnimales = "SELECT m.productoid FROM  mercados m, mercados_animales ma WHERE m.productoid = ma.productoid and  ma.NIVEL=? and ma.TIPO_ANIMALID = ? and m.abadiaid=0";
+        String sSQLRecursos = "SELECT m.productoid FROM  mercados m, mercados_recursos ma WHERE m.productoid = ma.productoid and  ma.recursoid=? and m.abadiaid=0";
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+        try {
+            if (datos.getMercancia().equals("A")) {
+                ps = con.prepareStatement(sSQLAlimentos);
+                ps.setInt(1, datos.getIdAlimento());
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    return rs.getInt("productoid");
+                } else return 0;
+            } else if (datos.getMercancia().equals("N")) {
+                ps = con.prepareStatement(sSQLAnimales);
+                ps.setInt(1, datos.getIdAnimalNivel());
+                ps.setInt(2, datos.getIdAnimalTipo());
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    return rs.getInt("productoid");
+                } else return 0;
+            } else if (datos.getMercancia().equals("R")) {
+                ps = con.prepareStatement(sSQLRecursos);
+                ps.setInt(1, datos.getIdRecurso());
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    return rs.getInt("productoid");
+                } else return 0;
+            } else return 0;
+        } catch (SQLException e) {
+            throw new AbadiaSQLException("adMercadoCompra. getProductoIdMercado. SQLException.", e, log);
+        } finally {
+            DBMSUtils.cerrarObjetoSQL(rs);
+            DBMSUtils.cerrarObjetoSQL(ps);
+        }
+    }
 }
