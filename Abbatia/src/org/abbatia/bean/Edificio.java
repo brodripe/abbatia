@@ -8,7 +8,6 @@ package org.abbatia.bean;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.List;
 
 
 public class Edificio implements Serializable {
@@ -31,7 +30,7 @@ public class Edificio implements Serializable {
     private String fechaFinPrevista;
     private double almacenamientoActual;
     private String almacenamientoActualStr;
-    private List contenido;
+    private ArrayList contenido;
     private ArrayList alimentosDelEdificio;
     private Hashtable alimentosDelEdificioHT;
     private String grafico_construccion;
@@ -257,7 +256,7 @@ public class Edificio implements Serializable {
     }
 
 
-    public void setContenido(List contenido) {
+    public void setContenido(ArrayList contenido) {
         this.contenido = contenido;
     }
 
@@ -269,7 +268,7 @@ public class Edificio implements Serializable {
         this.map_y = map_y;
     }
 
-    public List getContenido() {
+    public ArrayList getContenido() {
         return contenido;
     }
 

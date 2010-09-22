@@ -70,34 +70,34 @@
     <div class="break"></div>
     <div id="bookFilter">
         <ul class="floatLeft">
-            <li>
+            <li class="three">
                 <html:link action="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}&pagesize=10">
                     <bean:message key="edificios.abadia.biblioteca.mostrar.10"/>
                 </html:link>
             </li>
-            <li>
+            <li class="three">
                 <html:link action="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}&pagesize=20">
                     <bean:message key="edificios.abadia.biblioteca.mostrar.20"/>
                 </html:link>
             </li>
-            <li>
+            <li class="three">
                 <html:link action="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}&pagesize=30">
                     <bean:message key="edificios.abadia.biblioteca.mostrar.30"/>
                 </html:link>
             </li>
-            <li>
+            <li class="three">
                 <html:link action="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}&pagesize=1000">
                     <bean:message key="edificios.abadia.biblioteca.mostrar.todos"/>
                 </html:link>
             </li>
         </ul>
         <ul class="floatRight">
-            <li>
+            <li class="one">
                 <html:link action="/restaurarLibro">
                     <bean:message key="edificios.abadia.biblioteca.restaurar.todos"/>
                 </html:link>
             </li>
-            <li>
+            <li class="two">
                 <html:link action="/cancelarRestauracionLibro">
                     <bean:message key="edificios.abadia.biblioteca.no.restaurar.todos"/>
                 </html:link>

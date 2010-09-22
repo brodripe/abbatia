@@ -20,7 +20,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 
 import static org.abbatia.utils.Constantes.*;
 
@@ -127,7 +126,7 @@ public class adEdificio extends adbeans {
 
                 if (contenidos) {
                     // Recuperar los alimentos del edificio
-                    List alContenido = null;
+                    ArrayList alContenido = null;
                     if (edificio.getIdDeTipoDeEdificio() == EDIFICIO_COCINA || edificio.getIdDeTipoDeEdificio() == EDIFICIO_GRANERO) {
                         alimentos = new adAlimentoLotes(con);
                         if (tab.equals("salar")) {

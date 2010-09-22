@@ -19,7 +19,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 
 public class adLibros extends adbeans {
     private static Logger log = Logger.getLogger(adLibros.class.getName());
@@ -43,7 +42,7 @@ public class adLibros extends adbeans {
      * @return
      * @throws AbadiaException
      */
-    public List<Libro> recuperarLibrosPropios(Abadia abadia, Usuario usuario, MessageResources resource) throws AbadiaException {
+    public ArrayList<Libro> recuperarLibrosPropios(Abadia abadia, Usuario usuario, MessageResources resource) throws AbadiaException {
         adMonje monjeAD;
         adAbadia oAbadiaAD;
 

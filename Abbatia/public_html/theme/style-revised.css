@@ -5,6 +5,12 @@ div#container {
     width: 90%;
 }
 
+div#containerLIB {
+    margin: 1em auto 2em auto;
+    text-align: center;
+    width: 85%;
+}
+
 body.waiting {
     cursor: wait;
 }
@@ -955,7 +961,8 @@ table.detallemonje td, table.detallemonje th {
 /************* FILTRO LIBROS BIBLIOTECA ****************/
 
 #bookFilter {
-    margin: 1em auto 0 auto;
+
+    margin: 0em auto 0 auto;
     padding: .5em;
     height: auto; /*border-top: 1px solid #999;*/
 /*    height: 2em; *//*border-top: 1px solid #999;*//**/
@@ -967,15 +974,55 @@ table.detallemonje td, table.detallemonje th {
     padding: 0;
 }
 
-#bookFilter ul li {
+#bookFilter form {
+    font-family: Arial, Helvetica, Verdana, Time New Roman, Georgia, sans serif;
+    font-size: 1em;
+}
+
+#bookFilter form select {
+    float: left;
+    padding: 0em 0em 0em 0em;
+}
+
+#bookFilter form option {
+    font-family: Arial, Helvetica, Verdana, Time New Roman, Georgia, sans serif;
+    font-size: 0.85em;
+}
+
+#bookFilter  ul li {
     display: inline;
     float: left;
-    margin-left: 1em;
+    margin-left: 0em;
+    margin-right: 0em;
+
+}
+
+#bookFilter li.three {
+    padding: 0.8em 0.9em 0.5em 1.7em;
+    background: url(/images/ojo.png) no-repeat center left;
+}
+
+#bookFilter li.one {
+    padding: 0.5em 0.5em 0.5em 1.7em;
+    background: url(/images/restore.png) no-repeat center left;
+}
+
+#bookFilter li.two {
+    padding: 0.5em 0.5em 0.5em 1.7em;
+    background: url(/images/cancelarestauracion.png) no-repeat center left;
 }
 
 #bookFilter li a {
     display: block;
     text-align: center;
+}
+
+#bookFilter li.formone {
+    padding: 0.5em 0.9em 0.5em 0em;
+}
+
+#bookFilter li.formder {
+    padding: 0.5em 0.5em 0.5em 1em;
 }
 
 /************* FILTRO MERCADO INICIO ****************/
@@ -1023,6 +1070,11 @@ table.detallemonje td, table.detallemonje th {
 }
 
 /************* EDIFICIOS: CONTENIDO ****************/
+table.novaLIB {
+    width: 100%;
+    border-collapse: collapse;
+    background: #000000;
+}
 
 table.contenidoedificio {
     width: 100%;
@@ -1036,22 +1088,25 @@ table.contenidoedificio thead tr, table.contenidoedificio tfoot tr {
 }
 
 table.contenidoedificio thead th, table.contenidoedificio tfoot th {
+/******************siguientelineaponerurlbien**********************/
     background: #f90 url(/images/background-wood.jpg) repeat-x top left;
     padding: .5em;
+    font: bold 0.9em arial, georgia, times new roman, serif;
 }
 
 table.contenidoedificio caption {
     margin: 0.5em 0 .1em 0;
-    color: #fff;
+    color: #fff; /******************siguientelineaponerurlbien**********************/
     background: #fff url(/images/background-wood.jpg) repeat-x top left;
     border-bottom: 1px solid #000;
     padding: 0.5em;
-    font: bold 1.2em georgia, times new roman, serif;
+    font: bold 1em arial, georgia, times new roman, serif;
 }
 
 table.contenidoedificio td, table.contenidoedificio th {
     border: 1px solid #999;
     padding: .2em 1em;
+
 }
 
 table.contenidoedificio tbody tr:hover {

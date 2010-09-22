@@ -265,7 +265,7 @@
 </logic:equal>
 <!-- Si se trata de la biblioteca.... -->
 <logic:equal value="6" name="Edificio" property="idDeTipoDeEdificio">
-    <div id="header">
+    <div id="pestanas">
         <ul>
             <c:choose>
                 <c:when test="${Tab=='init' || Tab==null}">

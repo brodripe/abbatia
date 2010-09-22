@@ -1,3 +1,5 @@
+/* CSS Document */
+
 * {
     margin: 0;
     padding: 0;
@@ -34,10 +36,12 @@ body {
 /** Alineaciones de elementos */
 .floatLeft {
     float: left;
+
 }
 
 .floatRight {
     float: right;
+
 }
 
 .alignCenter {
@@ -168,6 +172,47 @@ tr.two {
     background: #d9c7a2;
 }
 
+/****************NUEVAS PESTAÑAS*************************/
+
+#pestanas ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+}
+
+#pestanas li {
+
+    display: inline;
+    margin: 0 3px 0 0;
+    background: url("/images/p-derdo.png") no-repeat right top;
+    padding-bottom: 0px;
+}
+
+#pestanas a {
+    background: url("/images/p-izqdo.png") no-repeat left top;
+    padding: 0px 12px 0px 12px;
+    color: #000000;
+    text-decoration: none;
+    font: bold 2em;
+    font-family: Arial, Times New Roman, Georgia, Serif; /*definimos un padding para los enlaces de las pestañas*/
+    padding-bottom: 0px;
+}
+
+#pestanas #selected {
+}
+
+#pestanas #selected a {
+    background-image: url("/images/p-izq-activodo.png"); /*colocamos un padding 1 pixel mayor que el padding de los enlaces no activos*/
+    padding-bottom: 0px;
+    font: bold 2em;
+    font-family: Arial, Times New Roman, Georgia, Serif;
+}
+
+#pestanas #selected {
+    background-image: url("/images/p-der-activodo.png");
+}
+
 /***************** PESTAÑAS ***********************/
 #header ul {
     list-style: none;
@@ -185,7 +230,7 @@ tr.two {
     text-decoration: none;
     color: #a80;
     background: #ffcc66;
-    font: bold 1.2em georgia, times new roman, serif;
+    font: bold 1em georgia, times new roman, serif;
 }
 
 #header a:hover {
@@ -205,6 +250,7 @@ tr.two {
 
 #content {
     border-top: 2px solid white; /*background: #fc0;*/
+/******************siguientelineaponerurlbien**********************/
     background: #fff url(/images/background-pergamino.jpg) top left;
     padding: 1em;
 }
