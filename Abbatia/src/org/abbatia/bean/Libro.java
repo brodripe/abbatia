@@ -8,6 +8,8 @@ public class Libro implements Serializable {
     private int idLibroTipo;
     private int idEdificio;
     private int idAbadia;
+    private int idCategoria;
+    private String nombreCategoria;
     private String nombreAbadia;
     private int idMonje;
     private int idIdioma;
@@ -43,6 +45,23 @@ public class Libro implements Serializable {
     private String ocupacion;
     private int franjasOcupadas;
     private String grafico;
+
+
+    public int getIdCategoria() {
+        return idCategoria;
+    }
+
+    public void setIdCategoria(int idCategoria) {
+        this.idCategoria = idCategoria;
+    }
+
+    public String getNombreCategoria() {
+        return nombreCategoria;
+    }
+
+    public void setNombreCategoria(String nombreCategoria) {
+        this.nombreCategoria = nombreCategoria;
+    }
 
     public String getGrafico() {
         return grafico;

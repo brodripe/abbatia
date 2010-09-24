@@ -77,6 +77,7 @@ public class adLibros extends adbeans {
                 libro.setIdLibroTipo(rs.getInt("TIPO_LIBROID"));
                 libro.setNombreLibro(rs.getString("NOMBRE_LIBRO"));
                 libro.setDescLibro(rs.getString("DESCRIPCION_LIBRO"));
+                libro.setNombreCategoria(rs.getString("CATEGORIA_LIBRO"));
                 libro.setFecha_adquisicion(Utilidades.formatStringFromDB(rs.getString("FECHA_ADQUISICION")));
                 libro.setFecha_creacion(Utilidades.formatStringFromDB(rs.getString("FECHA_CREACION")));
                 libro.setCopiable(rs.getInt("COPIABLE"));
@@ -176,6 +177,7 @@ public class adLibros extends adbeans {
                 libro.setIdLibroTipo(rs.getInt("TIPO_LIBROID"));
                 libro.setNombreLibro(rs.getString("NOMBRE_LIBRO"));
                 libro.setDescLibro(rs.getString("DESCRIPCION_LIBRO"));
+                libro.setNombreCategoria(rs.getString("CATEGORIA_LIBRO"));
                 libro.setFecha_adquisicion(Utilidades.formatStringFromDB(rs.getString("FECHA_ADQUISICION")));
                 libro.setFecha_creacion(Utilidades.formatStringFromDB(rs.getString("FECHA_CREACION")));
                 libro.setCopiable(rs.getInt("COPIABLE"));
@@ -244,7 +246,7 @@ public class adLibros extends adbeans {
         try {
             //creo un objeto de tipo PreparedStatement sobre el que se
             //ejecutara la consulta
-            cs = con.prepareCall("call recuperarLibrosRegionFiltro(?,?,?,?,?)");
+            cs = con.prepareCall("call recuperarLibrosRegionFiltro(?,?,?,?,?,?)");
             //asigno el parametro para el filtrado de la consulta
             //esta instruccion sustituye el simbolo ? por la clave.
 
@@ -253,7 +255,8 @@ public class adLibros extends adbeans {
             cs.setInt(parNo++, abadia.getIdDeRegion());
             cs.setInt(parNo++, p_afFiltro.getAbadia());
             cs.setInt(parNo++, p_afFiltro.getLibro());
-            cs.setInt(parNo, p_afFiltro.getIdioma());
+            cs.setInt(parNo++, p_afFiltro.getIdioma());
+            cs.setInt(parNo, p_afFiltro.getCategoria());
             cs.execute();
 
             //Lanzo la consulta y cargo el resultado en un resultset
@@ -274,6 +277,7 @@ public class adLibros extends adbeans {
                 libro.setIdLibroTipo(rs.getInt("TIPO_LIBROID"));
                 libro.setNombreLibro(rs.getString("NOMBRE_LIBRO"));
                 libro.setDescLibro(rs.getString("DESCRIPCION_LIBRO"));
+                libro.setNombreCategoria(rs.getString("CATEGORIA_LIBRO"));
                 libro.setFecha_adquisicion(Utilidades.formatStringFromDB(rs.getString("FECHA_ADQUISICION")));
                 libro.setFecha_creacion(Utilidades.formatStringFromDB(rs.getString("FECHA_CREACION")));
                 libro.setCopiable(rs.getInt("COPIABLE"));
@@ -364,6 +368,7 @@ public class adLibros extends adbeans {
                 libro.setIdLibroTipo(rs.getInt("TIPO_LIBROID"));
                 libro.setNombreLibro(rs.getString("NOMBRE_LIBRO"));
                 libro.setDescLibro(rs.getString("DESCRIPCION_LIBRO"));
+                libro.setNombreCategoria(rs.getString("CATEGORIA_LIBRO"));
                 libro.setFecha_adquisicion(Utilidades.formatStringFromDB(rs.getString("FECHA_ADQUISICION")));
                 libro.setFecha_creacion(Utilidades.formatStringFromDB(rs.getString("FECHA_CREACION")));
                 libro.setCopiable(rs.getInt("COPIABLE"));
@@ -434,14 +439,15 @@ public class adLibros extends adbeans {
         try {
             //creo un objeto de tipo PreparedStatement sobre el que se
             //ejecutara la consulta
-            cs = con.prepareCall("call recuperarLibrosTodosFiltro(?,?,?,?,?)");
+            cs = con.prepareCall("call recuperarLibrosTodosFiltro(?,?,?,?,?,?)");
 
             int parNo = 1;
             cs.setShort(parNo++, usuario.getIdDeIdioma());
             cs.setInt(parNo++, p_afFiltro.getRegion());
             cs.setInt(parNo++, p_afFiltro.getAbadia());
             cs.setInt(parNo++, p_afFiltro.getLibro());
-            cs.setInt(parNo, p_afFiltro.getIdioma());
+            cs.setInt(parNo++, p_afFiltro.getIdioma());
+            cs.setInt(parNo, p_afFiltro.getCategoria());
             cs.execute();
             //Lanzo la consulta y cargo el resultado en un resultset
             rs = cs.getResultSet();
@@ -461,6 +467,7 @@ public class adLibros extends adbeans {
                 libro.setIdLibroTipo(rs.getInt("TIPO_LIBROID"));
                 libro.setNombreLibro(rs.getString("NOMBRE_LIBRO"));
                 libro.setDescLibro(rs.getString("DESCRIPCION_LIBRO"));
+                libro.setNombreCategoria(rs.getString("CATEGORIA_LIBRO"));
                 libro.setFecha_adquisicion(Utilidades.formatStringFromDB(rs.getString("FECHA_ADQUISICION")));
                 libro.setFecha_creacion(Utilidades.formatStringFromDB(rs.getString("FECHA_CREACION")));
                 libro.setCopiable(rs.getInt("COPIABLE"));

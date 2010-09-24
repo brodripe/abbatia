@@ -7,7 +7,16 @@ public class FiltroLibrosActForm extends ActionForm {
     private int region = 0;
     private int idioma = 0;
     private int libro = 0;
+    private int categoria = 0;
     private boolean disponible;
+
+    public int getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(int categoria) {
+        this.categoria = categoria;
+    }
 
     public boolean isDisponible() {
         return disponible;

@@ -104,7 +104,9 @@ public class MostrarEdificioAction extends Action {
             if (hmRequest.containsKey(Constantes.TABLA_REGIONES)) {
                 request.setAttribute(Constantes.TABLA_REGIONES, hmRequest.get(Constantes.TABLA_REGIONES));
             }
-
+            if (hmRequest.containsKey(Constantes.TABLA_CATEGORIAS)) {
+                request.setAttribute(Constantes.TABLA_CATEGORIAS, hmRequest.get(Constantes.TABLA_CATEGORIAS));
+            }
 
             if (hmRequest.containsKey("FiltroLibros")) {
                 request.setAttribute("FiltroLibros", hmRequest.get("FiltroLibros"));

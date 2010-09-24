@@ -52,32 +52,21 @@
     <list id="9f548aa0-40fa-4217-9100-af7a69eccc85" name="Failed commit: Failed commit: Failed commit: Failed commit: Failed commit: Failed commit: Default (4) (3) (2) (2)" comment="Refactoring: de com.mitdata.abadia a org.abadia y de org.abadia a org.abbatia" />
     <list id="e691bbfd-56bc-4092-9017-c2a72a1d7bf2" name="Failed commit: Failed commit: Failed commit: Failed commit: Default (4) (3)" comment="Refactoring: de com.mitdata.abadia a org.abadia y de org.abadia a org.abbatia" />
     <list default="true" readonly="true" id="37346bf9-2b64-4931-981c-a9802aee7bb2" name="Default" comment="Incluido proceso para generar fichero de texto plano con las comisiones de tránsito por región para el nuevo mapa de abbatia.&#10;&#10;Actualizada la estética del granero.">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/abbatia/abbatia.properties" afterPath="$PROJECT_DIR$/src/org/abbatia/abbatia.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/edificios/edificio_biblioteca.jsp" afterPath="$PROJECT_DIR$/public_html/edificios/edificio_biblioteca.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Abbatia.ipr" afterPath="$PROJECT_DIR$/Abbatia.ipr" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public_html/images/p-izq-activodo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public_html/images/cancelarestauracion.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/abbatia/adbean/adEdificio.java" afterPath="$PROJECT_DIR$/src/org/abbatia/adbean/adEdificio.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/theme/style-global.css" afterPath="$PROJECT_DIR$/public_html/theme/style-global.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public_html/images/backgrounds/fonbishop.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public_html/images/restore.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/abbatia/bean/Edificio.java" afterPath="$PROJECT_DIR$/src/org/abbatia/bean/Edificio.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public_html/images/backgrounds/foncard.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public_html/images/p-izqdo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/abbatia/bean/Libro.java" afterPath="$PROJECT_DIR$/src/org/abbatia/bean/Libro.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/abbatia/action/MostrarEdificioAction.java" afterPath="$PROJECT_DIR$/src/org/abbatia/action/MostrarEdificioAction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/edificios/edificio_biblioteca_todos.jsp" afterPath="$PROJECT_DIR$/public_html/edificios/edificio_biblioteca_todos.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/abbatia/adbean/adLibros.java" afterPath="$PROJECT_DIR$/src/org/abbatia/adbean/adLibros.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public_html/images/backgrounds/fonpope.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public_html/images/copiar.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Abbatia.iml" afterPath="$PROJECT_DIR$/Abbatia.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public_html/images/backgrounds/fondomon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public_html/images/p-derdo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public_html/images/backgrounds/background-pergamino.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/theme/style-revised.css" afterPath="$PROJECT_DIR$/public_html/theme/style-revised.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public_html/images/backgrounds/fonnov.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public_html/images/p-der-activodo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public_html/images/backgrounds/fonabbas.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public_html/images/ojo.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/ayudas/docs/abadia_properties.zip" afterPath="$PROJECT_DIR$/public_html/ayudas/docs/abadia_properties.zip" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/abbatia/bbean/EdificioBBean.java" afterPath="$PROJECT_DIR$/src/org/abbatia/bbean/EdificioBBean.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Abbatia.iws" afterPath="$PROJECT_DIR$/Abbatia.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/edificios/MostrarEdificio.jsp" afterPath="$PROJECT_DIR$/public_html/edificios/MostrarEdificio.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/edificios/edificio_biblioteca_region.jsp" afterPath="$PROJECT_DIR$/public_html/edificios/edificio_biblioteca_region.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/abbatia/actionform/FiltroLibrosActForm.java" afterPath="$PROJECT_DIR$/src/org/abbatia/actionform/FiltroLibrosActForm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/abbatia/bbean/singleton/CargasInicialesFiltroLibrosBBean.java" afterPath="$PROJECT_DIR$/src/org/abbatia/bbean/singleton/CargasInicialesFiltroLibrosBBean.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/abbatia/utils/Constantes.java" afterPath="$PROJECT_DIR$/src/org/abbatia/utils/Constantes.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/abbatia/bbean/LibroBBean.java" afterPath="$PROJECT_DIR$/src/org/abbatia/bbean/LibroBBean.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/script_ant/build_release_mod.xml" afterPath="$PROJECT_DIR$/src/script_ant/build_release_mod.xml" />
     </list>
     <list id="ccb93aba-6504-4dfa-b25b-e496855ab54e" name="Failed commit: Default (14)" comment="Sustitución de abbatia por abadia en el nombre de tablas" />
     <list id="023eb390-4328-45fe-aa19-efd0c2de060f" name="Failed commit: Default (3)" comment="Añadida la búsqueda de abadías por nombre" />
@@ -255,10 +244,28 @@
   <component name="FileColors" enabled="true" enabledForTabs="true" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MostrarEdificio.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public_html/edificios/MostrarEdificio.jsp">
+      <file leaf-file-name="edificio_biblioteca_region.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public_html/edificios/edificio_biblioteca_region.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="363" column="51" selection-start="18433" selection-end="18433" vertical-scroll-proportion="0.0">
+            <state line="47" column="0" selection-start="1920" selection-end="2385" vertical-scroll-proportion="-17.583334">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edificio_biblioteca_todos.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public_html/edificios/edificio_biblioteca_todos.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="33" column="122" selection-start="1683" selection-end="1683" vertical-scroll-proportion="-4.9583335">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LibroBBean.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/org/abbatia/bbean/LibroBBean.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="592" column="110" selection-start="27859" selection-end="27859" vertical-scroll-proportion="0.32946298">
               <folding />
             </state>
           </provider>
@@ -267,34 +274,16 @@
       <file leaf-file-name="edificio_biblioteca.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public_html/edificios/edificio_biblioteca.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="129" column="0" selection-start="6206" selection-end="6206" vertical-scroll-proportion="0.0">
+            <state line="100" column="97" selection-start="4129" selection-end="4129" vertical-scroll-proportion="-7.0833335">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edificio_biblioteca_copiando.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public_html/edificios/edificio_biblioteca_copiando.jsp">
+      <file leaf-file-name="MostrarEdificioAction.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/abbatia/action/MostrarEdificioAction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="edificio_biblioteca_region.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public_html/edificios/edificio_biblioteca_region.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="63" selection-start="783" selection-end="783" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="style-revised.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public_html/theme/style-revised.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1011" column="50" selection-start="19141" selection-end="19141" vertical-scroll-proportion="0.0">
+            <state line="67" column="51" selection-start="2801" selection-end="2801" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -303,16 +292,16 @@
       <file leaf-file-name="EdificioBBean.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/abbatia/bbean/EdificioBBean.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="613" column="85" selection-start="28854" selection-end="28854" vertical-scroll-proportion="0.0">
+            <state line="553" column="48" selection-start="23543" selection-end="23543" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adEdificio.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="adEdificio.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/abbatia/adbean/adEdificio.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="153" column="48" selection-start="8457" selection-end="8457" vertical-scroll-proportion="0.39477503">
+            <state line="153" column="63" selection-start="8502" selection-end="8502" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -321,7 +310,143 @@
       <file leaf-file-name="adLibros.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/abbatia/adbean/adLibros.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="62" selection-start="1465" selection-end="1465" vertical-scroll-proportion="0.0">
+            <state line="44" column="28" selection-start="1239" selection-end="1239" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1285287330112" expanded="true" signature="778:902" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="962:989" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="996:1210" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="1478:5818" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="2169:2176" placeholder="&lt;~&gt;" />
+                <marker date="1285287330112" expanded="true" signature="5842:6033" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="6042:6139" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="6151:6390" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="6523:11045" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="7320:7327" placeholder="&lt;~&gt;" />
+                <marker date="1285287330112" expanded="true" signature="11051:11290" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="11517:16278" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="12553:12560" placeholder="&lt;~&gt;" />
+                <marker date="1285287330112" expanded="true" signature="16284:16532" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="16664:21120" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="17266:17273" placeholder="&lt;~&gt;" />
+                <marker date="1285287330112" expanded="true" signature="21126:21353" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="21563:26317" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="22463:22470" placeholder="&lt;~&gt;" />
+                <marker date="1285287330112" expanded="true" signature="26323:26534" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="26626:28054" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="27324:27335" placeholder="&lt;~&gt;" />
+                <marker date="1285287330112" expanded="true" signature="28060:28308" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="28443:32716" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="29241:29248" placeholder="&lt;~&gt;" />
+                <marker date="1285287330112" expanded="true" signature="32722:32869" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="32952:35267" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="35273:35436" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="35533:36201" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="36207:36331" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="36400:38294" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="38300:38451" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="38542:40691" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="40697:40848" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="40926:41937" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="41943:42123" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="42200:42272" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="42278:42458" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="42532:42690" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="42696:42971" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="43061:43250" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="43337:44495" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="44568:45567" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="45574:45783" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="45889:47027" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="47033:47353" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="47493:48150" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="48156:48354" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="48448:48632" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="48638:48802" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="48882:49032" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="49038:49179" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="49260:49451" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="49457:49612" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="49700:49978" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="49984:50188" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="50297:50605" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="50611:50870" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="50999:51351" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="51358:51522" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="51607:51805" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="51811:51968" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="52045:52194" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="52200:52357" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="52428:52624" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="52733:52919" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="53019:53220" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="53226:53413" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="53507:53669" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="53675:53848" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="53929:54055" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="54061:54211" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="54294:54472" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="54579:54773" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="54842:54962" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="54968:55146" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="55221:55343" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="55349:55524" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="55614:58579" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="57088:57095" placeholder="&lt;~&gt;" />
+                <marker date="1285287330112" expanded="true" signature="58585:58748" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="58842:59176" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="59182:59334" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="59426:59599" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="59605:59736" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="59827:59972" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="59978:60166" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="60278:60477" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="60483:60624" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="60714:60863" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="60869:61021" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="61090:62111" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="62117:62265" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="62396:65544" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="65550:65698" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="65788:68454" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="68589:69555" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="68645:68657" placeholder="&lt;~&gt;" />
+                <marker date="1285287330112" expanded="true" signature="69696:72812" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="72908:73185" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="73261:73526" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="73532:73748" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="73853:74040" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="74149:74842" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="74940:75260" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="75341:77545" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="77679:79666" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="77739:77758" placeholder="&lt;~&gt;" />
+                <marker date="1285287330112" expanded="true" signature="77819:77836" placeholder="&lt;~&gt;" />
+                <marker date="1285287330112" expanded="true" signature="77895:77912" placeholder="&lt;~&gt;" />
+                <marker date="1285287330112" expanded="true" signature="77972:77989" placeholder="&lt;~&gt;" />
+                <marker date="1285287330112" expanded="true" signature="78050:78067" placeholder="&lt;~&gt;" />
+                <marker date="1285287330112" expanded="true" signature="79788:80107" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="79871:79878" placeholder="&lt;~&gt;" />
+                <marker date="1285287330112" expanded="true" signature="80114:80369" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="80467:82211" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="81022:81036" placeholder="&lt;~&gt;" />
+                <marker date="1285287330112" expanded="true" signature="82217:82404" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="82510:83762" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="82802:82816" placeholder="&lt;~&gt;" />
+                <marker date="1285287330112" expanded="true" signature="83768:83958" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="84074:85855" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="84600:84614" placeholder="&lt;~&gt;" />
+                <marker date="1285287330112" expanded="true" signature="85861:86061" placeholder="/**...*/" />
+                <marker date="1285287330112" expanded="true" signature="86183:87767" placeholder="{...}" />
+                <marker date="1285287330112" expanded="true" signature="86790:86804" placeholder="&lt;~&gt;" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Libro.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/abbatia/bean/Libro.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="57" column="36" selection-start="1594" selection-end="1609" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -333,16 +458,7 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state line="540" column="67" selection-start="26702" selection-end="26702" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Edificio.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/abbatia/bean/Edificio.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="258" column="16" selection-start="6296" selection-end="6296" vertical-scroll-proportion="0.0">
+            <state line="615" column="69" selection-start="30608" selection-end="30608" vertical-scroll-proportion="-4.1136365">
               <folding />
             </state>
           </provider>
@@ -420,22 +536,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/public_html/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/public_html/WEB-INF/struts-config.xml" />
-        <option value="$PROJECT_DIR$/public_html/edificios/edificio_biblioteca_region.jsp" />
-        <option value="$PROJECT_DIR$/public_html/edificios/edificio_biblioteca_todos.jsp" />
-        <option value="$PROJECT_DIR$/src/org/abbatia/action/CancelarRestaurarLibroAction.java" />
-        <option value="$PROJECT_DIR$/src/org/abbatia/bbean/LibroBBean.java" />
-        <option value="$PROJECT_DIR$/src/org/abbatia/adbean/adMercadoCompra.java" />
-        <option value="$PROJECT_DIR$/src/org/abbatia/bbean/MercadoBBean.java" />
-        <option value="$PROJECT_DIR$/public_html/edificios/MostrarEdificio.jsp" />
-        <option value="$PROJECT_DIR$/public_html/theme/style-global.css" />
-        <option value="$PROJECT_DIR$/src/org/abbatia/abbatia.properties" />
         <option value="$PROJECT_DIR$/public_html/theme/style-revised.css" />
-        <option value="$PROJECT_DIR$/public_html/edificios/edificio_biblioteca.jsp" />
         <option value="$PROJECT_DIR$/src/org/abbatia/bean/Edificio.java" />
         <option value="$PROJECT_DIR$/src/org/abbatia/adbean/adEdificio.java" />
+        <option value="$PROJECT_DIR$/src/org/abbatia/utils/Constantes.java" />
+        <option value="$PROJECT_DIR$/src/org/abbatia/bbean/singleton/CargasInicialesFiltroLibrosBBean.java" />
+        <option value="$PROJECT_DIR$/src/org/abbatia/actionform/FiltroLibrosActForm.java" />
+        <option value="$PROJECT_DIR$/src/script_ant/build_release_mod.xml" />
+        <option value="$PROJECT_DIR$/src/org/abbatia/action/MostrarEdificioAction.java" />
+        <option value="$PROJECT_DIR$/src/org/abbatia/bbean/EdificioBBean.java" />
+        <option value="$PROJECT_DIR$/src/org/abbatia/bean/Libro.java" />
+        <option value="$PROJECT_DIR$/public_html/edificios/edificio_biblioteca_region.jsp" />
+        <option value="$PROJECT_DIR$/public_html/edificios/edificio_biblioteca.jsp" />
+        <option value="$PROJECT_DIR$/src/org/abbatia/abbatia.properties" />
+        <option value="$PROJECT_DIR$/public_html/edificios/edificio_biblioteca_todos.jsp" />
         <option value="$PROJECT_DIR$/src/org/abbatia/adbean/adLibros.java" />
+        <option value="$PROJECT_DIR$/src/org/abbatia/bbean/LibroBBean.java" />
       </list>
     </option>
   </component>
@@ -636,9 +752,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Favorites" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -767,6 +880,9 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -776,8 +892,8 @@
     <property name="vcs_file_view_treeOrder0" value="0" />
     <property name="vcs_file_view_treeOrder1" value="1" />
     <property name="vcs_file_view_treeOrder4" value="4" />
-    <property name="cvs_file_history_flatWidth6" value="75" />
     <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="cvs_file_history_flatWidth6" value="75" />
     <property name="cvs_file_history_flatWidth4" value="448" />
     <property name="cvs_file_history_flatWidth5" value="76" />
     <property name="cvs_file_history_flatWidth2" value="322" />
@@ -803,20 +919,20 @@
     <property name="cvs_file_history_flatOrder3" value="3" />
     <property name="cvs_file_history_flatOrder0" value="0" />
     <property name="cvs_file_history_flatOrder1" value="1" />
-    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="cvs_file_history_flatOrder6" value="6" />
-    <property name="cvs_file_history_treeOrder6" value="6" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="vcs_file_view_flatOrder5" value="5" />
+    <property name="cvs_file_history_treeOrder6" value="6" />
     <property name="cvs_file_history_treeOrder5" value="5" />
-    <property name="cvs_file_history_treeOrder2" value="2" />
     <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="cvs_file_history_treeOrder2" value="2" />
     <property name="cvs_file_history_treeOrder1" value="1" />
-    <property name="cvs_file_history_treeOrder4" value="4" />
     <property name="RunManagerConfig.showSettingsBeforeRunnig" value="false" />
+    <property name="cvs_file_history_treeOrder4" value="4" />
     <property name="cvs_file_history_treeOrder3" value="3" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth2" value="232" />
     <property name="recentsLimit" value="5" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth2" value="232" />
+    <property name="MemberChooser.sorted" value="false" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth1" value="234" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth0" value="233" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth4" value="907" />
@@ -868,8 +984,8 @@
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder2" value="2" />
     <property name="WebServerToolWindowPanel.DoubleClickActionMode" value="SHOW_DIFF" />
-    <property name="Web Module Deployment Descriptor Default Version" value="2.3" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder0" value="0" />
+    <property name="Web Module Deployment Descriptor Default Version" value="2.3" />
     <property name="GenerateAntBuildDialog.backupFiles" value="false" />
     <property name="options.searchVisible" value="true" />
   </component>
@@ -1056,6 +1172,29 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote">
+      <option name="LOCAL" value="false" />
+      <server-settings>
+        <option name="DEPLOY_TOMCAT_MANAGER" value="false" />
+        <option name="BASE_DIRECTORY_NAME" value="tomcat__df565d1e" />
+      </server-settings>
+      <predefined_log_file id="TOMCAT_LOCALHOST_LOG_ID" enabled="true" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="2943" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="FtpUpload" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local">
       <deployment />
       <server-settings>
@@ -1099,29 +1238,6 @@
           <option name="PROGRAM_PARAMETERS" value="" />
         </SHUTDOWN>
       </ConfigurationWrapper>
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="FtpUpload" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote">
-      <option name="LOCAL" value="false" />
-      <server-settings>
-        <option name="DEPLOY_TOMCAT_MANAGER" value="false" />
-        <option name="BASE_DIRECTORY_NAME" value="tomcat__df565d1e" />
-      </server-settings>
-      <predefined_log_file id="TOMCAT_LOCALHOST_LOG_ID" enabled="true" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="2943" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="false" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -1550,6 +1666,7 @@
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32994652" sideWeight="0.6276276" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16716717" sideWeight="0.0" order="27" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3813814" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1540107" sideWeight="0.7477477" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32994652" sideWeight="0.7047047" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Struts Assistant" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36417112" sideWeight="0.4488978" order="7" side_tool="false" content_ui="tabs" />
@@ -1557,14 +1674,14 @@
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="33" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3263473" sideWeight="0.5" order="32" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24524525" sideWeight="0.9903743" order="20" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24524525" sideWeight="0.9903743" order="20" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32765532" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32566845" sideWeight="0.4488978" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32994652" sideWeight="0.7047047" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47635525" sideWeight="0.5" order="22" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2620321" sideWeight="0.7477477" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23315509" sideWeight="0.7477477" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4071856" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="XPTask View" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980457" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TCPMON" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3300813" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1579,7 +1696,6 @@
       <window_info id="soapUI Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Tail" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="SQL" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5878136" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3813814" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gold Section" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298731" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46785715" sideWeight="0.5" order="34" side_tool="false" content_ui="tabs" />
@@ -1593,8 +1709,8 @@
       <window_info id="Properties File Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21756895" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Log4jMonitor" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298731" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="File View" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980457" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IView" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32988507" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="CVS File View" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.52931595" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="FaTPlugin" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25747126" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1605,8 +1721,8 @@
       <window_info id="Favorites" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Web Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22912621" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="soapUI Navigator" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="soapUI Navigator" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="WebServices" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32988507" sideWeight="0.5" order="24" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1817,14 +1933,41 @@
     <option name="myLastEditedConfigurable" value="Default" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/org/abbatia/bean/Mercado.java">
+    <entry file="file://$PROJECT_DIR$/src/org/abbatia/actionform/FiltroLibrosActForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="131" column="0" selection-start="3508" selection-end="3508" vertical-scroll-proportion="0.3232682" />
+        <state line="12" column="31" selection-start="338" selection-end="338" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/abbatia/adbean/adMercadoCompra.java">
+    <entry file="file://$PROJECT_DIR$/src/script_ant/build_release_mod.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="463" column="0" selection-start="28015" selection-end="28015" vertical-scroll-proportion="0.689781" />
+        <state line="149" column="39" selection-start="8653" selection-end="8653" vertical-scroll-proportion="-14.166667">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/abbatia/utils/Constantes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="425" column="74" selection-start="18821" selection-end="18821" vertical-scroll-proportion="0.3078056">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/abbatia/adbean/adUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="378" column="23" selection-start="12326" selection-end="12326" vertical-scroll-proportion="0.33236575">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/abbatia/bbean/singleton/CargasInicialesFiltroLibrosBBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="13" selection-start="493" selection-end="493" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public_html/WEB-INF/struts-config.xml">
@@ -1832,69 +1975,44 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="526" column="62" selection-start="32220" selection-end="32220" vertical-scroll-proportion="-5.181818">
+        <state line="141" column="77" selection-start="8646" selection-end="8646" vertical-scroll-proportion="-11.909091">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public_html/theme/style-global.css">
+    <entry file="file://$PROJECT_DIR$/src/org/abbatia/bean/Libro.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="280" column="44" selection-start="4341" selection-end="4341" vertical-scroll-proportion="-16.96" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/abbatia/action/ComprarAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="80" selection-start="3362" selection-end="3362" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/abbatia/actionform/FiltroLibrosActForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="13" selection-start="91" selection-end="91" vertical-scroll-proportion="0.09659091" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public_html/edificios/MostrarEdificio.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="363" column="51" selection-start="18433" selection-end="18433" vertical-scroll-proportion="0.0">
+        <state line="57" column="36" selection-start="1594" selection-end="1609" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public_html/edificios/edificio_biblioteca.jsp">
+    <entry file="file://$PROJECT_DIR$/src/org/abbatia/action/MostrarEdificioAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="129" column="0" selection-start="6206" selection-end="6206" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public_html/edificios/edificio_biblioteca_copiando.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public_html/edificios/edificio_biblioteca_region.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="63" selection-start="783" selection-end="783" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public_html/theme/style-revised.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1011" column="50" selection-start="19141" selection-end="19141" vertical-scroll-proportion="0.0">
+        <state line="67" column="51" selection-start="2801" selection-end="2801" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/abbatia/bbean/EdificioBBean.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="613" column="85" selection-start="28854" selection-end="28854" vertical-scroll-proportion="0.0" />
+        <state line="553" column="48" selection-start="23543" selection-end="23543" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/abbatia/adbean/adLibros.java">
+    <entry file="file://$PROJECT_DIR$/src/org/abbatia/adbean/adEdificio.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="62" selection-start="1465" selection-end="1465" vertical-scroll-proportion="0.0" />
+        <state line="153" column="63" selection-start="8502" selection-end="8502" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public_html/edificios/edificio_biblioteca.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="100" column="97" selection-start="4129" selection-end="4129" vertical-scroll-proportion="-7.0833335">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/abbatia/abbatia.properties">
@@ -1902,21 +2020,162 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="540" column="67" selection-start="26702" selection-end="26702" vertical-scroll-proportion="0.0">
+        <state line="615" column="69" selection-start="30608" selection-end="30608" vertical-scroll-proportion="-4.1136365">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/abbatia/bean/Edificio.java">
+    <entry file="file://$PROJECT_DIR$/public_html/edificios/edificio_biblioteca_region.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="258" column="16" selection-start="6296" selection-end="6296" vertical-scroll-proportion="0.0">
+        <state line="47" column="0" selection-start="1920" selection-end="2385" vertical-scroll-proportion="-17.583334">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/abbatia/adbean/adEdificio.java">
+    <entry file="file://$PROJECT_DIR$/public_html/edificios/edificio_biblioteca_todos.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="153" column="48" selection-start="8457" selection-end="8457" vertical-scroll-proportion="0.39477503">
+        <state line="33" column="122" selection-start="1683" selection-end="1683" vertical-scroll-proportion="-4.9583335">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/abbatia/adbean/adLibros.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="28" selection-start="1239" selection-end="1239" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1285287330112" expanded="true" signature="778:902" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="962:989" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="996:1210" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="1478:5818" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="2169:2176" placeholder="&lt;~&gt;" />
+            <marker date="1285287330112" expanded="true" signature="5842:6033" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="6042:6139" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="6151:6390" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="6523:11045" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="7320:7327" placeholder="&lt;~&gt;" />
+            <marker date="1285287330112" expanded="true" signature="11051:11290" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="11517:16278" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="12553:12560" placeholder="&lt;~&gt;" />
+            <marker date="1285287330112" expanded="true" signature="16284:16532" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="16664:21120" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="17266:17273" placeholder="&lt;~&gt;" />
+            <marker date="1285287330112" expanded="true" signature="21126:21353" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="21563:26317" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="22463:22470" placeholder="&lt;~&gt;" />
+            <marker date="1285287330112" expanded="true" signature="26323:26534" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="26626:28054" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="27324:27335" placeholder="&lt;~&gt;" />
+            <marker date="1285287330112" expanded="true" signature="28060:28308" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="28443:32716" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="29241:29248" placeholder="&lt;~&gt;" />
+            <marker date="1285287330112" expanded="true" signature="32722:32869" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="32952:35267" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="35273:35436" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="35533:36201" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="36207:36331" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="36400:38294" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="38300:38451" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="38542:40691" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="40697:40848" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="40926:41937" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="41943:42123" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="42200:42272" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="42278:42458" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="42532:42690" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="42696:42971" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="43061:43250" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="43337:44495" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="44568:45567" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="45574:45783" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="45889:47027" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="47033:47353" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="47493:48150" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="48156:48354" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="48448:48632" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="48638:48802" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="48882:49032" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="49038:49179" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="49260:49451" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="49457:49612" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="49700:49978" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="49984:50188" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="50297:50605" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="50611:50870" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="50999:51351" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="51358:51522" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="51607:51805" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="51811:51968" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="52045:52194" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="52200:52357" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="52428:52624" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="52733:52919" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="53019:53220" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="53226:53413" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="53507:53669" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="53675:53848" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="53929:54055" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="54061:54211" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="54294:54472" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="54579:54773" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="54842:54962" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="54968:55146" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="55221:55343" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="55349:55524" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="55614:58579" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="57088:57095" placeholder="&lt;~&gt;" />
+            <marker date="1285287330112" expanded="true" signature="58585:58748" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="58842:59176" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="59182:59334" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="59426:59599" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="59605:59736" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="59827:59972" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="59978:60166" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="60278:60477" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="60483:60624" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="60714:60863" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="60869:61021" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="61090:62111" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="62117:62265" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="62396:65544" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="65550:65698" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="65788:68454" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="68589:69555" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="68645:68657" placeholder="&lt;~&gt;" />
+            <marker date="1285287330112" expanded="true" signature="69696:72812" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="72908:73185" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="73261:73526" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="73532:73748" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="73853:74040" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="74149:74842" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="74940:75260" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="75341:77545" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="77679:79666" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="77739:77758" placeholder="&lt;~&gt;" />
+            <marker date="1285287330112" expanded="true" signature="77819:77836" placeholder="&lt;~&gt;" />
+            <marker date="1285287330112" expanded="true" signature="77895:77912" placeholder="&lt;~&gt;" />
+            <marker date="1285287330112" expanded="true" signature="77972:77989" placeholder="&lt;~&gt;" />
+            <marker date="1285287330112" expanded="true" signature="78050:78067" placeholder="&lt;~&gt;" />
+            <marker date="1285287330112" expanded="true" signature="79788:80107" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="79871:79878" placeholder="&lt;~&gt;" />
+            <marker date="1285287330112" expanded="true" signature="80114:80369" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="80467:82211" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="81022:81036" placeholder="&lt;~&gt;" />
+            <marker date="1285287330112" expanded="true" signature="82217:82404" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="82510:83762" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="82802:82816" placeholder="&lt;~&gt;" />
+            <marker date="1285287330112" expanded="true" signature="83768:83958" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="84074:85855" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="84600:84614" placeholder="&lt;~&gt;" />
+            <marker date="1285287330112" expanded="true" signature="85861:86061" placeholder="/**...*/" />
+            <marker date="1285287330112" expanded="true" signature="86183:87767" placeholder="{...}" />
+            <marker date="1285287330112" expanded="true" signature="86790:86804" placeholder="&lt;~&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/abbatia/bbean/LibroBBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="592" column="110" selection-start="27859" selection-end="27859" vertical-scroll-proportion="0.32946298">
           <folding />
         </state>
       </provider>

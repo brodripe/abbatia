@@ -589,7 +589,7 @@ public class LibroBBean {
         adEdificio oEdificioAD;
 
         Edificio oEdificio;
-        List<Libro> alLibros;
+        ArrayList<Libro> alLibros;
 
         Connection con = null;
 

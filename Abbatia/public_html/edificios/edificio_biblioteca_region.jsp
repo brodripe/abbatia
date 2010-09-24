@@ -30,18 +30,26 @@
                         <html:options collection="tabla_abadias" property="id" labelProperty="description"/>
                     </html:select>
                 </li>
-                <li><bean:message key="edificios.abadia.biblioteca.libro"/></li>
-                <li>
-                    <html:select name="FiltroLibros" property="libro"
-                                 titleKey="edificios.abadia.biblioteca.nombre">
-                        <html:options collection="tabla_libros" property="id" labelProperty="description"/>
-                    </html:select>
-                </li>
                 <li><bean:message key="edificios.abadia.biblioteca.idioma"/></li>
                 <li>
                     <html:select name="FiltroLibros" property="idioma"
                                  titleKey="edificios.abadia.biblioteca.idioma">
                         <html:options collection="tabla_idiomas" property="id" labelProperty="description"/>
+                    </html:select>
+                </li>
+                <!--categoría-->
+                <li><bean:message key="edificios.abadia.biblioteca.categoria"/></li>
+                <li>
+                    <html:select name="FiltroLibros" property="categoria"
+                                 titleKey="edificios.abadia.biblioteca.categoria">
+                        <html:options collection="tabla_categorias" property="id" labelProperty="description"/>
+                    </html:select>
+                </li>
+                <li><bean:message key="edificios.abadia.biblioteca.libro"/></li>
+                <li>
+                    <html:select name="FiltroLibros" property="libro"
+                                 titleKey="edificios.abadia.biblioteca.nombre">
+                        <html:options collection="tabla_libros" property="id" labelProperty="description"/>
                     </html:select>
                 </li>
                 <li>
@@ -72,6 +80,8 @@
         <display:column property="nombreAbadia" titleKey="edificios.abadia.biblioteca.abadia" sortable="true"
                         class="textLeft"/>
         <display:column property="nombreLibroNivel" titleKey="edificios.abadia.biblioteca.nombre" sortable="true"
+                        class="textLeft"/>
+        <display:column property="nombreCategoria" titleKey="edificios.abadia.biblioteca.categoria" sortable="true"
                         class="textLeft"/>
         <display:column property="precioCopia" titleKey="edificios.abadia.biblioteca.preciocopia"
                         format="{0,number,#,##0}" sortable="true"/>

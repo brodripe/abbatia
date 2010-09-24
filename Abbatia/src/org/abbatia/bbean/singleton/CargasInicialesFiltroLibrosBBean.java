@@ -54,6 +54,7 @@ public class CargasInicialesFiltroLibrosBBean {
             hmTablasList.put("AbadiasConLibro", oUtilsAD.execProcedureList("call recuperarAbadiasConLibros();", true));
             hmTablasList.put("LibroActivos", oUtilsAD.execProcedureList("call recuperarLibrosActivos();", true));
             hmTablasList.put("IdiomasLibro", oUtilsAD.execProcedureList("call recuperarIdiomasConLibros();", true));
+            hmTablasList.put("CategoriasLibro", oUtilsAD.execProcedureList("call recuperarCategoriasConLibros();", true));
         } catch (AbadiaException e) {
             log.error(sTrace, e);
         } catch (Exception e) {

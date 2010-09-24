@@ -620,6 +620,7 @@ public class EdificioBBean {
                         hmRequest.put(Constantes.TABLA_ABADIAS, CargasInicialesFiltroLibrosBBean.getValueList("AbadiasConLibroPorRegion", p_oAbadia.getIdDeRegion()));
                         hmRequest.put(Constantes.TABLA_LIBROS, CargasInicialesFiltroLibrosBBean.getValueList("LibroActivos"));
                         hmRequest.put(Constantes.TABLA_IDIOMAS, CargasInicialesFiltroLibrosBBean.getValueList("IdiomasLibro"));
+                        hmRequest.put(Constantes.TABLA_CATEGORIAS, CargasInicialesFiltroLibrosBBean.getValueList("CategoriasLibro"));
 
                         oEdificio.setContenido(oLibrosAD.aplicarFiltro(alLibros, filtro));
                         //oEdificio.setContenido(alLibros);
@@ -636,6 +637,7 @@ public class EdificioBBean {
                         hmRequest.put(Constantes.TABLA_LIBROS, CargasInicialesFiltroLibrosBBean.getValueList("LibroActivos"));
                         hmRequest.put(Constantes.TABLA_IDIOMAS, CargasInicialesFiltroLibrosBBean.getValueList("IdiomasLibro"));
                         hmRequest.put(Constantes.TABLA_REGIONES, CargasInicialesFiltroLibrosBBean.getValueList("RegionesConLibro"));
+                        hmRequest.put(Constantes.TABLA_CATEGORIAS, CargasInicialesFiltroLibrosBBean.getValueList("CategoriasLibro"));
 
                         oEdificio.setContenido(oLibrosAD.aplicarFiltro(alLibros, filtro));
                         //oEdificio.setContenido(alLibros);

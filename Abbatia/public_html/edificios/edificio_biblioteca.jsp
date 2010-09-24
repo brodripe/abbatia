@@ -116,6 +116,8 @@
         <display:column titleKey="edificios.abadia.biblioteca.nombre" sortable="true" class="textLeft">
             ${edificio_biblioteca_local.nombreLibro} (${edificio_biblioteca_local.nivel})
         </display:column>
+        <display:column property="nombreCategoria" titleKey="edificios.abadia.biblioteca.categoria" sortable="true"
+                        class="textLeft"/>
         <display:column property="precioCopia" format="{0,number,#,##0}"
                         titleKey="edificios.abadia.biblioteca.preciocopia" sortable="true"/>
         <%--href="/actualizarPrecioCopia.do" paramId="clave" paramProperty="idLibro"/>--%>

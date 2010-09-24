@@ -423,6 +423,7 @@ public class Constantes {
     public static String TABLA_REGIONES = "tabla_regiones";
     public static String TABLA_LIBROS = "tabla_libros";
     public static String TABLA_IDIOMAS = "tabla_idiomas";
+    public static String TABLA_CATEGORIAS = "tabla_categorias";
     //public static String ESTADO_PLANIFICADOR = "estado_planificador";
     public static String PATH_BASE = "base_path";
 
