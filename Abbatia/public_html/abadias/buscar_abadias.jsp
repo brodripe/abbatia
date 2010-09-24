@@ -99,34 +99,36 @@
             </html:form>
         </div>
         <div class="break"></div>
-        <html:form action="/buscar_abadias">
-            <html:hidden name="BuscarAbadiasForm" property="accion" value="aceptar"/>
-            <display:table name="requestScope.BuscarAbadiasForm.listado" uid="lista_abadias" pagesize="30"
-                           export="true" requestURI="/buscar_abadias.do"
-                           sort="list" class="contenidoedificio alignCenter">
-                <display:setProperty name="export.xsl.filename" value="lista_abadias.xsl"/>
-                <display:setProperty name="export.pdf.filename" value="lista_abadias.pdf"/>
-                <display:setProperty name="export.csv.filename" value="lista_abadias.csv"/>
-                <display:caption><bean:message key="buscar.abadia.listado"/></display:caption>
-                <display:column title="<input type='checkbox' name='CheckAll' onClick='checkOrUncheck()' />">
-                    <html:multibox name="BuscarAbadiasForm" property="seleccion">
-                        ${lista_abadias.idAbadia}
-                    </html:multibox>
-                </display:column>
-                <display:column property="nombre_abadia" titleKey="buscar.abadia.nombreabadia" class="textLeft"/>
-                <display:column property="nombre_region" titleKey="buscar.abadia.nombreregion" class="textLeft"/>
-                <display:column property="nombre_orden" titleKey="buscar.abadia.nombreorden" class="textLeft"/>
-            </display:table>
-            <div class="alignCenter">
-                <ul>
-                    <li>
-                        <html:submit onclick="this.disabled=true; this.form.submit();">
-                            <bean:message key="buscar.abadia.boton.aceptar"/>
-                        </html:submit>
-                    </li>
-                </ul>
-            </div>
-        </html:form>
+        <div id="content">
+            <html:form action="/buscar_abadias">
+                <html:hidden name="BuscarAbadiasForm" property="accion" value="aceptar"/>
+                <display:table name="requestScope.BuscarAbadiasForm.listado" uid="lista_abadias" pagesize="30"
+                               export="true" requestURI="/buscar_abadias.do"
+                               sort="list" class="contenidoedificio alignCenter">
+                    <display:setProperty name="export.xsl.filename" value="lista_abadias.xsl"/>
+                    <display:setProperty name="export.pdf.filename" value="lista_abadias.pdf"/>
+                    <display:setProperty name="export.csv.filename" value="lista_abadias.csv"/>
+                    <display:caption><bean:message key="buscar.abadia.listado"/></display:caption>
+                    <display:column title="<input type='checkbox' name='CheckAll' onClick='checkOrUncheck()' />">
+                        <html:multibox name="BuscarAbadiasForm" property="seleccion">
+                            ${lista_abadias.idAbadia}
+                        </html:multibox>
+                    </display:column>
+                    <display:column property="nombre_abadia" titleKey="buscar.abadia.nombreabadia" class="textLeft"/>
+                    <display:column property="nombre_region" titleKey="buscar.abadia.nombreregion" class="textLeft"/>
+                    <display:column property="nombre_orden" titleKey="buscar.abadia.nombreorden" class="textLeft"/>
+                </display:table>
+                <div class="alignCenter">
+                    <ul>
+                        <li>
+                            <html:submit onclick="this.disabled=true; this.form.submit();">
+                                <bean:message key="buscar.abadia.boton.aceptar"/>
+                            </html:submit>
+                        </li>
+                    </ul>
+                </div>
+            </html:form>
+        </div>
         <div class="break"></div>
             <%-- Publicidad --%>
         <logic:notEqual property="registrado" name="usuario" scope="session" value="1">
