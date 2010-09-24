@@ -12,7 +12,24 @@ public class BuscarAbadiasActForm extends ActionForm {
     private ArrayList listado;
     private long[] seleccion;
     private boolean administradores = false;
+    private boolean obispos = false;
+    private boolean cardenales = false;
 
+    public boolean isObispos() {
+        return obispos;
+    }
+
+    public void setObispos(boolean obispos) {
+        this.obispos = obispos;
+    }
+
+    public boolean isCardenales() {
+        return cardenales;
+    }
+
+    public void setCardenales(boolean cardenales) {
+        this.cardenales = cardenales;
+    }
 
     public String getNombre() {
         return nombre;

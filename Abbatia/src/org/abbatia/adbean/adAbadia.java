@@ -556,6 +556,19 @@ public class adAbadia extends adbeans {
             if (!GenericValidator.isBlankOrNull(datos.getNombre())) {
                 sSQL = sSQL + " and a.nombre like '%" + datos.getNombre() + "%' ";
             }
+            //si la consulta debe incluir cardenales y obispos
+            if (datos.isCardenales() && datos.isObispos()) {
+                sSQL = sSQL + " and a.abadiaid in (select abadiaid from monje where monje.JERARQUIAID in (3,5)) ";
+            } else
+                //Si la consulta debe incluir Cardenales pero NO obispos
+                if (datos.isCardenales() && !datos.isObispos()) {
+                    sSQL = sSQL + " and a.abadiaid in (select abadiaid from monje where monje.JERARQUIAID = 5) ";
+                } else
+                    //la consulta debe incluir Obispos pero no cardenales
+                    if (!datos.isCardenales() && datos.isObispos()) {
+                        sSQL = sSQL + " and a.abadiaid in (select abadiaid from monje where monje.JERARQUIAID = 3) ";
+                    }
+
             sSQL = sSQL + " order by NOMBRE_ABADIA";
             ps = con.prepareStatement(sSQL);
             rs = ps.executeQuery();
