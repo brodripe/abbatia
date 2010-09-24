@@ -97,7 +97,7 @@ public class EdificioBBean {
             con = ConnectionFactory.getConnection(Constantes.DB_CONEXION_ABADIAS);
 
             oEdificioAD = new adEdificio(con);
-            oEdificio = oEdificioAD.recuperarEdificio(p_iEdificioId, p_oAbadia, oUsuario, false, p_oResource, "");
+            oEdificio = oEdificioAD.recuperarEdificio(p_iEdificioId, p_oAbadia, oUsuario, false, p_oResource, null);
             oDatosNivel = oEdificioAD.getDatosSiguienteNivel(oEdificio);
             if (p_oAbadiaObispo != null) {
                 hmReturn.put("TotalOro", Utilidades.redondear(oEdificioAD.getCosteTotalCostruccion(oEdificio, oDatosNivel.getNivel())));
@@ -133,7 +133,7 @@ public class EdificioBBean {
         try {
             con = ConnectionFactory.getConnection(Constantes.DB_CONEXION_ABADIAS, Constantes.AUTOCOMIT_OF);
             oEdificioAD = new adEdificio(con);
-            oEdificio = oEdificioAD.recuperarEdificio(p_iEdificioId, p_oAbadia, p_oUsuario, false, p_oResource, "");
+            oEdificio = oEdificioAD.recuperarEdificio(p_iEdificioId, p_oAbadia, p_oUsuario, false, p_oResource, null);
             oDatosNivel = oEdificioAD.getDatosSiguienteNivel(oEdificio);
             if (p_oAbadiaObispo != null) {
                 oEdificioAD.subirNivel_Obispado(p_oAbadia, p_oAbadiaObispo, oEdificio, oDatosNivel);
@@ -141,7 +141,7 @@ public class EdificioBBean {
                 oEdificioAD.subirNivel(p_oAbadia, oEdificio, oDatosNivel);
             }
 
-            oEdificio = oEdificioAD.recuperarEdificio(p_iEdificioId, p_oAbadia, p_oUsuario, false, p_oResource, "");
+            oEdificio = oEdificioAD.recuperarEdificio(p_iEdificioId, p_oAbadia, p_oUsuario, false, p_oResource, null);
             oDatosNivel = oEdificioAD.getDatosSiguienteNivel(oEdificio);
 
             //genero un mensaje para el usuario
@@ -521,8 +521,10 @@ public class EdificioBBean {
 
     }
 
-    public HashMap<String, Object> recuperarDetalleEdificio(int p_iClave, boolean p_bMostrarConetenidos, Abadia p_oAbadia,
-                                                            Usuario p_oUsuario, MessageResources p_oResource, String p_szTab, ActionForm p_af, int p_iDetalle)
+    public HashMap<String, Object> recuperarDetalleEdificio(int p_iClave,
+                                                            boolean p_bMostrarConetenidos, Abadia p_oAbadia,
+                                                            Usuario p_oUsuario, MessageResources p_oResource,
+                                                            ActionForm p_af, int p_iDetalle, HashMap p_mParameterMap)
             throws AbadiaException {
 
         String sTrace = this.getClass() + ".recuperarDetalleEdificio()";
@@ -543,6 +545,14 @@ public class EdificioBBean {
         ArrayList<Recurso> alRecursos;
         ArrayList<ConsumoAlimentosFamilia> alConsumos;
 
+        String tab;
+        if (p_mParameterMap == null || p_mParameterMap.get("Tab") == null) {
+            tab = "init";
+        } else {
+            tab = (String) p_mParameterMap.get("Tab");
+        }
+
+
         HashMap<String, Object> hmRequest = new HashMap<String, Object>();
 
         Connection con = null;
@@ -551,10 +561,11 @@ public class EdificioBBean {
             con = ConnectionFactory.getConnection(Constantes.DB_CONEXION_ABADIAS);
 
             oEdificioAD = new adEdificio(con);
-            oEdificio = oEdificioAD.recuperarEdificio(p_iClave, p_oAbadia, p_oUsuario, p_bMostrarConetenidos, p_oResource, p_szTab);
+            oEdificio = oEdificioAD.recuperarEdificio(p_iClave, p_oAbadia, p_oUsuario,
+                    p_bMostrarConetenidos, p_oResource, p_mParameterMap);
             oLibrosAD = new adLibros(con);
             // Cargar los monjes del edificio
-            if ((p_szTab.equals("monjes")) || ((oEdificio.getIdDeTipoDeEdificio() == Constantes.EDIFICIO_ORATORIO))) {
+            if ((tab.equals("monjes")) || ((oEdificio.getIdDeTipoDeEdificio() == Constantes.EDIFICIO_ORATORIO))) {
                 alMonjesEdificio = oEdificioAD.recuperarMonjes(p_oAbadia.getIdDeAbadia(), oEdificio.getIdDeTipoDeEdificio(), p_oResource);
                 hmRequest.put("MonjesEdificio", alMonjesEdificio);
                 //request.setAttribute("MonjesEdificio", alMonjesEdificio);
@@ -583,7 +594,7 @@ public class EdificioBBean {
                 //request.setAttribute("familias", alFamilias);
             } else
                 // Elaboración de productos en la cocina
-                if (p_szTab.equals("elaboracion")) {
+                if (tab.equals("elaboracion")) {
                     ArrayList<Table> productosElaborables = null;
                     ArrayList<datosElaboracion> productosElaborando = null;
                     oElaboracionAD = new adElaboracionAlimentos(con);
@@ -608,25 +619,21 @@ public class EdificioBBean {
                     hmRequest.put("datosElaboracion", datosElaboracion);
                 } else
                     //biblioteca - Libros region
-                    if (p_szTab.equals("region")) {
-
+                    if (tab.equals("region")) {
                         FiltroLibrosActForm filtro = (FiltroLibrosActForm) p_af;
                         //log.info("filtro. disponible:" + filtro.isDisponible());
-
                         alLibros = oLibrosAD.recuperarLibrosRegionFiltro(p_oAbadia, p_oUsuario, p_oResource, filtro);
-
                         //Recuperamos la lista de abadías con sus identificadores para cargarlos en un ArrayList a parte.
                         //hmFiltros = oLibrosAD.cargarFiltrosBiblioteca(alLibros, p_oResource);
                         hmRequest.put(Constantes.TABLA_ABADIAS, CargasInicialesFiltroLibrosBBean.getValueList("AbadiasConLibroPorRegion", p_oAbadia.getIdDeRegion()));
                         hmRequest.put(Constantes.TABLA_LIBROS, CargasInicialesFiltroLibrosBBean.getValueList("LibroActivos"));
                         hmRequest.put(Constantes.TABLA_IDIOMAS, CargasInicialesFiltroLibrosBBean.getValueList("IdiomasLibro"));
                         hmRequest.put(Constantes.TABLA_CATEGORIAS, CargasInicialesFiltroLibrosBBean.getValueList("CategoriasLibro"));
-
                         oEdificio.setContenido(oLibrosAD.aplicarFiltro(alLibros, filtro));
                         //oEdificio.setContenido(alLibros);
                         hmRequest.put("FiltroLibros", filtro);
 
-                    } else if (p_szTab.equals("general")) {
+                    } else if (tab.equals("general")) {
                         FiltroLibrosActForm filtro = (FiltroLibrosActForm) p_af;
                         //log.info("filtro. disponible:" + filtro.isDisponible());
                         alLibros = oLibrosAD.recuperarLibrosTodosFiltro(p_oUsuario, p_oResource, filtro);
@@ -642,10 +649,10 @@ public class EdificioBBean {
                         oEdificio.setContenido(oLibrosAD.aplicarFiltro(alLibros, filtro));
                         //oEdificio.setContenido(alLibros);
                         hmRequest.put("FiltroLibros", filtro);
-                    } else if (p_szTab.equals("copias")) {
+                    } else if (tab.equals("copias")) {
                         alLibros = oLibrosAD.recuperarLibrosCopiando(p_oAbadia, p_oUsuario, p_oResource);
                         oEdificio.setContenido(alLibros);
-                    } else if (p_szTab.equals("recursos")) {
+                    } else if (tab.equals("recursos")) {
                         //recuperar recursos de biblioteca....
                         //plumas, tinta y pergaminos
                         oRecursoAD = new adRecurso(con);
@@ -660,7 +667,7 @@ public class EdificioBBean {
             hmRequest.put("Edificio", oEdificio);
             hmRequest.put("DatosNivel", nivel);
             hmRequest.put("Detalle", p_iDetalle);
-            hmRequest.put("Tab", p_szTab);
+            hmRequest.put("Tab", tab);
             return hmRequest;
 
         } finally {

@@ -47,7 +47,8 @@ public class MostrarEdificioAction extends Action {
         boolean contenidos = true;
         if (request.getParameter("detalle") != null) detalle = Integer.parseInt(request.getParameter("detalle"));
         if (request.getParameter("Tab") != null) Tab = request.getParameter("Tab");
-        if (!Tab.equals("init") && (!Tab.equals("salar")) && (!Tab.equals("velatorio")) && (!Tab.equals("cementerio")) && (!Tab.equals("osario")))
+        if (!Tab.equals("init") && (!Tab.equals("salar")) && (!Tab.equals("alacena")) && (!Tab.equals("guisos")) &&
+                (!Tab.equals("velatorio")) && (!Tab.equals("cementerio")) && (!Tab.equals("osario")))
             contenidos = false;
 
         //ActionErrors errors = new ActionErrors();
@@ -58,14 +59,19 @@ public class MostrarEdificioAction extends Action {
         Abadia abadia = (Abadia) request.getSession().getAttribute(Constantes.ABADIA);
         Usuario usuario = (Usuario) request.getSession().getAttribute(Constantes.USER_KEY);
 
+        HashMap<String, String> hmParameters = new HashMap<String, String>();
+        hmParameters.put("Tab", request.getParameter("Tab"));
+        hmParameters.put("detalle", request.getParameter("detalle"));
+        hmParameters.put("familia", request.getParameter("familia"));
+
         HashMap hmRequest;
         EdificioBBean oEdificioBBean;
         UsuarioBBean oUsuarioBBean;
         Edificio oEdificio;
         try {
-
             oEdificioBBean = new EdificioBBean();
-            hmRequest = oEdificioBBean.recuperarDetalleEdificio(iClave, contenidos, abadia, usuario, resource, Tab, form, detalle);
+            hmRequest = oEdificioBBean.recuperarDetalleEdificio(iClave,
+                    contenidos, abadia, usuario, resource, form, detalle, hmParameters);
 
             //hmRequest.put("Edificio", oEdificio);
             oEdificio = (Edificio) hmRequest.get("Edificio");

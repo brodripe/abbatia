@@ -1018,11 +1018,92 @@ table.detallemonje td, table.detallemonje th {
 }
 
 #bookFilter li.formone {
-    padding: 0.5em 0.9em 0.5em 0em;
+    padding: 0.5em 0.9em 0.5em 0;
 }
 
 #bookFilter li.formder {
     padding: 0.5em 0.5em 0.5em 1em;
+}
+
+/************* ESPECIAL COCINA ****************/
+
+#bookFilter li.alafirst {
+    padding: 0 1em 1em 0;
+}
+
+#bookFilter li.alamiddle {
+    padding: 0 1em 1em 4em;
+}
+
+#bookFilter li.alalast {
+    padding: 0 2em 2em 12em;
+
+}
+
+.meat {
+    display: block;
+    height: 20px;
+    background: transparent url(/images/iconos/16/icon_meat.png) no-repeat left top;
+}
+
+.wheat {
+    display: block;
+    height: 20px;
+    background: transparent url(/images/iconos/16/icon_wheat.png) no-repeat left top;
+}
+
+.grape {
+    display: block;
+    height: 20px;
+    background: transparent url(/images/iconos/16/icon_grape.png) no-repeat left top;
+}
+
+.eggs {
+    display: block;
+    height: 20px;
+    background: transparent url(/images/iconos/16/icon_eggs.png) no-repeat left top;
+}
+
+.milk {
+    display: block;
+    height: 20px;
+    background: transparent url(/images/iconos/16/icon_milk.png) no-repeat left top;
+}
+
+.legum {
+    display: block;
+    height: 20px;
+    background: transparent url(/images/iconos/16/icon_legum.png) no-repeat left top;
+}
+
+.bread {
+    display: block;
+    height: 20px;
+    background: transparent url(/images/iconos/16/icon_bread.png) no-repeat left top;
+}
+
+.fish {
+    display: block;
+    height: 20px;
+    background: transparent url(/images/iconos/16/icon_fish.png) no-repeat left top;
+}
+
+.cheese {
+    display: block;
+    height: 20px;
+    background: transparent url(/images/iconos/16/icon_cheese.png) no-repeat left top;
+}
+
+.vege {
+    display: block;
+    height: 20px;
+    background: transparent url(/images/iconos/16/icon_vege.png) no-repeat left top;
+}
+
+.ojo {
+    display: block;
+    height: 16px;
+    background: transparent url(/images/iconos/16/ojo.png) no-repeat left top;
 }
 
 /************* FILTRO MERCADO INICIO ****************/

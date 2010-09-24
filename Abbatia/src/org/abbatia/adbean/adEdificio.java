@@ -39,7 +39,8 @@ public class adEdificio extends adbeans {
 
     //recupera el objeto Edificio cargado...
 
-    public Edificio recuperarEdificio(int idDeEdificioTmp, Abadia abadia, Usuario usuario, boolean contenidos, MessageResources resource, String tab) throws AbadiaException {
+    public Edificio recuperarEdificio(int idDeEdificioTmp, Abadia abadia, Usuario usuario, boolean contenidos,
+                                      MessageResources resource, HashMap p_mParameterMap) throws AbadiaException {
         //Definición de cadena sql de consulta
         String sSQL = "Select e.EDIFICIOID, e.FECHACONSTRUCCION, e.ESTADO, e.NIVEL, e.ABADIAID, l.LITERAL as NOMBRE, e.TIPOEDIFICIOID, en.ALMACENAMIENTO, en.CAPACIDADVITAL, en.TIEMPO_CONSTRUCCION, et.GRAFICO_1, et.GRAFICO_2, e.MANTENIMIENTO " +
                 "from edificio AS e, edificio_tipo et, edificio_nivel en, literales l " +
@@ -60,6 +61,12 @@ public class adEdificio extends adbeans {
         adAbadia abadiaAD;
         adMonje monjeAD;
 
+        String tab;
+        if (p_mParameterMap == null || p_mParameterMap.get("Tab") == null) {
+            tab = "init";
+        } else {
+            tab = (String) p_mParameterMap.get("Tab");
+        }
 
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -127,15 +134,22 @@ public class adEdificio extends adbeans {
                 if (contenidos) {
                     // Recuperar los alimentos del edificio
                     ArrayList alContenido = null;
-                    if (edificio.getIdDeTipoDeEdificio() == EDIFICIO_COCINA || edificio.getIdDeTipoDeEdificio() == EDIFICIO_GRANERO) {
+                    if (edificio.getIdDeTipoDeEdificio() == EDIFICIO_COCINA ||
+                            edificio.getIdDeTipoDeEdificio() == EDIFICIO_GRANERO) {
                         alimentos = new adAlimentoLotes(con);
                         if (tab.equals("salar")) {
                             alContenido = alimentos.recuperarAlimentoSalables(edificio.getIdDeEdificio(), usuario);
+                        } else if (tab.equals("alacena")) {
+                            alContenido = alimentos.recuperarAlimentosAlacena(edificio.getIdDeEdificio(), usuario,
+                                    p_mParameterMap);
+                        } else if (tab.equals("guisos")) {
+                            alContenido = alimentos.recuperarAlimentosGuisos(edificio.getIdDeEdificio(), usuario);
                         } else {
                             alContenido = alimentos.recuperarAlimentoEdificioAgrupados(edificio.getIdDeEdificio(), usuario);
                         }
 //            alimentos.finalize();
-                    } else if (edificio.getIdDeTipoDeEdificio() == EDIFICIO_GRANJA || edificio.getIdDeTipoDeEdificio() == EDIFICIO_ESTABLO) {
+                    } else if (edificio.getIdDeTipoDeEdificio() == EDIFICIO_GRANJA ||
+                            edificio.getIdDeTipoDeEdificio() == EDIFICIO_ESTABLO) {
                         animales = new adAnimal(con);
                         alContenido = animales.recuperarAnimalesEdificio(edificio.getIdDeEdificio(), usuario, resource);
                         //animales.finalize();

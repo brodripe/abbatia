@@ -16,6 +16,7 @@ public class Constantes {
     public static short USUARIO_COLABORADOR_PLUS = 3;
     public static short USUARIO_BASICO = 0;
     public static String ABADIA = "abadia";
+    public static String PAGE_SIZE = "pagesize";
     public static String MENSAJES = "mensajes";
     public static String WELCOME = "success";
     public static int DEBUG = 1;

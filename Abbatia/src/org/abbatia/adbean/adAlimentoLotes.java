@@ -18,6 +18,7 @@ import org.apache.log4j.Logger;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Map;
 
 
 public class adAlimentoLotes extends adbeans {
@@ -35,6 +36,7 @@ public class adAlimentoLotes extends adbeans {
 
 
     //recupera el objeto Edificio cargado...
+
     public AlimentoLote recuperarAlimentoLote(long idDeAlimentoLote) throws AbadiaException {
         //Definición de cadena sql de consulta
         String sSQL = "SELECT *, af.descripcion as descfam, at.saladoid " +
@@ -338,6 +340,108 @@ public class adAlimentoLotes extends adbeans {
         }
     }
 
+    public ArrayList<AlimentoLote> recuperarAlimentosAlacena(long idDeEdificio, Usuario usuario,
+                                                             Map p_mParameterMap) throws AbadiaException {
+        String sWhere = "WHERE a.alimentoid = at.alimentoid AND al.loteid = a.loteid AND at.familiaid = af.familiaid " +
+                "AND l1.idiomaid = ? AND l2.idiomaid = ? AND l1.literalid = at.literalid AND l2.literalid = af.literalid " +
+                "AND a.EdificioID = ? and at.familiaid not in (11,12,13) ";
+
+        String szFamiliaId;
+        if (p_mParameterMap.get("familia") != null) {
+            szFamiliaId = (String) p_mParameterMap.get("familia");
+            sWhere = sWhere.concat(" and at.familiaid = " + szFamiliaId);
+        }
+
+        String sSQL = "SELECT sum(al.cantidad) as CANTIDAD, a.ALIMENTOID, l1.literal as descali, l2.literal as descfam, min(fecha_caducidad) as caduca_min, max(fecha_caducidad) as caduca_max, at.saladoid " +
+                "FROM `alimentos` as a, `alimentos_familia` as af, `alimentos_lote` as al, `alimentos_tipo` as at, literales l1, literales l2 " + sWhere +
+                " group by a.ALIMENTOID, l1.literal, l2.literal, at.saladoid " +
+                " order by FECHA_CADUCIDAD";
+
+        AlimentoLote alimento = null;
+        ArrayList<AlimentoLote> al = new ArrayList<AlimentoLote>();
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = con.prepareStatement(sSQL);
+
+            int parNo = 1;
+            ps.setInt(parNo++, usuario.getIdDeIdioma());
+            ps.setInt(parNo++, usuario.getIdDeIdioma());
+            ps.setLong(parNo, idDeEdificio);
+            //Lanzo la consulta y cargo el resultado en un resultset
+            rs = ps.executeQuery();
+            //si la consulta encuentra la edificio....
+            while (rs.next()) {
+                alimento = new AlimentoLote();
+                alimento.setIdAlimento(rs.getInt("ALIMENTOID"));
+                alimento.setIdAlimentoSalado(rs.getInt("SALADOID"));
+                alimento.setCantidad(rs.getInt("CANTIDAD"));
+                alimento.setCantidadS(Utilidades.redondear(rs.getInt("CANTIDAD")));
+                alimento.setDescripcion(rs.getString("descali"));
+                alimento.setFamiliaDescripcion(rs.getString("descfam"));
+                alimento.setFechaCaducidad_desde(Utilidades.formatStringFromDB(rs.getString("caduca_min")));
+                alimento.setFechaCaducidad_hasta(Utilidades.formatStringFromDB(rs.getString("caduca_max")));
+                al.add(alimento);
+            }
+            return al;
+            //si la abbatia no se localiza, devolveremos una excepci�n
+        } catch (SQLException e) {
+            throw new AbadiaSQLException("adAlimentoLotes. recuperarAlimentoEdificioAgrupados. SQLException.", e, log);
+        } finally {
+            DBMSUtils.cerrarObjetoSQL(rs);
+            DBMSUtils.cerrarObjetoSQL(ps);
+        }
+    }
+
+    public ArrayList<AlimentoLote> recuperarAlimentosGuisos(long idDeEdificio, Usuario usuario)
+            throws AbadiaException {
+        String sWhere = "WHERE a.alimentoid = at.alimentoid AND al.loteid = a.loteid AND at.familiaid = af.familiaid " +
+                "AND l1.idiomaid = ? AND l2.idiomaid = ? AND l1.literalid = at.literalid AND l2.literalid = af.literalid " +
+                "AND a.EdificioID = ? and at.familiaid = 11 ";
+
+        String sSQL = "SELECT sum(al.cantidad) as CANTIDAD, a.ALIMENTOID, l1.literal as descali, l2.literal as descfam, min(fecha_caducidad) as caduca_min, max(fecha_caducidad) as caduca_max, at.saladoid " +
+                "FROM `alimentos` as a, `alimentos_familia` as af, `alimentos_lote` as al, `alimentos_tipo` as at, literales l1, literales l2 " + sWhere +
+                " group by a.ALIMENTOID, l1.literal, l2.literal, at.saladoid " +
+                " order by FECHA_CADUCIDAD";
+
+        AlimentoLote alimento = null;
+        ArrayList<AlimentoLote> al = new ArrayList<AlimentoLote>();
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = con.prepareStatement(sSQL);
+
+            int parNo = 1;
+            ps.setInt(parNo++, usuario.getIdDeIdioma());
+            ps.setInt(parNo++, usuario.getIdDeIdioma());
+            ps.setLong(parNo, idDeEdificio);
+            //Lanzo la consulta y cargo el resultado en un resultset
+            rs = ps.executeQuery();
+            //si la consulta encuentra la edificio....
+            while (rs.next()) {
+                alimento = new AlimentoLote();
+                alimento.setIdAlimento(rs.getInt("ALIMENTOID"));
+                alimento.setIdAlimentoSalado(rs.getInt("SALADOID"));
+                alimento.setCantidad(rs.getInt("CANTIDAD"));
+                alimento.setCantidadS(Utilidades.redondear(rs.getInt("CANTIDAD")));
+                alimento.setDescripcion(rs.getString("descali"));
+                alimento.setFamiliaDescripcion(rs.getString("descfam"));
+                alimento.setFechaCaducidad_desde(Utilidades.formatStringFromDB(rs.getString("caduca_min")));
+                alimento.setFechaCaducidad_hasta(Utilidades.formatStringFromDB(rs.getString("caduca_max")));
+                al.add(alimento);
+            }
+            return al;
+            //si la abbatia no se localiza, devolveremos una excepci�n
+        } catch (SQLException e) {
+            throw new AbadiaSQLException("adAlimentoLotes. recuperarAlimentoEdificioAgrupados. SQLException.", e, log);
+        } finally {
+            DBMSUtils.cerrarObjetoSQL(rs);
+            DBMSUtils.cerrarObjetoSQL(ps);
+        }
+    }
+
     public ArrayList<AlimentoLote> recuperarAlimentoSalables(long idDeEdificio, Usuario usuario) throws AbadiaException {
 
         String sSQL = "SELECT al.loteid, al.cantidad as CANTIDAD, a.ALIMENTOID, l1.literal as descali, l2.literal as descfam, fecha_caducidad, at.saladoid " +
@@ -437,6 +541,7 @@ public class adAlimentoLotes extends adbeans {
     }
 
     //Modificar cantidad alimento lote
+
     public void ModificarCantidad(long idDeLoteTmp, double cantidad) throws AbadiaException {
         String sSQLLote = "UPDATE alimentos_lote SET Cantidad = ? Where `LOTEID` = ?";
 
@@ -463,6 +568,7 @@ public class adAlimentoLotes extends adbeans {
     }
 
     //Modificar cantidad alimento lote
+
     public void modificarCantidadLote(long idDeLoteTmp, double cantidad) throws AbadiaException {
         String sSQLLote = "UPDATE alimentos_lote SET Cantidad = " + cantidad + " Where `LOTEID` = " + idDeLoteTmp;
         adUtils utils = new adUtils(con);
@@ -497,6 +603,7 @@ public class adAlimentoLotes extends adbeans {
 
 
     //Sumar cantidad alimento lote
+
     public void sumarEnLote(long idDeLoteTmp, double cantidad) throws AbadiaSQLException {
         String sSQLLote = "UPDATE alimentos_lote SET Cantidad = Cantidad + ? Where `LOTEID` = ?";
 
@@ -517,6 +624,7 @@ public class adAlimentoLotes extends adbeans {
     }
 
     //Restar cantidad alimento lote
+
     public void restarEnLote(long idDeLoteTmp, double cantidad) throws AbadiaException {
         String sSQLLote = "UPDATE alimentos_lote SET Cantidad = Cantidad - ? Where `LOTEID` = ?";
 
@@ -545,11 +653,13 @@ public class adAlimentoLotes extends adbeans {
 
 
     //elimina un objeto Alimento Lote
+
     public boolean eliminarAlimentoLote(AlimentoLote alimentolote) throws AbadiaException {
         return eliminarAlimentoLote(alimentolote.getIdLote());
     }
 
     //Elimina un alimento lote
+
     public boolean eliminarAlimentoLote(long idDeLoteTmp) throws AbadiaException {
         String sSQLLote = "Delete From alimentos_lote Where `LOTEID` = ?";
         String sSQLAlim = "Delete From alimentos Where `LOTEID` = ?";
@@ -576,6 +686,7 @@ public class adAlimentoLotes extends adbeans {
     }
 
     //Elimina un alimento lote
+
     public void eliminarAlimentoLoteS(long idDeLoteTmp) throws AbadiaException {
         String sSQLLote = "Delete From alimentos_lote Where `LOTEID` = " + idDeLoteTmp;
         String sSQLAlim = "Delete From alimentos Where `LOTEID` = " + idDeLoteTmp;
@@ -585,6 +696,7 @@ public class adAlimentoLotes extends adbeans {
     }
 
     //Modificar cantidad alimento lote
+
     public int recuperarCaducidad(int idAlimento) throws AbadiaException {
         String sSQLLote = "Select af.DIAS_VIDAS FROM alimentos_familia af, alimentos_tipo at where af.familiaid= at.familiaid and at.alimentoid = ?";
 

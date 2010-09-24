@@ -59,12 +59,14 @@
         pageContext.setAttribute("librosEnProceso", alLibrosEnProceso);
         pageContext.setAttribute("librosCompletos", alLibrosCompletos);
 
+/*
         if (session.getAttribute("pagesize") == null) {
             iPageSize = 10;
             //session.setAttribute("pagesize", 10);
         } else {
             iPageSize = (Integer) session.getAttribute("pagesize");
         }
+*/
     %>
 
     <div class="break"></div>
@@ -105,7 +107,7 @@
         </ul>
     </div>
     <div class="break"></div>
-    <display:table name="pageScope.librosCompletos" uid="edificio_biblioteca_local" pagesize="<%=iPageSize%>"
+    <display:table name="pageScope.librosCompletos" uid="edificio_biblioteca_local" pagesize="${sessionScope.pagesize}"
                    export="true" requestURI="/mostrarEdificio.do"
                    sort="list" class="contenidoedificio alignCenter">
         <%--<display:caption><bean:message key="edificios.abadia.biblioteca.titulo"/></display:caption>--%>

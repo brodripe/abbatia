@@ -92,6 +92,7 @@ public class LoginAction extends Action {
 
             session.setAttribute(Constantes.USER_KEY, usuario);
             session.setAttribute(Constantes.ABADIA, abadia);
+            session.setAttribute(Constantes.PAGE_SIZE, 10);
 
             //si el usuario tiene asociada una abadía verificamos que no esté marcada para borrado....
             if (abadia.getFechaEliminacion() != null) {
@@ -106,8 +107,7 @@ public class LoginAction extends Action {
             //verificar si la contraseña es "potente"
             try {
                 Utilidades.check(usuario.getContrasena());
-                if (!usuario.isAceptaNormas())
-                {
+                if (!usuario.isAceptaNormas()) {
                     return mapping.findForward("aceptacionNormas");
                 }
             } catch (pwdSinNumerosException e) {

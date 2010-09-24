@@ -44,8 +44,25 @@
         pageContext.setAttribute("AnimalesAislados", alAnimalesAislados);
         pageContext.setAttribute("AnimalesEmbarazo", alAnimalesEmbarazo);
     %>
+    <div id="bookFilter">
+        <ul class="floatLeft">
+            <li class="three">
+                <c:if test="${sessionScope.pagesize==1000}">
+                    <html:link action="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}&pagesize=10">
+                        <bean:message key="edificios.abadia.cocina.alimentos.filtro.paginacion"/>
+                    </html:link>
+                </c:if>
+                <c:if test="${sessionScope.pagesize!=1000}">
+                    <html:link action="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}&pagesize=1000">
+                        <bean:message key="edificios.abadia.cocina.alimentos.filtro.todos"/>
+                    </html:link>
+                </c:if>
+            </li>
+        </ul>
+    </div>
+    <div class="break"></div>
     <!-- Animales Normal -->
-    <display:table name="pageScope.AnimalesNormal" uid="edificio_granja" pagesize="10"
+    <display:table name="pageScope.AnimalesNormal" uid="edificio_granja" pagesize="${sessionScope.pagesize}"
                    export="true" requestURI="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}"
                    sort="list" class="contenidoedificio alignCenter">
         <display:setProperty name="export.xsl.filename" value="edificio_granja.xsl"/>
@@ -93,7 +110,7 @@
     </display:table>
 
     <!-- Animales Aislados -->
-    <display:table name="pageScope.AnimalesAislados" uid="edificio_granja_aislados" pagesize="10"
+    <display:table name="pageScope.AnimalesAislados" uid="edificio_granja_aislados" pagesize="${sessionScope.pagesize}"
                    export="true" requestURI="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}"
                    sort="list" class="contenidoedificio alignCenter">
         <display:setProperty name="export.xsl.filename" value="edificio_granja_aislados.xsl"/>
@@ -141,7 +158,7 @@
     </display:table>
 
     <!-- Animales Embarazados -->
-    <display:table name="pageScope.AnimalesEmbarazo" uid="edificio_granja_embarazo" pagesize="10"
+    <display:table name="pageScope.AnimalesEmbarazo" uid="edificio_granja_embarazo" pagesize="${sessionScope.pagesize}"
                    export="true" requestURI="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}"
                    sort="list" class="contenidoedificio alignCenter">
         <display:setProperty name="export.xsl.filename" value="edificio_granja_embarazo.xsl"/>

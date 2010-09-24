@@ -214,13 +214,19 @@
 <!-- Si se trata de la cocina.... -->
 <logic:equal value="5" name="Edificio" property="idDeTipoDeEdificio">
 
-    <div id="header">
+    <div id="pestanas">
         <ul>
             <c:choose>
                 <c:when test="${Tab=='init' || Tab==null}">
                     <li id="selected"><a
                             href="/mostrarEdificio.do?Tab=init&clave=${Edificio.idDeEdificio}"><bean:message
                             key="edificios.abadia.cocina.alimentos.agrupados"/></a></li>
+                    <!---->
+                    <li><a href="/mostrarEdificio.do?Tab=guisos&clave=${Edificio.idDeEdificio}"><bean:message
+                            key="edificios.abadia.cocina.guisos.titulo"/></a></li>
+                    <!---->
+                    <li><a href="/mostrarEdificio.do?Tab=alacena&clave=${Edificio.idDeEdificio}"><bean:message
+                            key="edificios.abadia.cocina.alacena.titulo"/></a></li>
                     <!---->
                     <li><a href="/mostrarEdificio.do?Tab=elaboracion&clave=${Edificio.idDeEdificio}"><bean:message
                             key="edificios.abadia.cocina.elaboracion.titulo"/></a></li>
@@ -230,9 +236,53 @@
                     <!---->
                     <c:set var="urlContent" value="/edificios/edificio_cocina.jsp"/>
                 </c:when>
+                <c:when test="${Tab=='guisos'}">
+                    <li><a href="/mostrarEdificio.do?Tab=init&clave=${Edificio.idDeEdificio}"><bean:message
+                            key="edificios.abadia.cocina.alimentos.agrupados"/></a></li>
+                    <!---->
+                    <li id="selected"><a
+                            href="/mostrarEdificio.do?Tab=guisos&clave=${Edificio.idDeEdificio}"><bean:message
+                            key="edificios.abadia.cocina.guisos.titulo"/></a></li>
+                    <!---->
+                    <li><a href="/mostrarEdificio.do?Tab=alacena&clave=${Edificio.idDeEdificio}"><bean:message
+                            key="edificios.abadia.cocina.alacena.titulo"/></a></li>
+                    <!---->
+                    <li><a href="/mostrarEdificio.do?Tab=elaboracion&clave=${Edificio.idDeEdificio}"><bean:message
+                            key="edificios.abadia.cocina.elaboracion.titulo"/></a></li>
+                    <!---->
+                    <li><a href="/mostrarEdificio.do?Tab=salar&clave=${Edificio.idDeEdificio}"><bean:message
+                            key="edificios.abadia.cocina.salar.titulo"/></a></li>
+                    <!---->
+                    <c:set var="urlContent" value="/edificios/edificio_cocina_guisos.jsp"/>
+                </c:when>
+                <c:when test="${Tab=='alacena'}">
+                    <li><a href="/mostrarEdificio.do?Tab=init&clave=${Edificio.idDeEdificio}"><bean:message
+                            key="edificios.abadia.cocina.alimentos.agrupados"/></a></li>
+                    <!---->
+                    <li><a href="/mostrarEdificio.do?Tab=guisos&clave=${Edificio.idDeEdificio}"><bean:message
+                            key="edificios.abadia.cocina.guisos.titulo"/></a></li>
+                    <!---->
+                    <li id="selected"><a
+                            href="/mostrarEdificio.do?Tab=alacena&clave=${Edificio.idDeEdificio}"><bean:message
+                            key="edificios.abadia.cocina.alacena.titulo"/></a></li>
+                    <!---->
+                    <li><a href="/mostrarEdificio.do?Tab=elaboracion&clave=${Edificio.idDeEdificio}"><bean:message
+                            key="edificios.abadia.cocina.elaboracion.titulo"/></a></li>
+                    <!---->
+                    <li><a href="/mostrarEdificio.do?Tab=salar&clave=${Edificio.idDeEdificio}"><bean:message
+                            key="edificios.abadia.cocina.salar.titulo"/></a></li>
+                    <!---->
+                    <c:set var="urlContent" value="/edificios/edificio_cocina_alacena.jsp"/>
+                </c:when>
                 <c:when test="${Tab=='elaboracion'}">
                     <li><a href="/mostrarEdificio.do?Tab=init&clave=${Edificio.idDeEdificio}"><bean:message
                             key="edificios.abadia.cocina.alimentos.agrupados"/></a></li>
+                    <!---->
+                    <li><a href="/mostrarEdificio.do?Tab=guisos&clave=${Edificio.idDeEdificio}"><bean:message
+                            key="edificios.abadia.cocina.guisos.titulo"/></a></li>
+                    <!---->
+                    <li><a href="/mostrarEdificio.do?Tab=alacena&clave=${Edificio.idDeEdificio}"><bean:message
+                            key="edificios.abadia.cocina.alacena.titulo"/></a></li>
                     <!---->
                     <li id="selected"><a
                             href="/mostrarEdificio.do?Tab=elaboracion&clave=${Edificio.idDeEdificio}"><bean:message
@@ -246,6 +296,12 @@
                 <c:when test="${Tab=='salar'}">
                     <li><a href="/mostrarEdificio.do?Tab=init&clave=${Edificio.idDeEdificio}"><bean:message
                             key="edificios.abadia.cocina.alimentos.agrupados"/></a></li>
+                    <!---->
+                    <li><a href="/mostrarEdificio.do?Tab=guisos&clave=${Edificio.idDeEdificio}"><bean:message
+                            key="edificios.abadia.cocina.guisos.titulo"/></a></li>
+                    <!---->
+                    <li><a href="/mostrarEdificio.do?Tab=alacena&clave=${Edificio.idDeEdificio}"><bean:message
+                            key="edificios.abadia.cocina.alacena.titulo"/></a></li>
                     <!---->
                     <li><a href="/mostrarEdificio.do?Tab=elaboracion&clave=${Edificio.idDeEdificio}"><bean:message
                             key="edificios.abadia.cocina.elaboracion.titulo"/></a></li>

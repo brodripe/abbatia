@@ -21,20 +21,20 @@
             <input type="hidden" id="Tab" name="Tab" value="general"/>
             <input type="hidden" id="clave" name="clave" value="${Edificio.idDeEdificio}"/>
             <ul class="alignCenter">
-                <li><bean:message key="edificios.abadia.biblioteca.region"/></li>
+                <li class="formone"><bean:message key="edificios.abadia.biblioteca.region"/></li>
                 <li>
                     <html:select name="FiltroLibros" property="region">
                         <html:options collection="tabla_regiones" property="id" labelProperty="description"/>
                     </html:select>
                 </li>
-                <li><bean:message key="edificios.abadia.biblioteca.abadia"/></li>
+                <li class="formder"><bean:message key="edificios.abadia.biblioteca.abadia"/></li>
                 <li>
                     <html:select property="abadia" name="FiltroLibros"
                                  titleKey="edificios.abadia.biblioteca.abadia">
                         <html:options collection="tabla_abadias" property="id" labelProperty="description"/>
                     </html:select>
                 </li>
-                <li><bean:message key="edificios.abadia.biblioteca.idioma"/></li>
+                <li class="formder"><bean:message key="edificios.abadia.biblioteca.idioma"/></li>
                 <li>
                     <html:select name="FiltroLibros" property="idioma"
                                  titleKey="edificios.abadia.biblioteca.idioma">
@@ -42,26 +42,26 @@
                     </html:select>
                 </li>
                 <!--categoría-->
-                <li><bean:message key="edificios.abadia.biblioteca.categoria"/></li>
+                <li class="formder"><bean:message key="edificios.abadia.biblioteca.categoria"/></li>
                 <li>
                     <html:select name="FiltroLibros" property="categoria"
                                  titleKey="edificios.abadia.biblioteca.categoria">
                         <html:options collection="tabla_categorias" property="id" labelProperty="description"/>
                     </html:select>
                 </li>
-                <li><bean:message key="edificios.abadia.biblioteca.libro"/></li>
+                <li class="formder"><bean:message key="edificios.abadia.biblioteca.libro"/></li>
                 <li>
                     <html:select name="FiltroLibros" property="libro"
                                  titleKey="edificios.abadia.biblioteca.nombre">
                         <html:options collection="tabla_libros" property="id" labelProperty="description"/>
                     </html:select>
                 </li>
-                <li>
+                <li class="formder">
                     <html:checkbox name="FiltroLibros" property="disponible">
                         <strong><bean:message key="libro.detalle.disponible"/></strong>
                     </html:checkbox>
                 </li>
-                <li>
+                <li class="formder">
                     (<bean:message key="libro.detalle.max.registros" arg0="200"/>)
                 </li>
             </ul>
