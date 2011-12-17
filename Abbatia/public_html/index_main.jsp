@@ -1,4 +1,4 @@
-<%@ page import="org.abbatia.bbean.PlanificadorBBean" %>
+<%@ page import="org.abbatia.bbean.PlanificadorBBean" pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -213,10 +213,10 @@
         <script id="a2f37804_src" type="text/javascript"
                 src="http://bosco.coguan.com/sender/?n=a2f37804&zoneid=117"></script>
         <!--End Coguan Adshare code-->
-		<!--Start Coguan AdShare code -------- Adunit: 300x250 Robapána_1 Format: 300x250 Pricemodel: CPM-------- --> 
-		<script id="afa69448_src" type="tet/javascript" 
-			src="http://bosco.coguan.com/sender/?n=afa69448&zoneid=77829"> </script> 
-		<!--End Coguan Adshare code-->
+        <!--Start Coguan AdShare code -------- Adunit: 300x250 Robapána_1 Format: 300x250 Pricemodel: CPM-------- -->
+        <script id="afa69448_src" type="tet/javascript"
+                src="http://bosco.coguan.com/sender/?n=afa69448&zoneid=77829"></script>
+        <!--End Coguan Adshare code-->
         <%--
                 <iframe id='a478980a' name='a478980a'
                         src='http://www.coguan.com/creatives/www/delivery/afr.php?n=a478980a&amp;zoneid=117&amp;cb=INSERT_RANDOM_NUMBER_HERE'
@@ -234,7 +234,7 @@
     <script type="text/javascript">
         var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
         document.write(unescape("%3Cscript src='" + gaJsHost +
-                                "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+                "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
     </script>
     <script type="text/javascript">
         var pageTracker = _gat._getTracker("UA-302272-1");

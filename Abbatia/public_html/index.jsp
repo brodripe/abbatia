@@ -1,16 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <%@ taglib uri="/WEB-INF/tld/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/tld/struts-logic.tld" prefix="logic" %>
-<html>
 
 <head>
     <title>ABBATIA</title>
     <meta name="ROBOTS" content="index, follow">
     <meta name="description"
-          content="Abbatia es un juego on-line gratuito (actualmente en construcción) ambientado en la época de los monasterios medievales.
-Los jugadores se hacen cargo de la gestión y desarrollo de una Abadía en un condado, ducado o reino de la Europa del 1000. El objetivo es intentar llegar a lo más alto del escalafón eclesiástico convirtiendo tu Abadía en un referente cultural y/o económico de la época.
-Para ello, tendrás que gestionar de forma adecuada los recursos de tu monasterio, elaborar productos, comerciar, formar monjes, copiar libros y mucho más... así poco a poco irás ampliando el poder de tu Abadía. ">
+          content="Abbatia es un juego on-line gratuito (actualmente en construcciÃ³n) ambientado en la Ã©poca de los monasterios medievales.
+Los jugadores se hacen cargo de la gestiÃ³n y desarrollo de una AbadÃ­a en un condado, ducado o reino de la Europa del 1000. El objetivo es intentar llegar a lo mÃ¡s alto del escalafÃ³n eclesiÃ¡stico convirtiendo tu AbadÃ­a en un referente cultural y/o econÃ³mico de la Ã©poca.
+Para ello, tendrÃ¡s que gestionar de forma adecuada los recursos de tu monasterio, elaborar productos, comerciar, formar monjes, copiar libros y mucho mÃ¡s... asÃ­ poco a poco irÃ¡s ampliando el poder de tu AbadÃ­a. ">
     <meta name="KEYWORDS"
-          content="Abbatia, abadias, abadia, juego, on-line, gratuito, monasterios, monjes, circenses, año del señor, juegos">
+          content="Abbatia, abadias, abadia, juego, on-line, gratuito, monasterios, monjes, circenses, aï¿½o del seï¿½or, juegos">
     <LINK REL="SHORTCUT ICON" HREF="images/iconito.gif"/>
 </head>
 
@@ -18,14 +21,14 @@ Para ello, tendrás que gestionar de forma adecuada los recursos de tu monasterio
     <frame name="titulo" scrolling="no" noresize target="contenido" src="cabecera.do">
     <frameset cols="135,1,*">
         <logic:notEmpty name="usuario" scope="session">
-            <frame name='contenido' target='principal' src='index_menu.do' scrolling='no' >
+            <frame name='contenido' target='principal' src='index_menu.do' scrolling='no'>
             <frame name='contenido' target='principal' src='index_border.html' scrolling='no' noresize>
             <frame name='principal' target='principal' src='main.do' marginwidth='0' marginheight='0' scrolling='auto'
                    noresize target='_self'>
         </logic:notEmpty>
 
         <logic:empty name="usuario" scope="session">
-            <frame name='contenido' target='principal' src='index_main_menu.do' scrolling='no' >
+            <frame name='contenido' target='principal' src='index_main_menu.do' scrolling='no'>
             <frame name='contenido' target='principal' src='index_border.html' scrolling='no' noresize>
             <frame name='principal' target='principal' src='index_main.do' marginwidth='0' marginheight='0'
                    scrolling='auto' noresize target='_self'>

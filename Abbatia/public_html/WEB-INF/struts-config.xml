@@ -656,17 +656,9 @@
         </action>
 
     </action-mappings>
-    <!--controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/-->
 
-    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+    <!--<controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>-->
 
     <message-resources parameter="org.abbatia.abbatia"/>
-
-    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
-        <set-property property="pathnames" value="/WEB-INF/validation.xml, /WEB-INF/validator-rules.xml"/>
-    </plug-in>
-    <plug-in className="org.apache.struts.tiles.TilesPlugin">
-        <set-property value="/WEB-INF/tiles-defs.xml" property="definitions-config"/>
-    </plug-in>
 
 </struts-config>

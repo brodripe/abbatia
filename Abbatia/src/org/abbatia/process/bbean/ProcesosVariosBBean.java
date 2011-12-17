@@ -1319,6 +1319,9 @@ public class ProcesosVariosBBean extends ProcesosUtils {
                     "WHERE cc.monjeid = mc.monjeid and cc.monjeid <> -1 ");
             oUtilsAD.execSQL("UPDATE cardenales cc, monje m SET cc.monjeid=-1, cc.abadiaid=-1 " +
                     "WHERE cc.monjeid = m.monjeid and (m.jerarquiaid <> 5 or m.estado=1)");
+
+            //marco las abadías congelada como NO seleccionables al cargo de obispo ni cardenal.
+            oUtilsAD.execSQL("update abadia a set a.FLAG_CARDENAL=1, a.FLAG_OBISPO=1 where a.USUARIOID in (select u.USUARIOID from usuario u where u.ABADIA_CONGELADA=1)");
             // Buscar los monjes muertos y crear candidatos y votadores.
             ps = con.prepareStatement(sSQL);
             rs = ps.executeQuery();
@@ -1327,6 +1330,7 @@ public class ProcesosVariosBBean extends ProcesosUtils {
                 nrAbadias = oUtilsAD.getSQL("SELECT Round((Count(*)*20)/100) FROM abadia WHERE regionid = " + rs.getInt("regionid"), 10);
                 // Insertar los usuario que pueden votar
                 oUtilsAD.execSQL("DELETE FROM obispado_candidatos WHERE regionid = " + rs.getInt("regionid"));
+                // brp => 16/12/2011 - filtramos de la query para que las abadías congeladas NO computen
                 oUtilsAD.execSQL("INSERT INTO `obispado_candidatos` (regionid, abadiaid) " +
                         "(SELECT a.regionid, a.abadiaid FROM abadia a, usuario u, monje m, abadia_puntuacion ap " +
                         " Where a.abadiaid = m.abadiaid and a.abadiaid = ap.abadiaid and ap.clasificacion > 0 and m.jerarquiaid = " + Constantes.JERARQUIA_ABAD + " and a.flag_obispo = 0 and a.usuarioid = u.usuarioid and u.usuario_tipo <> 1 and regionid = " + rs.getInt("regionid") + " and ap.fecha_abadia = (Select date(valor) from propiedad_valor where propiedadid = 99) " +
@@ -1337,7 +1341,7 @@ public class ProcesosVariosBBean extends ProcesosUtils {
                 oUtilsAD.execSQL("DELETE FROM obispado_voto WHERE regionid = " + rs.getInt("regionid"));
                 oUtilsAD.execSQL("INSERT INTO `obispado_voto` (regionid, abadiaid) " +
                         "(SELECT a.regionid, a.abadiaid FROM abadia a, usuario u, abadia_puntuacion ap " +
-                        " Where a.usuarioid = u.usuarioid and u.usuario_tipo<>1 and a.abadiaid = ap.abadiaid and ap.clasificacion > 0 and a.regionid = " + rs.getInt("regionid") + " and ap.fecha_abadia = (Select date(valor) from propiedad_valor where propiedadid = 99) " +
+                        " Where a.usuarioid = u.usuarioid and u.usuario_tipo<>1 and a.abadiaid = ap.abadiaid and ap.clasificacion > 0 and u.ABADIA_CONGELADA=0 and a.regionid = " + rs.getInt("regionid") + " and ap.fecha_abadia = (Select date(valor) from propiedad_valor where propiedadid = 99) " +
                         " ORDER by ap.clasificacion LIMIT " + nrAbadias + ")");
                 // Insertar los usuario que pueden votar
                 oUtilsAD.execSQL("UPDATE obispado SET fecha_votacion = '" + CoreTiempo.getTiempoAbadiaString() + "' WHERE regionid = " + rs.getInt("regionid"));
