@@ -87,6 +87,9 @@ public class AbadiaActionServlet extends ActionServlet {
         } else {
 
             if (usuario != null) {
+                if (request.getParameter("pagesize") != null) {
+                    request.getSession().setAttribute("pagesize", Integer.valueOf(request.getParameter("pagesize")));
+                }
                 log.debug("--> Entrando - " + usuario.getNick() + " -> " + sDestino);
                 super.process(request, response);
                 log.debug("--> Saliendo - " + usuario.getNick() + " -> " + sDestino);

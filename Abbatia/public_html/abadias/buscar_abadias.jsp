@@ -23,16 +23,14 @@
 
     <SCRIPT LANGUAGE="JavaScript">
 
-        function checkOrUncheck()
-        {
+        function checkOrUncheck() {
             if (document.BuscarAbadiasForm[1].CheckAll.checked)
                 checkAll(document.BuscarAbadiasForm[1].seleccion);
             else
                 uncheckAll(document.BuscarAbadiasForm[1].seleccion);
         }
 
-        function checkAll(aCheck)
-        {
+        function checkAll(aCheck) {
             for (i = 0; i < aCheck.length; i++)
                 aCheck[i].checked = true;
         }
@@ -100,9 +98,28 @@
         </div>
         <div class="break"></div>
         <div id="content">
+            <ul class="floatLeft">
+                <li class="three">
+                    <html:link action="/buscar_abadias.do?accion=buscar&pagesize=30">
+                        <bean:message key="edificios.abadia.biblioteca.mostrar.30"/>
+                    </html:link>
+                </li>
+                <li class="three">
+                    <html:link action="/buscar_abadias.do?accion=buscar&pagesize=60">
+                        <bean:message key="edificios.abadia.biblioteca.mostrar.60"/>
+                    </html:link>
+                </li>
+                <li class="three">
+                    <html:link action="/buscar_abadias.do?accion=buscar&pagesize=1000">
+                        <bean:message key="edificios.abadia.biblioteca.mostrar.todos"/>
+                    </html:link>
+                </li>
+            </ul>
+
             <html:form action="/buscar_abadias">
                 <html:hidden name="BuscarAbadiasForm" property="accion" value="aceptar"/>
-                <display:table name="requestScope.BuscarAbadiasForm.listado" uid="lista_abadias" pagesize="30"
+                <display:table name="requestScope.BuscarAbadiasForm.listado" uid="lista_abadias"
+                               pagesize="${sessionScope.pagesize}"
                                export="true" requestURI="/buscar_abadias.do"
                                sort="list" class="contenidoedificio alignCenter">
                     <display:setProperty name="export.xsl.filename" value="lista_abadias.xsl"/>
@@ -139,7 +156,7 @@
     <script type="text/javascript">
         var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
         document.write(unescape("%3Cscript src='" + gaJsHost +
-                                "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+                "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
     </script>
     <script type="text/javascript">
         var pageTracker = _gat._getTracker("UA-302272-1");
