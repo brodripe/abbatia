@@ -259,6 +259,18 @@
                 scope="request">
             <forward name="success" path="/mercado/mercado_historico.jsp"/>
         </action>
+
+        <action path="/sacrificar_animal_grupo" name="SacrificioForm" type="org.abbatia.action.SacrificarAnimalAction"
+                parameter="inicio_grupo">
+            <forward name="sacrificar" path="/edificios/SacrificarAnimalGrupo.jsp"/>
+        </action>
+
+        <action path="/sacrificar_animal_grupo_confirmar" name="SacrificioForm"
+                type="org.abbatia.action.SacrificarAnimalAction" parameter="grupo_confirmar">
+            <forward name="sacrificar" path="/edificios/SacrificarAnimalGrupo.jsp"/>
+        </action>
+
+
         <action path="/sacrificar_animal" type="org.abbatia.action.SacrificarAnimalAction" parameter="inicio">
             <forward name="sacrificar" path="/edificios/sacrificarAnimal.jsp"/>
         </action>
@@ -660,5 +672,10 @@
     <!--<controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>-->
 
     <message-resources parameter="org.abbatia.abbatia"/>
+
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+    </plug-in>
+
 
 </struts-config>

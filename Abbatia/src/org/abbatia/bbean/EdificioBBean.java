@@ -696,7 +696,25 @@ public class EdificioBBean {
             msgLog = "Saliendo de metodo: " + sTrace;
             log.info(msgLog);
         }
+    }
 
+    public Edificio recuperarEdificioTipo(int p_iTipoEdificioId, Abadia p_oAbadia, Usuario p_oUsuario) throws AbadiaException {
+        String sTrace = this.getClass() + ".recuperarEdificioTipo(" + p_iTipoEdificioId + ", " + p_oAbadia + ", " + p_oUsuario + ")";
+        String msgLog = "Entrando en metodo: " + sTrace;
+        log.info(msgLog);
+        adEdificio oEdificioAD;
+
+        Connection con = null;
+
+        try {
+            con = ConnectionFactory.getConnection(Constantes.DB_CONEXION_ABADIAS);
+            oEdificioAD = new adEdificio(con);
+            return oEdificioAD.recuperarEdificioTipo(p_iTipoEdificioId, p_oAbadia, p_oUsuario);
+        } finally {
+            DBMSUtils.cerrarObjetoSQL(con);
+            msgLog = "Saliendo de metodo: " + sTrace;
+            log.info(msgLog);
+        }
 
     }
 }

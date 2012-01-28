@@ -1,48 +1,27 @@
-package org.abbatia.actionform;
+package org.abbatia.bean;
 
-import org.abbatia.bean.DatosSacrificioGrupo;
-import org.apache.struts.action.ActionForm;
-
-import java.util.List;
-
-public class DatosSacrificioActForm extends ActionForm {
+public class DatosSacrificioAlimento {
     private int animal_tipo;
     private int animal_nivel;
     private int alimento_id;
-    private int recurso_id;
-    private int recurso_max;
-    private int recurso_min;
     private int alimento_max;
     private int alimento_min;
     private int numAnimales;
     private int cantidad;
     private String animal_fechanacimiento;
     private String alimento_desc;
-    private String recurso_desc;
     private String unidad_alimento;
-    private String unidad_recurso;
     private String animal_desc;
     private String precio = "1";
     private double precioMercado;
     private String id;
-    private String[] seleccion;
 
-    private List<DatosSacrificioGrupo> listDatosSacrificioGrupo;
-
-    public List<DatosSacrificioGrupo> getListDatosSacrificioGrupo() {
-        return listDatosSacrificioGrupo;
+    public String getUnidad_alimento() {
+        return unidad_alimento;
     }
 
-    public void setListDatosSacrificioGrupo(List<DatosSacrificioGrupo> listDatosSacrificioGrupo) {
-        this.listDatosSacrificioGrupo = listDatosSacrificioGrupo;
-    }
-
-    public String[] getSeleccion() {
-        return seleccion;
-    }
-
-    public void setSeleccion(String[] seleccion) {
-        this.seleccion = seleccion;
+    public void setUnidad_alimento(String unidad_alimento) {
+        this.unidad_alimento = unidad_alimento;
     }
 
     public double getPrecioMercado() {
@@ -140,54 +119,6 @@ public class DatosSacrificioActForm extends ActionForm {
         return alimento_desc;
     }
 
-
-    public int getRecurso_id() {
-        return recurso_id;
-    }
-
-    public void setRecurso_id(int recurso_id) {
-        this.recurso_id = recurso_id;
-    }
-
-    public int getRecurso_max() {
-        return recurso_max;
-    }
-
-    public void setRecurso_max(int recurso_max) {
-        this.recurso_max = recurso_max;
-    }
-
-    public int getRecurso_min() {
-        return recurso_min;
-    }
-
-    public void setRecurso_min(int recurso_min) {
-        this.recurso_min = recurso_min;
-    }
-
-    public String getRecurso_desc() {
-        return recurso_desc;
-    }
-
-    public void setRecurso_desc(String recurso_desc) {
-        this.recurso_desc = recurso_desc;
-    }
-
-    public String getUnidad_alimento() {
-        return unidad_alimento;
-    }
-
-    public void setUnidad_alimento(String unidad_alimento) {
-        this.unidad_alimento = unidad_alimento;
-    }
-
-    public String getUnidad_recurso() {
-        return unidad_recurso;
-    }
-
-    public void setUnidad_recurso(String unidad_recurso) {
-        this.unidad_recurso = unidad_recurso;
-    }
 
     public void setAnimal_desc(String animal_desc) {
         this.animal_desc = animal_desc;

@@ -5,6 +5,12 @@ div#container {
     width: 90%;
 }
 
+div#containerLite {
+    margin: 1em auto 2em auto;
+    text-align: center;
+    width: 40%;
+}
+
 div#containerLIB {
     margin: 1em auto 2em auto;
     text-align: center;
@@ -895,8 +901,8 @@ table.detallemonje {
 }
 
 table.detallemonje thead tr, table.detallemonje tfoot tr {
-/*    background: #996633;*/
-/*    background: #ffffff;*/
+    /*    background: #996633;*/
+    /*    background: #ffffff;*/
     color: #000000;
 }
 
@@ -917,13 +923,13 @@ table.detallemonje tfoot th {
 }
 
 table.detallemonje td, table.detallemonje th {
-/*    border: 1px solid #999;*/
+    /*    border: 1px solid #999;*/
     padding: .2em 1em;
     text-align: center;
 }
 
 #eventsMonje {
-/*    width: 100%;*/
+    /*    width: 100%;*/
     border: 1px solid #666;
     padding: .5em;
     background: #fff url(/images/background-pergamino.jpg) top left;
@@ -943,16 +949,16 @@ table.detallemonje td, table.detallemonje th {
 }
 
 #eventsMonje ul {
-/*float: left;*/
-/*  width: 60em;*/
+    /*float: left;*/
+    /*  width: 60em;*/
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
 #eventsMonje li {
-/*  float: left;*/
-/*width: 6em;*/
+    /*  float: left;*/
+    /*width: 6em;*/
     display: list-item;
     margin: 0;
     padding: 0;
@@ -965,7 +971,7 @@ table.detallemonje td, table.detallemonje th {
     margin: 0em auto 0 auto;
     padding: .5em;
     height: auto; /*border-top: 1px solid #999;*/
-/*    height: 2em; *//*border-top: 1px solid #999;*//**/
+    /*    height: 2em; *//*border-top: 1px solid #999;*//**/
 }
 
 #bookFilter h5 {
@@ -995,6 +1001,11 @@ table.detallemonje td, table.detallemonje th {
     margin-left: 0em;
     margin-right: 0em;
 
+}
+
+#bookFilter li.sacrificar {
+    padding: 0.8em 0.9em 0.5em 1.7em;
+    background: url(/images/iconos/16/icon_dead.png) no-repeat center left;
 }
 
 #bookFilter li.three {
@@ -1169,7 +1180,7 @@ table.contenidoedificio thead tr, table.contenidoedificio tfoot tr {
 }
 
 table.contenidoedificio thead th, table.contenidoedificio tfoot th {
-/******************siguientelineaponerurlbien**********************/
+    /******************siguientelineaponerurlbien**********************/
     background: #f90 url(/images/background-wood.jpg) repeat-x top left;
     padding: .5em;
     font: bold 0.9em arial, georgia, times new roman, serif;
@@ -1196,4 +1207,4 @@ table.contenidoedificio tbody tr:hover {
 
 }
 
-}
+    }

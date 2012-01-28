@@ -2,10 +2,7 @@ package org.abbatia.adbean;
 
 import org.abbatia.actionform.DatosSacrificioActForm;
 import org.abbatia.adbean.base.adbeans;
-import org.abbatia.bean.Abadia;
-import org.abbatia.bean.Animal;
-import org.abbatia.bean.Edificio;
-import org.abbatia.bean.Usuario;
+import org.abbatia.bean.*;
 import org.abbatia.core.CoreTiempo;
 import org.abbatia.dbms.DBMSUtils;
 import org.abbatia.exception.AbadiaSQLException;
@@ -107,6 +104,39 @@ public class adAnimal extends adbeans {
                 animal.setNivel((short) iNivel);
                 animal.setTipoAnimalid(iTipo);
                 animal.setNombre(rs.getString("DESCRIPCION"));
+                return animal;
+            }
+            return null;
+
+        } catch (SQLException e) {
+            throw new AbadiaSQLException("adAnimal. recuperarAnimalTipo. SQLException", e, log);
+        } finally {
+            DBMSUtils.cerrarObjetoSQL(rs);
+            DBMSUtils.cerrarObjetoSQL(ps);
+        }
+
+    }
+
+    //recupera los datos de un animal a partir
+    //de su identificador
+    public Animal recuperarAnimalTipo(int p_iTipo, int p_iNivel, int p_iIdioma) throws AbadiaSQLException {
+        String sSQL = "SELECT l.LITERAL " +
+                " FROM animales_crecimiento AS ac " +
+                " INNER JOIN literales AS l ON ac.LITERALID = l.LITERALID " +
+                " WHERE ac.TIPO_ANIMALID = ? AND ac.NIVEL = ? AND l.IDIOMAID = ?";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = con.prepareStatement(sSQL);
+            ps.setInt(1, p_iTipo);
+            ps.setInt(2, p_iNivel);
+            ps.setInt(3, p_iIdioma);
+            rs = ps.executeQuery();
+            Animal animal = new Animal();
+            if (rs.next()) {
+                animal.setNivel((short) p_iNivel);
+                animal.setTipoAnimalid(p_iTipo);
+                animal.setNombre(rs.getString("LITERAL"));
                 return animal;
             }
             return null;
@@ -762,12 +792,9 @@ public class adAnimal extends adbeans {
     }
 
 
-    public DatosSacrificioActForm getProduccionPotencialAlimentos(DatosSacrificioActForm datos, Usuario usuario) throws AbadiaException {
-        StringTokenizer st = new StringTokenizer(datos.getId(), ";");
-        String sNivel = st.nextToken();
-        String Tipo = st.nextToken();
-        String sFecha = st.nextToken();
+    public DatosSacrificioAlimento getProduccionPotencialAlimentos(int p_iNivel, int p_iTipo, String p_szFecha, Usuario usuario) throws AbadiaException {
 
+        DatosSacrificioAlimento oDatosSacrificio;
         String sSQL = "SELECT aa.MAX, aa.MIN, aa.ALIMENTOID, at.DESCRIPCION, um.DESCRIPCION as DESCUM, l.literal as DESCANI " +
                 "FROM animales_alimentos aa, alimentos_tipo at, unidad_medida um, animales_crecimiento ac, literales l " +
                 "WHERE aa.alimentoid = at.alimentoid and um.UNIDAD_MEDIDA = at.UNIDAD_MEDIDA and " +
@@ -778,24 +805,25 @@ public class adAnimal extends adbeans {
         ResultSet rs = null;
         try {
             ps = con.prepareStatement(sSQL);
-            ps.setInt(1, Integer.parseInt(Tipo));
-            ps.setInt(2, Integer.parseInt(sNivel));
+            ps.setInt(1, p_iTipo);
+            ps.setInt(2, p_iNivel);
             ps.setString(3, "M");
             ps.setInt(4, usuario.getIdDeIdioma());
             rs = ps.executeQuery();
             if (rs.next()) {
-                datos.setAnimal_tipo(Integer.parseInt(Tipo));
-                datos.setAnimal_nivel(Integer.parseInt(sNivel));
-                datos.setAnimal_fechanacimiento(sFecha);
-                datos.setAlimento_desc(rs.getString("DESCRIPCION"));
-                datos.setAnimal_desc(rs.getString("DESCANI"));
-                datos.setAlimento_id(rs.getInt("ALIMENTOID"));
-                datos.setAlimento_max(rs.getDouble("MAX"));
-                datos.setAlimento_min(rs.getDouble("MIN"));
-                datos.setUnidad_alimento(rs.getString("DESCUM"));
-                datos.setCantidad(1);
-                datos.setPrecio(Utilidades.redondear(getPrecioMercadoCarne(rs.getInt("ALIMENTOID"))));
-                return datos;
+                oDatosSacrificio = new DatosSacrificioAlimento();
+                oDatosSacrificio.setAnimal_tipo(p_iTipo);
+                oDatosSacrificio.setAnimal_nivel(p_iNivel);
+                oDatosSacrificio.setAnimal_fechanacimiento(p_szFecha);
+                oDatosSacrificio.setAlimento_desc(rs.getString("DESCRIPCION"));
+                oDatosSacrificio.setAnimal_desc(rs.getString("DESCANI"));
+                oDatosSacrificio.setAlimento_id(rs.getInt("ALIMENTOID"));
+                oDatosSacrificio.setAlimento_max(rs.getInt("MAX"));
+                oDatosSacrificio.setAlimento_min(rs.getInt("MIN"));
+                oDatosSacrificio.setUnidad_alimento(rs.getString("DESCUM"));
+                oDatosSacrificio.setCantidad(1);
+                oDatosSacrificio.setPrecio(Utilidades.redondear(getPrecioMercadoCarne(rs.getInt("ALIMENTOID"))));
+                return oDatosSacrificio;
             } else return null;
 
         } catch (SQLException e) {
@@ -806,31 +834,54 @@ public class adAnimal extends adbeans {
         }
     }
 
-    public DatosSacrificioActForm getProduccionPotencialRecursos(DatosSacrificioActForm datos, Usuario usuario) throws AbadiaException {
-        StringTokenizer st = new StringTokenizer(datos.getId(), ";");
-        String sNivel = st.nextToken();
-        String Tipo = st.nextToken();
+    public DatosSacrificioActForm getProduccionPotencialAlimentos(DatosSacrificioActForm datos, Usuario usuario) throws AbadiaException {
+
+        DatosSacrificioAlimento oDatosSacrificio;
+        StringTokenizer stClave;
+        stClave = new StringTokenizer(datos.getId(), ";");
+        int iNivel = Integer.valueOf(stClave.nextToken()).intValue();
+        int iTipo = Integer.valueOf(stClave.nextToken()).intValue();
+        String szFecha = stClave.nextToken();
+        oDatosSacrificio = this.getProduccionPotencialAlimentos(iNivel, iTipo, szFecha, usuario);
+
+        datos.setAnimal_tipo(iTipo);
+        datos.setAnimal_nivel(iNivel);
+        datos.setAnimal_fechanacimiento(szFecha);
+        datos.setAlimento_desc(oDatosSacrificio.getAlimento_desc());
+        datos.setAnimal_desc(oDatosSacrificio.getAnimal_desc());
+        datos.setAlimento_id(oDatosSacrificio.getAlimento_id());
+        datos.setAlimento_max(oDatosSacrificio.getAlimento_max());
+        datos.setAlimento_min(oDatosSacrificio.getAlimento_min());
+        datos.setUnidad_alimento(oDatosSacrificio.getUnidad_alimento());
+        datos.setCantidad(oDatosSacrificio.getCantidad());
+        datos.setPrecio(oDatosSacrificio.getPrecio());
+        return datos;
+    }
+
+    public DatosSacrificioRecurso getProduccionPotencialRecursos(int p_iNivel, int p_iTipo, String p_szFecha, Usuario usuario) throws AbadiaException {
 
         String sSQL = "SELECT ar.MAX, ar.MIN, ar.RECURSOID, um.DESCRIPCION as DESCUM, l.literal as DESCRIPCION " +
                 "FROM animales_recursos ar, recurso_tipo rt, unidad_medida um, literales l " +
                 "WHERE ar.recursoid = rt.recursoid and um.UNIDAD_MEDIDA = rt.UNIDAD_MEDIDA and " +
                 "ar.TIPO_ANIMALID=? AND ar.NIVEL=? and um.idiomaid = 1 and rt.literalid = l.literalid and l.idiomaid = ? ";
 
+        DatosSacrificioRecurso oDatosSacrificioRecurso;
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
             ps = con.prepareStatement(sSQL);
-            ps.setInt(1, Integer.parseInt(Tipo));
-            ps.setInt(2, Integer.parseInt(sNivel));
+            ps.setInt(1, p_iTipo);
+            ps.setInt(2, p_iNivel);
             ps.setInt(3, usuario.getIdDeIdioma());
             rs = ps.executeQuery();
             if (rs.next()) {
-                datos.setRecurso_desc(rs.getString("DESCRIPCION"));
-                datos.setRecurso_id(rs.getInt("RECURSOID"));
-                datos.setRecurso_max(rs.getDouble("MAX"));
-                datos.setRecurso_min(rs.getDouble("MIN"));
-                datos.setUnidad_recurso(rs.getString("DESCUM"));
-                return datos;
+                oDatosSacrificioRecurso = new DatosSacrificioRecurso();
+                oDatosSacrificioRecurso.setRecurso_desc(rs.getString("DESCRIPCION"));
+                oDatosSacrificioRecurso.setRecurso_id(rs.getInt("RECURSOID"));
+                oDatosSacrificioRecurso.setRecurso_max(rs.getInt("MAX"));
+                oDatosSacrificioRecurso.setRecurso_min(rs.getInt("MIN"));
+                oDatosSacrificioRecurso.setUnidad_recurso(rs.getString("DESCUM"));
+                return oDatosSacrificioRecurso;
             } else return null;
 
         } catch (SQLException e) {
@@ -839,6 +890,27 @@ public class adAnimal extends adbeans {
             DBMSUtils.cerrarObjetoSQL(rs);
             DBMSUtils.cerrarObjetoSQL(ps);
         }
+    }
+
+
+    public DatosSacrificioActForm getProduccionPotencialRecursos(DatosSacrificioActForm datos, Usuario usuario) throws AbadiaException {
+
+        StringTokenizer stClave;
+        stClave = new StringTokenizer(datos.getId(), ";");
+        int iNivel = Integer.valueOf(stClave.nextToken()).intValue();
+        int iTipo = Integer.valueOf(stClave.nextToken()).intValue();
+        String szFecha = stClave.nextToken();
+
+        DatosSacrificioRecurso oDatosSacrificioRecurso;
+
+        oDatosSacrificioRecurso = this.getProduccionPotencialRecursos(iNivel, iTipo, szFecha, usuario);
+        if (oDatosSacrificioRecurso == null) return null;
+        datos.setRecurso_desc(oDatosSacrificioRecurso.getRecurso_desc());
+        datos.setRecurso_id(oDatosSacrificioRecurso.getRecurso_id());
+        datos.setRecurso_max(oDatosSacrificioRecurso.getRecurso_max());
+        datos.setRecurso_min(oDatosSacrificioRecurso.getRecurso_min());
+        datos.setUnidad_recurso(oDatosSacrificioRecurso.getUnidad_recurso());
+        return datos;
     }
 
 
@@ -854,6 +926,35 @@ public class adAnimal extends adbeans {
             ps.setInt(2, datos.getAnimal_nivel());
             ps.setString(3, datos.getAnimal_fechanacimiento());
             ps.setInt(4, datos.getAnimal_tipo());
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                ps2 = con.prepareStatement(sSQL2);
+                ps2.setInt(1, rs.getInt("ANIMALID"));
+                ps2.execute();
+                ps2 = null;
+            }
+
+        } catch (SQLException e) {
+            throw new AbadiaSQLException("adAnimal. venderAnimalTipo. SQLException.", e, log);
+        } finally {
+            DBMSUtils.cerrarObjetoSQL(rs);
+            DBMSUtils.cerrarObjetoSQL(ps);
+        }
+
+    }
+
+    public void eliminarAnimalTipo(int p_iNivel, int p_iTipo, String p_szFecha, long idAbadia) throws AbadiaSQLException {
+        String sSQL = "SELECT a.ANIMALID from animales as a, edificio as e where e.abadiaid=? and e.edificioid=a.edificioid and a.nivel=? and a.fecha_nacimiento=? and a.tipo_animalid=? and a.fecha_embarazo is null AND a.ESTADO=0 AND a.FECHA_FALLECIMIENTO is null";
+        String sSQL2 = "DELETE from animales where animalid=? ";
+        PreparedStatement ps = null;
+        PreparedStatement ps2 = null;
+        ResultSet rs = null;
+        try {
+            ps = con.prepareStatement(sSQL);
+            ps.setLong(1, idAbadia);
+            ps.setInt(2, p_iNivel);
+            ps.setString(3, p_szFecha);
+            ps.setInt(4, p_iTipo);
             rs = ps.executeQuery();
             if (rs.next()) {
                 ps2 = con.prepareStatement(sSQL2);

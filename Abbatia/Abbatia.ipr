@@ -10,7 +10,6 @@
         <entry path="file://C:/Tomcat5/server/lib/catalina-optional.jar" />
         <entry path="file://C:/Tomcat5/server/lib/catalina-storeconfig.jar" />
         <entry path="file://C:/Tomcat5/server/lib/catalina.jar" />
-        <entry path="file://C:/Tomcat5/server/lib/commons-modeler-2.0.jar" />
         <entry path="file://C:/Tomcat5/server/lib/servlets-default.jar" />
         <entry path="file://C:/Tomcat5/server/lib/servlets-invoker.jar" />
         <entry path="file://C:/Tomcat5/server/lib/servlets-webdav.jar" />
@@ -18,7 +17,6 @@
         <entry path="file://C:/Tomcat5/server/lib/tomcat-apr.jar" />
         <entry path="file://C:/Tomcat5/server/lib/tomcat-coyote.jar" />
         <entry path="file://C:/Tomcat5/server/lib/tomcat-http.jar" />
-        <entry path="file://C:/Tomcat5/server/lib/tomcat-jkstatus-ant.jar" />
         <entry path="file://C:/Tomcat5/server/lib/tomcat-util.jar" />
         <entry path="file://$PROJECT_DIR$/src/script_ant" />
       </additionalClassPath>
@@ -90,7 +88,7 @@
     </buildFile>
   </component>
   <component name="ArtifactManager">
-    <artifact type="exploded-war" name="Abbatia:Abbatia">
+    <artifact type="exploded-war" build-on-make="true" name="Abbatia:Abbatia">
       <root id="root">
         <element id="javaee-facet-resources" facet="Abbatia/web/Abbatia" />
         <element id="directory" name="WEB-INF">
@@ -98,6 +96,7 @@
             <element id="module-output" name="Abbatia" />
           </element>
         </element>
+        <element id="javaee-facet-resources" facet="Abbatia/web/Web" />
       </root>
     </artifact>
   </component>
@@ -295,7 +294,6 @@
   <component name="DBNavigator.Project.MethodExecutionManager">
     <execution-inputs />
   </component>
-  <component name="DataSourceManagerImpl" compressed="false" />
   <component name="DependenciesAnalyzeManager">
     <option name="myForwardDirection" value="false" />
   </component>
@@ -314,7 +312,7 @@
     <option name="MAXIMUM_HEAP_SIZE" value="128" />
   </component>
   <component name="EmbeddedBrowser.BrowserComponent" xPos="-1" yPos="-1" width="600" height="200" />
-  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" defaultCharsetForPropertiesFiles="ISO-8859-1" />
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
@@ -361,7 +359,8 @@
         <inspection_tool class="FinalPrivateMethod" enabled="false" level="WARNING" enabled_by_default="false" />
         <inspection_tool class="FinalStaticMethod" enabled="false" level="WARNING" enabled_by_default="false" />
         <inspection_tool class="FinalizeCallsSuperFinalize" enabled="false" level="WARNING" enabled_by_default="false">
-          <option name="m_ignoreForObjectSubclasses" value="false" />
+          <option name="ignoreObjectSubclasses" value="false" />
+          <option name="ignoreTrivialFinalizers" value="true" />
         </inspection_tool>
         <inspection_tool class="ForCanBeForeach" enabled="false" level="WARNING" enabled_by_default="false">
           <option name="REPORT_INDEXED_LOOP" value="true" />
@@ -376,6 +375,11 @@
         </inspection_tool>
         <inspection_tool class="RedundantCast" enabled="false" level="WARNING" enabled_by_default="false" />
         <inspection_tool class="ReturnFromFinallyBlock" enabled="false" level="WARNING" enabled_by_default="false" />
+        <inspection_tool class="SpellCheckingInspection" enabled="false" level="TYPO" enabled_by_default="false">
+          <option name="processCode" value="true" />
+          <option name="processLiterals" value="true" />
+          <option name="processComments" value="true" />
+        </inspection_tool>
         <inspection_tool class="StringConstructor" enabled="false" level="WARNING" enabled_by_default="false">
           <option name="ignoreSubstringArguments" value="false" />
         </inspection_tool>
@@ -552,6 +556,9 @@
   <component name="ProjectDetails">
     <option name="projectName" value="Abbatia" />
   </component>
+  <component name="ProjectDictionaryState">
+    <dictionary name="BenjaminHP" />
+  </component>
   <component name="ProjectKey">
     <option name="state" value="https://abbatia.googlecode.com/svn/trunk/Abbatia/Abbatia.ipr" />
   </component>
@@ -559,6 +566,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Abbatia.iml" filepath="$PROJECT_DIR$/Abbatia.iml" />
     </modules>
+  </component>
+  <component name="ProjectResources">
+    <default-html-doctype>http://www.w3.org/1999/xhtml</default-html-doctype>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_5" assert-keyword="true" jdk-15="true" project-jdk-name="1.5" project-jdk-type="JavaSDK" />
   <component name="ResourceManagerContainer">
@@ -601,6 +611,14 @@
   <component name="libraryTable">
     <library name="abbatia">
       <CLASSES>
+        <root url="file://$PROJECT_DIR$/lib" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+      <jarDirectory url="file://$PROJECT_DIR$/lib" recursive="false" />
+    </library>
+    <library name="struts">
+      <CLASSES>
         <root url="jar://$PROJECT_DIR$/lib/activation.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/ant.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/antlr.jar!/" />
@@ -608,6 +626,7 @@
         <root url="jar://$PROJECT_DIR$/lib/axis.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/classes12.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/commons-beanutils.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/commons-collections-3.2.1.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/commons-dbcp-1.1.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/commons-digester.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/commons-discovery.jar!/" />
@@ -615,38 +634,49 @@
         <root url="jar://$PROJECT_DIR$/lib/commons-fileupload-1.0.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/commons-fileupload.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/commons-httpclient-2.0.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/commons-lang-2.3.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/commons-lang.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/commons-logging.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/commons-pool-1.1.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/commons-validator.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/demo-components.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/displaytag-1.2.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/ezmorph-1.0.4.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/hibernate3.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/jakarta-oro.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/jasper-compiler.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/jasper-runtime.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/jaxrpc.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/jmx.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/json-lib-2.2.3-jdk15.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/jsp-api.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/jstl.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/log4j-1.2.8.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/mail.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-5.0.7-bin.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/naming-common.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/naming-factory.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/naming-java.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/naming-resources.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/saaj.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/servlet-api.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/standard.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/Struts-Layout.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/struts.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/tools.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/wsdl4j.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/xerces.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/json-lib-2.2.3-jdk15.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/commons-collections-3.2.1.jar!/" />
-        <root url="file://$PROJECT_DIR$/lib" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
-      <jarDirectory url="file://$PROJECT_DIR$/lib" recursive="false" />
+    </library>
+    <library name="struts (2)">
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/lib/commons-chain.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/commons-io.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
     </library>
   </component>
 </project>

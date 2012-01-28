@@ -15,7 +15,6 @@
         <webroots>
           <root url="file://$MODULE_DIR$/public_html" relative="/" />
         </webroots>
-        <context-artifact name="Abbatia:Abbatia" />
       </configuration>
       <facet type="struts" name="Struts">
         <configuration>
@@ -59,7 +58,7 @@
       <excludeFolder url="file://$MODULE_DIR$/lib" />
       <excludeFolder url="file://$MODULE_DIR$/pr" />
       <excludeFolder url="file://$MODULE_DIR$/projectFilesBackup" />
-      <excludeFolder url="file://$MODULE_DIR$/projectFilesBackup1" />
+      <excludeFolder url="file://$MODULE_DIR$/script_bdd" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="inheritedJdk" />
@@ -74,6 +73,8 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="Tomcat" level="application" />
+    <orderEntry type="library" name="struts" level="project" />
+    <orderEntry type="library" name="struts (2)" level="project" />
   </component>
 </module>
 

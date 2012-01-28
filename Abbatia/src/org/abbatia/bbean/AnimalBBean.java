@@ -19,8 +19,7 @@ import org.apache.struts.action.ActionMessages;
 import org.apache.struts.util.MessageResources;
 
 import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.GregorianCalendar;
+import java.util.*;
 
 /**
  * Created by Benjamín Rodríguez.
@@ -166,6 +165,80 @@ public class AnimalBBean {
 
     }
 
+    public Collection<DatosSacrificioGrupo> sacrificarAnimalGrupo(DatosSacrificioActForm p_afDatos, Usuario p_oUsuario, Abadia p_oAbadia) throws AbadiaException {
+        String sTrace = this.getClass() + ".sacrificarAnimalInicio()";
+        String msgLog = "Entrando en metodo: " + sTrace;
+        log.info(msgLog);
+
+        StringTokenizer stClave;
+        int iNivel;
+        int iTipo;
+        String szFecha;
+        String szClave;
+
+        adAnimal oAnimalAD;
+        Animal oAnimal;
+        DatosSacrificioGrupo oDatosSacrificio;
+        List<DatosSacrificioGrupo> lstDatosSacrificio = new ArrayList<DatosSacrificioGrupo>();
+
+        Connection con = null;
+
+        try {
+            con = ConnectionFactory.getConnection(Constantes.DB_CONEXION_ABADIAS);
+
+            oAnimalAD = new adAnimal(con);
+            for (int iCount = 0; iCount < p_afDatos.getSeleccion().length; iCount++) {
+                oDatosSacrificio = new DatosSacrificioGrupo();
+                szClave = p_afDatos.getSeleccion()[iCount];
+                stClave = new StringTokenizer(szClave, ";");
+                iNivel = Integer.valueOf(stClave.nextToken()).intValue();
+                iTipo = Integer.valueOf(stClave.nextToken()).intValue();
+                szFecha = stClave.nextToken();
+                oDatosSacrificio.setClave(szClave);
+                oAnimal = oAnimalAD.recuperarAnimalTipo(iTipo, iNivel, p_oUsuario.getIdDeIdioma());
+                oAnimal.setFecha_nacimiento(szFecha);
+                oDatosSacrificio.setAnimal(oAnimal);
+                oDatosSacrificio.setDatosAlimento(oAnimalAD.getProduccionPotencialAlimentos(iNivel, iTipo, szFecha, p_oUsuario));
+                oDatosSacrificio.setDatosRecurso(oAnimalAD.getProduccionPotencialRecursos(iNivel, iTipo, szFecha, p_oUsuario));
+                oDatosSacrificio.setNumeroAnimales(oAnimalAD.recuperarCantidad(p_oAbadia.getIdDeAbadia(), iNivel, iTipo, szFecha));
+                lstDatosSacrificio.add(oDatosSacrificio);
+            }
+
+            p_afDatos.setListDatosSacrificioGrupo(lstDatosSacrificio);
+
+
+            return agruparPorTipoNivel(lstDatosSacrificio);
+
+        } finally {
+            DBMSUtils.cerrarObjetoSQL(con);
+            msgLog = "Saliendo de metodo: " + sTrace;
+            log.info(msgLog);
+        }
+
+    }
+
+    public Collection<DatosSacrificioGrupo> agruparPorTipoNivel(List<DatosSacrificioGrupo> p_lstDatos) {
+        int iTipo;
+        int iNivel;
+        int iCant;
+        String sClave;
+        Map<String, DatosSacrificioGrupo> mAnimales = new HashMap<String, DatosSacrificioGrupo>();
+        for (DatosSacrificioGrupo datosSacrificioGrupo : p_lstDatos) {
+            iTipo = datosSacrificioGrupo.getAnimal().getTipoAnimalid();
+            iNivel = datosSacrificioGrupo.getAnimal().getNivel();
+            iCant = datosSacrificioGrupo.getNumeroAnimales();
+            sClave = iTipo + "-" + iNivel;
+            if (mAnimales.containsKey(sClave)) {
+                datosSacrificioGrupo = mAnimales.get(sClave);
+
+                datosSacrificioGrupo.setNumeroAnimales(datosSacrificioGrupo.getNumeroAnimales() + iCant);
+            }
+
+            mAnimales.put(sClave, new DatosSacrificioGrupo(datosSacrificioGrupo));
+        }
+        return mAnimales.values();
+    }
+
     public void sacrificarAnimalInicio(DatosSacrificioActForm p_afDatos, Usuario p_oUsuario, Abadia p_oAbadia) throws AbadiaException {
         String sTrace = this.getClass() + ".sacrificarAnimalInicio()";
         String msgLog = "Entrando en metodo: " + sTrace;
@@ -183,6 +256,71 @@ public class AnimalBBean {
             oAnimalAD.getProduccionPotencialRecursos(p_afDatos, p_oUsuario);
             p_afDatos.setNumAnimales(oAnimalAD.recuperarCantidad(p_oAbadia.getIdDeAbadia(), p_afDatos.getAnimal_nivel(), p_afDatos.getAnimal_tipo(), p_afDatos.getAnimal_fechanacimiento()));
 
+        } finally {
+            DBMSUtils.cerrarObjetoSQL(con);
+            msgLog = "Saliendo de metodo: " + sTrace;
+            log.info(msgLog);
+        }
+
+    }
+
+    public Edificio sacrificarAnimalGrupoConfirmacion(DatosSacrificioActForm p_afDatos, Usuario p_oUsuario, Abadia p_oAbadia,
+                                                      MessageResources p_oResource, ActionMessages p_amMensajes,
+                                                      ArrayList<Notificacion> p_alNotas) throws AbadiaException {
+        String sTrace = this.getClass() + ".sacrificarAnimalGrupoConfirmacion()";
+        String msgLog = "Entrando en metodo: " + sTrace;
+        log.info(msgLog);
+
+        adAnimal oAnimalAD;
+        Edificio oEdificio = null;
+        adEdificio oEdificioAD;
+        int iNivel;
+        int iTipo;
+        String szFecha;
+        DatosSacrificioRecurso datosSacrificioRecurso;
+        DatosSacrificioAlimento datosSacrificioAlimento;
+
+        Connection con = null;
+
+        try {
+            con = ConnectionFactory.getConnection(Constantes.DB_CONEXION_ABADIAS, Constantes.AUTOCOMIT_OF);
+            oEdificioAD = new adEdificio(con);
+            oAnimalAD = new adAnimal(con);
+
+            for (DatosSacrificioGrupo datosSacrificioGrupo : p_afDatos.getListDatosSacrificioGrupo()) {
+                iNivel = datosSacrificioGrupo.getAnimal().getNivel();
+                iTipo = datosSacrificioGrupo.getAnimal().getTipoAnimalid();
+                szFecha = datosSacrificioGrupo.getAnimal().getFecha_nacimiento();
+                if (oEdificio == null) {
+                    oEdificio = oEdificioAD.recuperarEdificioPorTipoAnimal(p_oAbadia, iTipo, p_oUsuario);
+                }
+
+                datosSacrificioAlimento = datosSacrificioGrupo.getDatosAlimento();
+                datosSacrificioAlimento.setNumAnimales(datosSacrificioGrupo.getNumeroAnimales());
+                //eliminamos los animales sacrificados.
+                for (int iCount = 0; iCount < datosSacrificioGrupo.getNumeroAnimales(); iCount++) {
+                    oAnimalAD.eliminarAnimalTipo(iNivel, iTipo, szFecha, p_oAbadia.getIdDeAbadia());
+                }
+
+                //generamos los alimento propios del sacrificio del animal/es
+                sacrificarAnimalAlimento(datosSacrificioAlimento, p_oAbadia, p_oUsuario, p_oResource, p_amMensajes, con);
+
+                datosSacrificioRecurso = datosSacrificioGrupo.getDatosRecurso();
+                //si el sacrificio produce recursos..
+                if (datosSacrificioRecurso != null) {
+                    datosSacrificioRecurso.setNumAnimales(datosSacrificioGrupo.getNumeroAnimales());
+                    //generamos los recursos propios del sacrificio del animal/es
+                    sacrificarAnimalRecursos(datosSacrificioRecurso, p_oAbadia, p_oUsuario, p_oResource, p_amMensajes, con);
+                }
+            }
+
+            ConnectionFactory.commitTransaction(con);
+            return oEdificio;
+        } catch (SystemException e) {
+            ConnectionFactory.rollbackTransaction(con);
+            throw e;
+        } catch (CocinaLlenaException e) {
+            throw new EspacioInsuficienteEnCocina(sTrace, oEdificio, log);
         } finally {
             DBMSUtils.cerrarObjetoSQL(con);
             msgLog = "Saliendo de metodo: " + sTrace;
@@ -268,7 +406,7 @@ public class AnimalBBean {
 
     }
 
-    public void sacrificarAnimalAlimento(DatosSacrificioActForm datosSacrificio, Abadia abadia, Usuario usuario,
+    public void sacrificarAnimalAlimento(DatosSacrificioAlimento datosSacrificio, Abadia abadia, Usuario usuario,
                                          MessageResources resource, ActionMessages mensajes, Connection p_cConexion)
             throws AbadiaException {
         String sTrace = this.getClass() + ".sacrificarAnimalAlimento()";
@@ -316,7 +454,7 @@ public class AnimalBBean {
             alimentos = new adAlimentoLotes(p_cConexion);
             //recuperamos el espacio que ocupa una unidad de carne del animal en cuestión....
             volumen = alimentos.recuperarVolumen(datosSacrificio.getAlimento_id());
-            ctd = Utilidades.ObtenerMedia(datosSacrificio.getAlimento_min(), datosSacrificio.getAlimento_max()) * datosSacrificio.getNumAnimales();
+            ctd = Utilidades.ObtenerMedia((double) datosSacrificio.getAlimento_min(), (double) datosSacrificio.getAlimento_max()) * datosSacrificio.getNumAnimales();
 
             //me da el número de unidades que cabe en la cocina
             //si el espacio ocupado excede la capacidad de almacenamiento del edificio
@@ -432,6 +570,31 @@ public class AnimalBBean {
         }
     }
 
+    public void sacrificarAnimalAlimento(DatosSacrificioActForm datosSacrificio, Abadia abadia, Usuario usuario,
+                                         MessageResources resource, ActionMessages mensajes, Connection p_cConexion)
+            throws AbadiaException {
+        String sTrace = this.getClass() + ".sacrificarAnimalAlimento()";
+        String msgLog = "Entrando en metodo: " + sTrace;
+        log.info(msgLog);
+
+        try {
+
+            DatosSacrificioAlimento datosSacrificioAlimento = new DatosSacrificioAlimento();
+            datosSacrificioAlimento.setAlimento_id(datosSacrificio.getAlimento_id());
+            datosSacrificioAlimento.setAlimento_max(datosSacrificio.getAlimento_max());
+            datosSacrificioAlimento.setAlimento_min(datosSacrificio.getAlimento_min());
+            datosSacrificioAlimento.setNumAnimales(datosSacrificio.getNumAnimales());
+            datosSacrificioAlimento.setPrecio(datosSacrificio.getPrecio());
+            datosSacrificioAlimento.setUnidad_alimento(datosSacrificio.getUnidad_alimento());
+
+            sacrificarAnimalAlimento(datosSacrificioAlimento, abadia, usuario, resource, mensajes, p_cConexion);
+
+        } finally {
+            msgLog = "Saliendo de metodo: " + sTrace;
+            log.info(msgLog);
+        }
+    }
+
     /**
      * GEstiona la generacion de los recursos producidos por el sacrificio de un animal
      *
@@ -444,6 +607,83 @@ public class AnimalBBean {
      * @throws AbadiaException
      */
     public void sacrificarAnimalRecursos(DatosSacrificioActForm datosSacrificio, Abadia abadia, Usuario usuario, MessageResources resource, ActionMessages mensajes, Connection p_cConexion) throws AbadiaException {
+        String sTrace = this.getClass() + ".sacrificarAnimalRecursos()";
+        String msgLog = "Entrando en metodo: " + sTrace;
+        log.info(msgLog);
+
+        // adBeans
+        adEdificio edificios;
+        Mensajes msg = new Mensajes();
+        Recurso recurso;
+        adRecurso recursoAD;
+
+        try {
+            // Recuperamos los datos de la mercancia
+            // Es la cantidad correcta????
+            Edificio edif;
+            // Tenemos un edificio conveniente para almacenar el producto???
+            edificios = new adEdificio(p_cConexion);
+            edif = edificios.recuperarEdificioTipo(Constantes.EDIFICIO_ALMACEN, abadia, usuario);
+
+            //si no se encuentra el edificio Sotano/almacen, simplemente no producimos recursos...
+            if (edif != null) {
+                double ctd = Utilidades.ObtenerMedia(datosSacrificio.getRecurso_min(), datosSacrificio.getRecurso_max()) * datosSacrificio.getNumAnimales();
+                if (ctd > 0) {
+                    recurso = new Recurso();
+                    recurso.setAbadiaID(abadia.getIdDeAbadia());
+                    recurso.setRecursoID(datosSacrificio.getRecurso_id());
+                    recurso.setCantidad(ctd);
+
+                    //creamos o incrementamos el recurso producido del sacrificio
+                    recursoAD = new adRecurso(p_cConexion);
+                    if (recursoAD.existeRecurso(recurso.getRecursoID(), abadia.getIdDeAbadia())) {
+                        recursoAD.sumarRecurso(recurso.getRecursoID(), recurso.getAbadiaID(), recurso.getCantidad());
+                    } else {
+                        recursoAD.crearRecurso(recurso);
+                    }
+
+                    // Descripción
+
+                    // *************************************************************************
+                    // SE HA PROCESADO CON EXITO???, PUES GESTIONAR LOS RECURSOS, MENSAJES Y LA MERCANCIA
+                    // *************************************************************************
+                    // Mensajes para el usuario
+                    msg.setIdDeAbadia(abadia.getIdDeAbadia());
+                    msg.setFechaAbadia(CoreTiempo.getTiempoAbadiaStringConHoras());
+                    msg.setFechaReal(CoreTiempo.getTiempoRealStringConHoras());
+                    msg.setIdDeMonje(-1);
+                    msg.setIdDeRegion(abadia.getIdDeRegion());
+                    //mensajes.info.sacroficiorecursos=Con el sacrificio, has obtenido tambien {0} {1} de {2}
+                    String claves[] = {String.valueOf(Utilidades.redondear(ctd)), datosSacrificio.getUnidad_recurso(), datosSacrificio.getRecurso_desc()};
+
+                    mensajes.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("mensajes.info.sacroficiorecursos", claves));
+
+                    msg.setMensaje(resource.getMessage("mensajes.info.sacroficiorecursos", claves));
+
+                    adMensajes msgAD = new adMensajes(p_cConexion);
+                    msgAD.crearMensaje(msg);
+                }
+            }
+
+        } finally {
+            msgLog = "Saliendo de metodo: " + sTrace;
+            log.info(msgLog);
+        }
+
+    }
+
+    /**
+     * GEstiona la generacion de los recursos producidos por el sacrificio de un animal
+     *
+     * @param datosSacrificio
+     * @param abadia
+     * @param usuario
+     * @param resource
+     * @param mensajes
+     * @param p_cConexion
+     * @throws AbadiaException
+     */
+    public void sacrificarAnimalRecursos(DatosSacrificioRecurso datosSacrificio, Abadia abadia, Usuario usuario, MessageResources resource, ActionMessages mensajes, Connection p_cConexion) throws AbadiaException {
         String sTrace = this.getClass() + ".sacrificarAnimalRecursos()";
         String msgLog = "Entrando en metodo: " + sTrace;
         log.info(msgLog);
