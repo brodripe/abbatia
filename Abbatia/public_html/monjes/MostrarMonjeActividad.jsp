@@ -55,7 +55,8 @@
                 <table border="0">
                     <tr>
                         <td align="center" width="50" rowspan="5" valign="middle">
-                            <p align="center"><img src="/images/iconos/monje_2_${sessionScope.abadia.idDeOrden}.png"></td>
+                            <p align="center"><img src="/images/iconos/monje_2_${sessionScope.abadia.idDeOrden}.png">
+                        </td>
                         <td align="right"><b><bean:message key="monjes.abadia.nombre"/></b></td>
                         <td colspan="2">
                             <bean:write name="ActividadesMonjeForm" property="nombre"
@@ -230,16 +231,20 @@
 
 </center>
 
-<!--Inicio Script para google-analytics-->
+    <%--Modulo de estadisticas de google--%>
 <script type="text/javascript">
-    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-    document.write(unescape("%3Cscript src='" + gaJsHost +
-                            "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-    var pageTracker = _gat._getTracker("UA-302272-1");
-    pageTracker._initData();
-    pageTracker._trackPageview();
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-302272-1']);
+    _gaq.push(['_setDomainName', 'abbatia.net']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
 </script>
 <!--Fin Script para google-analytics-->
 

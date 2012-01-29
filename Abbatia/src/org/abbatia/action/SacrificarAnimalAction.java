@@ -63,7 +63,7 @@ public class SacrificarAnimalAction extends Action {
             } else if (sAccion.equals("grupo_confirmar")) {
                 edificio = oAnimalBBean.sacrificarAnimalGrupoConfirmacion(datos, usuario, abadia, resource, mensajes, notas);
                 //si el usuario no dispone de ningun animal de ese tipo....
-                request.getSession().setAttribute("location", "/mostrarEdificio.do?clave=" + edificio.getIdDeEdificio());
+                //request.getSession().setAttribute("location", "/mostrarEdificio.do?clave=" + edificio.getIdDeEdificio());
                 request.getSession().setAttribute("notificacion", notas);
                 request.getSession().setAttribute("SacrificioForm", new DatosSacrificioActForm());
                 saveMessages(request.getSession(), mensajes);

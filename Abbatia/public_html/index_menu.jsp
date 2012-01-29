@@ -49,7 +49,7 @@
 
         p = new createPanel('l', '<bean:message key="outlook.menu.monjes"/>');
         o.addPanel(p);
-        
+
         p.addButton('images/iconos/monje_2_${sessionScope.abadia.idDeOrden}.png', '<bean:message key="outlook.menu.monjes.muestra"/>', 'parent.principal.location="listarMonjes.do"');
         p.addButton('images/iconos/labrador.gif', '<bean:message key="outlook.menu.monjes.trabajos"/>', 'parent.principal.location="listarTrabajos.do"');
         p.addButton('images/iconos/monje_jerarquia.gif', '<bean:message key="outlook.menu.monjes.jerarquia"/>', 'parent.principal.location="mostrarDiplomacia.do"');
@@ -142,16 +142,24 @@
                 o.resize(0, 0, s.width, s.height);
             }
             else
-                if (bt.ns4) location.reload();
+            if (bt.ns4) location.reload();
         }
 
     </SCRIPT>
-    <!--Inicio Script para google-analytics-->
-    <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
-    </script>
+        <%--Modulo de estadisticas de google--%>
     <script type="text/javascript">
-        _uacct = "UA-302272-1";
-        urchinTracker();
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-302272-1']);
+        _gaq.push(['_setDomainName', 'abbatia.net']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
     </script>
     <!--Fin Script para google-analytics-->
 
@@ -163,7 +171,7 @@
     <script type="text/javascript">
         var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
         document.write(unescape("%3Cscript src='" + gaJsHost +
-                                "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+                "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
     </script>
     <script type="text/javascript">
         var pageTracker = _gat._getTracker("UA-302272-1");

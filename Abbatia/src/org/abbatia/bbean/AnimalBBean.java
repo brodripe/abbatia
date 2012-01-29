@@ -313,6 +313,7 @@ public class AnimalBBean {
                     sacrificarAnimalRecursos(datosSacrificioRecurso, p_oAbadia, p_oUsuario, p_oResource, p_amMensajes, con);
                 }
             }
+            p_alNotas.add(new Notificacion("/mostrarEdificio.do?clave=" + oEdificio.getIdDeEdificio(), p_oResource.getMessage("mensajes.link.volver.edificio", oEdificio.getNombre()), oEdificio.getGrafico_visualizacion() + "_" + oEdificio.getNivel() + ".gif", (short) 1));
 
             ConnectionFactory.commitTransaction(con);
             return oEdificio;

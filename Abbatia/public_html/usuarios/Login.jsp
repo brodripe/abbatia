@@ -7,14 +7,11 @@
 <%@ taglib uri="/WEB-INF/tld/struts-logic.tld" prefix="logic" %>
 
 <script type="text/javascript" language="JavaScript">
-    function validarCampos()
-    {
-        if (document.getElementById("usuario").value == "")
-        {
+    function validarCampos() {
+        if (document.getElementById("usuario").value == "") {
             return false;
         }
-        if (document.getElementById("pwd").value == "")
-        {
+        if (document.getElementById("pwd").value == "") {
             return false;
         }
 
@@ -85,72 +82,20 @@
     // -->
 </script>
 
-<%--<p>&nbsp;</p>
-
-<p>&nbsp;</p>--%>
-<%--<center>
-    <!-- Si disparamos el Action, recoger los datos de los libros e imprimirlos -->
-    <logic:present scope="session" name="isbn">
-
-        <!-- FICHA -->
-        <table border=0 cellpadding=0 cellspacing=0 width=350 bgcolor="#FFFFFF"
-               summary="Casa del Libro - libros : Comprar libros: arte, literatura, economía, derecho, diccionarios, informática, novela, viajes, gastronomía, ...">
-            <tr>
-                <td width=94></td>
-                <td width=13 rowspan=2></td>
-                <td width=243></td>
-            </tr>
-            <tr>
-                <td valign=top>
-
-                    <img src="images/casadellibro/<bean:write name="isbn" filter="false"/>.jpg"
-                         alt="<bean:write name="titulo" filter="false"/>" width="93" height="141" border=0 vspace=1
-                         hspace=1><br>
-
-                </td>
-                <td class=tgri11 valign=top align=left>
-                    <font class=tve11b><bean:write name="titulo" filter="false"/></font><br>
-                    <bean:message key="login.de"/>&nbsp;<span class="tve11u"><bean:write name="autor"
-                                                                                         filter="false"/></span>
-                    <br>
-                    <table border=0 cellpadding=4 cellspacing=4 width=100%>
-                        <tr>
-                            <td align=center valign=top class=tvg11b>
-
-                            </td>
-                            <td>
-                            </td>
-                        </tr>
-                    </table>
-                    <br>
-                    ISBN: <font class=tgrill><bean:write name="isbn" filter="false"/></font>
-                    <br><br>
-                    <a href="http://www.casadellibro.com/homeAfiliado?ca=499&isbn=<bean:write name="isbn" filter="false"/>"
-                       target="_blank"><img src="/images/casadellibro/anyadirabolsa.gif" width="96" height="21"
-                                            border="0" alt="Casa del Libro"></a>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=3><font class=tve11b><bean:message key="login.publicidad.casadellibro"/></font></td>
-            </tr>
-        </table>
-        <!-- FIN FICHA -->
-
-    </logic:present>
-</center>
-<p>&nbsp;
-</p>--%>
-
-<!--Inicio Script para google-analytics-->
+<%--Modulo de estadisticas de google--%>
 <script type="text/javascript">
-    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-    document.write(unescape("%3Cscript src='" + gaJsHost +
-                            "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-    var pageTracker = _gat._getTracker("UA-302272-1");
-    pageTracker._initData();
-    pageTracker._trackPageview();
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-302272-1']);
+    _gaq.push(['_setDomainName', 'abbatia.net']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
 </script>
 <!--Fin Script para google-analytics-->
 

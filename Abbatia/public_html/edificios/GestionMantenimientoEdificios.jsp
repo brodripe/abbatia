@@ -135,13 +135,8 @@
 
     <!--Inicio Script para google-analytics-->
     <script type="text/javascript">
-        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-        document.write(unescape("%3Cscript src='" + gaJsHost +
-                                "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-
         var counter = 0
-        function actualizarValores(p_TipoEdificioId, p_Nivel, p_Mantenimiento)
-        {
+        function actualizarValores(p_TipoEdificioId, p_Nivel, p_Mantenimiento) {
             var sumaTotal = 0;
             var sumaParcial = 0;
             console.log("actualizarValores(" + p_TipoEdificioId + ", " + p_Nivel + ", " + p_Mantenimiento + ")");
@@ -153,20 +148,16 @@
                     document.body.removeClassName('waiting');
                 },
                 onSuccess: function(transport, json) {
-                    if (json.executeError)
-                    {
+                    if (json.executeError) {
                         //console.log(json.executeError);
                         alert(json.executeError);
                     }
-                    else
-                    {
+                    else {
                         sumaParcial = json.coste * p_Mantenimiento;
                         $('totalLineaN_' + p_TipoEdificioId).innerHTML = sumaParcial;
                         $('totalLinea_' + p_TipoEdificioId).innerHTML = new String(sumaParcial.numberFormat('#,###')).replace(',', '.');
-                        for (counter = 0; counter < 30; counter++)
-                        {
-                            if ($('totalLinea_' + counter) != null)
-                            {
+                        for (counter = 0; counter < 30; counter++) {
+                            if ($('totalLinea_' + counter) != null) {
                                 sumaParcial = $('totalLineaN_' + counter).innerHTML;
                                 sumaTotal += parseFloat(sumaParcial);
                             }
@@ -178,12 +169,23 @@
             });
         }
     </script>
+    <%--Modulo de estadisticas de google--%>
     <script type="text/javascript">
-        var pageTracker = _gat._getTracker("UA-302272-1");
-        pageTracker._initData();
-        pageTracker._trackPageview();
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-302272-1']);
+        _gaq.push(['_setDomainName', 'abbatia.net']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
     </script>
     <!--Fin Script para google-analytics-->
+
 </div>
 <div id="container">
     <!-- Publicidad -->

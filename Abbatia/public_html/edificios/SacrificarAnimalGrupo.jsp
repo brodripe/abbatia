@@ -51,9 +51,9 @@
         <div class="alignCenter">
             <ul>
                 <li>
-                    <html:cancel onclick="this.disabled=true;history.back(1);">
+                    <html:button onclick="this.disabled=true;history.back(1);" property="id">
                         <bean:message key="general.atras"/>
-                    </html:cancel>
+                    </html:button>
                     <html:submit onclick="this.disabled=true; this.form.submit();">
                         <bean:message key="edificios.abadia.granja.sacrificar.confirmar"/>
                     </html:submit>

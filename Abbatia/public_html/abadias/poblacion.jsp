@@ -12,8 +12,7 @@
                 source4 = e.target
             if (source4.className == "menu")
                 source4.style.borderStyle = state
-            else
-            {
+            else {
                 while (source4.tagName != "TABLE") {
                     source4 = document.getElementById ? source4.parentNode : source4.parentElement
                     if (source4.className == "menu") {
@@ -106,16 +105,20 @@
         </logic:equal>
     </table>
 </center>
-<!--Inicio Script para google-analytics-->
+<%--Modulo de estadisticas de google--%>
 <script type="text/javascript">
-    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-    document.write(unescape("%3Cscript src='" + gaJsHost +
-                            "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-    var pageTracker = _gat._getTracker("UA-302272-1");
-    pageTracker._initData();
-    pageTracker._trackPageview();
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-302272-1']);
+    _gaq.push(['_setDomainName', 'abbatia.net']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
 </script>
 <!--Fin Script para google-analytics-->
 

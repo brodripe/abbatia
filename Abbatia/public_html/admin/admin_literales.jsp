@@ -13,7 +13,7 @@
     <script src="/theme/popup/effects.js" type="text/javascript"></script>
     <script src="/theme/popup/dragdrop.js" type="text/javascript"></script>
     <script src="/theme/popup/popup.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="/theme/popup/popup.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/popup/popup.css" type="text/css"/>
     <title>Literales</title>
 </head>
 <body bgcolor="#E1C08B">
@@ -134,20 +134,6 @@
         <p align="center"><input type="submit" value="Modificar" name="Modifica"></p>
     </form>
     &nbsp;
-    <!--Inicio Script para google-analytics-->
-    <script type="text/javascript">
-        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-        document.write(unescape("%3Cscript src='" + gaJsHost +
-                                "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-    <script type="text/javascript">
-        var pageTracker = _gat._getTracker("UA-302272-1");
-        pageTracker._initData();
-        pageTracker._trackPageview();
-    </script>
-
-    <!--Fin Script para google-analytics-->
-
     <div id="nuevo_literal" class="popup">
         <h3>Introduce el texto correspondiente al literal en Castellano</h3>
         <html:form action="/nuevo_literal">
@@ -156,9 +142,24 @@
     </div>
     <script type="text/javascript">
         //<![CDATA[
-        new Popup('nuevo_literal','popup_nuevo_literal',{modal:true})
+        new Popup('nuevo_literal', 'popup_nuevo_literal', {modal:true})
         //]]>
     </script>
 </body>
-
+<%--Modulo de estadisticas de google--%>
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-302272-1']);
+    _gaq.push(['_setDomainName', 'abbatia.net']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+<!--Fin Script para google-analytics-->
 </html>
