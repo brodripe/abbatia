@@ -80,7 +80,7 @@
         <td width="300" height="100" background="images/head-frame-bot.gif">
         </td>
         <td background="images/head-frame-bot.gif" align="center">
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                 <input type="hidden" name="cmd" value="_s-xclick">
                 <input type="hidden" name="hosted_button_id" value="9756248">
                 <input type="image" src="http://www.abbatia.net/images/iconos/x-click-but04.gif" border="0"
