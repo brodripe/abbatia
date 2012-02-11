@@ -1003,11 +1003,6 @@ table.detallemonje td, table.detallemonje th {
 
 }
 
-#bookFilter li.sacrificar {
-    padding: 0.8em 0.9em 0.5em 1.7em;
-    background: url(/images/iconos/16/icon_dead.png) no-repeat center left;
-}
-
 #bookFilter li.three {
     padding: 0.8em 0.9em 0.5em 1.7em;
     background: url(/images/ojo.png) no-repeat center left;
@@ -1207,4 +1202,3 @@ table.contenidoedificio tbody tr:hover {
 
 }
 
-    }

@@ -675,10 +675,21 @@ public class adAnimal extends adbeans {
     }
 
     public int recuperarCantidad(long abadia, int nivel, int tipo, String sFecha) throws AbadiaException {
+        return recuperarCantidad(abadia, nivel, tipo, sFecha, 99);
+    }
+
+    public int recuperarCantidad(long abadia, int nivel, int tipo, String sFecha, int estado) throws AbadiaException {
 
         String sSQL = "SELECT count(*) as CANTIDAD " +
                 " from animales as a, edificio as e " +
-                " where e.abadiaid=? and e.edificioid=a.edificioid and a.nivel=? and a.fecha_nacimiento=? and a.tipo_animalid=? AND a.ESTADO=0 AND a.FECHA_FALLECIMIENTO is null and a.FECHA_EMBARAZO is null ";
+                " where e.abadiaid=? and e.edificioid=a.edificioid and a.nivel=? and " +
+                "   a.fecha_nacimiento=? and a.tipo_animalid=? AND a.ESTADO=0 AND " +
+                "   a.FECHA_FALLECIMIENTO is null and a.FECHA_EMBARAZO is null ";
+
+        //verificamos si se debe filtrar por el valor "aislado"
+        if (estado == 0) {
+            sSQL = sSQL + " and a.AISLADO=0 ";
+        }
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
@@ -700,6 +711,7 @@ public class adAnimal extends adbeans {
         }
 
     }
+
 
     public int recuperarSalud(long abadia, int nivel, int tipo, String sFecha) throws AbadiaException {
 
@@ -963,6 +975,29 @@ public class adAnimal extends adbeans {
                 ps2 = null;
             }
 
+        } catch (SQLException e) {
+            throw new AbadiaSQLException("adAnimal. venderAnimalTipo. SQLException.", e, log);
+        } finally {
+            DBMSUtils.cerrarObjetoSQL(rs);
+            DBMSUtils.cerrarObjetoSQL(ps);
+        }
+
+    }
+
+    public void eliminarAnimalTipoGrupo(int p_iNivel, int p_iTipo, String p_szFecha, long idAbadia) throws AbadiaSQLException {
+        String sSQL = " DELETE a FROM animales AS a " +
+                " INNER JOIN edificio AS e ON a.EDIFICIOID = e.EDIFICIOID " +
+                " WHERE e.ABADIAID = ? AND a.AISLADO = 0 AND a.ESTADO = 0 AND a.FECHA_EMBARAZO IS NULL " +
+                " AND a.FECHA_FALLECIMIENTO IS NULL AND a.NIVEL = ? AND a.TIPO_ANIMALID = ? AND a.FECHA_NACIMIENTO = ? ";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = con.prepareStatement(sSQL);
+            ps.setLong(1, idAbadia);
+            ps.setInt(2, p_iNivel);
+            ps.setInt(3, p_iTipo);
+            ps.setString(4, p_szFecha);
+            ps.execute();
         } catch (SQLException e) {
             throw new AbadiaSQLException("adAnimal. venderAnimalTipo. SQLException.", e, log);
         } finally {

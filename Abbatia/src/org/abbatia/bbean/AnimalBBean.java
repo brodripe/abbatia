@@ -200,7 +200,7 @@ public class AnimalBBean {
                 oDatosSacrificio.setAnimal(oAnimal);
                 oDatosSacrificio.setDatosAlimento(oAnimalAD.getProduccionPotencialAlimentos(iNivel, iTipo, szFecha, p_oUsuario));
                 oDatosSacrificio.setDatosRecurso(oAnimalAD.getProduccionPotencialRecursos(iNivel, iTipo, szFecha, p_oUsuario));
-                oDatosSacrificio.setNumeroAnimales(oAnimalAD.recuperarCantidad(p_oAbadia.getIdDeAbadia(), iNivel, iTipo, szFecha));
+                oDatosSacrificio.setNumeroAnimales(oAnimalAD.recuperarCantidad(p_oAbadia.getIdDeAbadia(), iNivel, iTipo, szFecha, 0));
                 lstDatosSacrificio.add(oDatosSacrificio);
             }
 
@@ -298,9 +298,7 @@ public class AnimalBBean {
                 datosSacrificioAlimento = datosSacrificioGrupo.getDatosAlimento();
                 datosSacrificioAlimento.setNumAnimales(datosSacrificioGrupo.getNumeroAnimales());
                 //eliminamos los animales sacrificados.
-                for (int iCount = 0; iCount < datosSacrificioGrupo.getNumeroAnimales(); iCount++) {
-                    oAnimalAD.eliminarAnimalTipo(iNivel, iTipo, szFecha, p_oAbadia.getIdDeAbadia());
-                }
+                oAnimalAD.eliminarAnimalTipoGrupo(iNivel, iTipo, szFecha, p_oAbadia.getIdDeAbadia());
 
                 //generamos los alimento propios del sacrificio del animal/es
                 sacrificarAnimalAlimento(datosSacrificioAlimento, p_oAbadia, p_oUsuario, p_oResource, p_amMensajes, con);
@@ -587,6 +585,8 @@ public class AnimalBBean {
             datosSacrificioAlimento.setNumAnimales(datosSacrificio.getNumAnimales());
             datosSacrificioAlimento.setPrecio(datosSacrificio.getPrecio());
             datosSacrificioAlimento.setUnidad_alimento(datosSacrificio.getUnidad_alimento());
+            datosSacrificioAlimento.setAlimento_desc(datosSacrificio.getAlimento_desc());
+            datosSacrificioAlimento.setAnimal_desc(datosSacrificio.getAnimal_desc());
 
             sacrificarAnimalAlimento(datosSacrificioAlimento, abadia, usuario, resource, mensajes, p_cConexion);
 

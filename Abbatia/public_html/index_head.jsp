@@ -77,6 +77,7 @@
             <img STYLE="position:absolute;top:0; left:0;" border="0" src="images/head-frame-left.gif"/>
             <img STYLE="position:absolute;top:0; left:20;" SRC="images/underconstructionchurch.jpg"/>
         </td>
+
         <td width="300" height="100" background="images/head-frame-bot.gif">
         </td>
         <td background="images/head-frame-bot.gif" align="center">
