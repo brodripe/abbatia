@@ -1,3 +1,8 @@
+<%@ page import="org.abbatia.bean.Animal" %>
+<%@ page import="org.abbatia.bean.Edificio" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Iterator" %>
+<%@ page import="java.util.StringTokenizer" %>
 <%@ taglib uri="/WEB-INF/tld/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/tld/struts-bean.tld" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/tld/struts-logic.tld" prefix="logic" %>
@@ -81,85 +86,101 @@
 %>
 <html:form action="/sacrificar_animal_grupo">
     <div id="bookFilter">
-        <ul class="floatLeft">
-            <li class="three">
+            <%--
+                    <ul class="floatLeft">
+                        <li class="three">
+                            <c:if test="${sessionScope.pagesize==1000}">
+                                <html:link action="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}&pagesize=10">
+                                    <bean:message key="edificios.abadia.cocina.alimentos.filtro.paginacion"/>
+                                </html:link>
+                            </c:if>
+                            <c:if test="${sessionScope.pagesize!=1000}">
+                                <html:link
+                                        action="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}&pagesize=1000">
+                                    <bean:message key="edificios.abadia.cocina.alimentos.filtro.todos"/>
+                                </html:link>
+                            </c:if>
+                        </li>
+                    </ul>
+            --%>
+        <ul class="floatRight">
+            <li class="alamiddle">
                 <c:if test="${sessionScope.pagesize==1000}">
-                    <html:link action="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}&pagesize=10">
-                        <bean:message key="edificios.abadia.cocina.alimentos.filtro.paginacion"/>
+                <html:link action="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}&pagesize=10">
+                        <span class="ojo2"><bean:message key="edificios.abadia.cocina.alimentos.filtro.paginacion"/>
                     </html:link>
                 </c:if>
                 <c:if test="${sessionScope.pagesize!=1000}">
                     <html:link
                             action="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}&pagesize=1000">
-                        <bean:message key="edificios.abadia.cocina.alimentos.filtro.todos"/>
+                        <span class="ojo2"><bean:message key="edificios.abadia.cocina.alimentos.filtro.todos"/>
                     </html:link>
                 </c:if>
             </li>
-        </ul>
-        <ul class="floatRight">
-            <li class="vaca">
+            <li class="alamiddle">
                 <html:link action="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}&tipoAnimal=2|11|1">
-                    Vaca
+                    <span class="vaca"></span><bean:message key="animal.vaca"/>
                 </html:link>
             </li>
-            <li class="oveja">
+            <li class="alamiddle">
                 <html:link action="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}&tipoAnimal=14|15">
-                    Oveja
+                    <span class="oveja"></span><bean:message key="animal.oveja"/>
                 </html:link>
             </li>
-            <li class="cabra">
+            <li class="alamiddle">
                 <html:link action="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}&tipoAnimal=13|12">
-                    Cabra
+                    <span class="cabra"></span><bean:message key="animal.cabra"/>
                 </html:link>
             </li>
-            <li class="cerdo">
+            <li class="alamiddle">
                 <html:link action="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}&tipoAnimal=8|9">
-                    Cerdo
+                    <span class="cerdo"></span><bean:message key="animal.cerdo"/>
                 </html:link>
             </li>
-            <li class="conejo">
+            <li class="alamiddle">
                 <html:link action="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}&tipoAnimal=5|10">
-                    Conejo
+                    <span class="conejo"></span><bean:message key="animal.conejo"/>
                 </html:link>
             </li>
-            <li class="gallina">
+            <li class="alamiddle">
                 <html:link action="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}&tipoAnimal=4|6">
-                    Gallina
+                    <span class="gallina"></span><bean:message key="animal.gallina"/>
                 </html:link>
             </li>
-            <li class="ganso">
+            <li class="alamiddle">
                 <html:link action="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}&tipoAnimal=18|19">
-                    Ganso
+                    <span class="ganso"></span><bean:message key="animal.ganso"/>
                 </html:link>
             </li>
-            <li class="faisan">
+            <li class="alamiddle">
                 <html:link action="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}&tipoAnimal=20|21">
-                    Faisan
+                    <span class="faisan"></span><bean:message key="animal.faisan"/>
                 </html:link>
             </li>
-            <li class="codorniz">
+            <li class="alamiddle">
                 <html:link action="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}&tipoAnimal=24|25">
-                    Codorniz
+                    <span class="codorniz"></span><bean:message key="animal.codorniz"/>
                 </html:link>
             </li>
-            <li class="pato">
+            <li class="alamiddle">
                 <html:link action="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}&tipoAnimal=22|23">
-                    Pato
+                    <span class="pato"></span><bean:message key="animal.pato"/>
                 </html:link>
             </li>
-            <li class="perdiz">
+            <li class="alamiddle">
                 <html:link action="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}&tipoAnimal=26|27">
-                    Perdiz
+                    <span class="perdiz"></span><bean:message key="animal.perdiz"/>
                 </html:link>
             </li>
-            <li class="todos">
+            <li class="alamiddle">
                 <html:link action="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}&tipoAnimal=">
-                    Todos
+                    <span class="todos"></span><bean:message key="animal.todos"/>
                 </html:link>
             </li>
-            <li class="sacrificar">
+            <li class="alamiddle">
                 <a href="#" onclick="document.SacrificioForm.submit();">
-                    <bean:message key="edificios.abadia.granja.animales.tabla.sacrificar.grupo"/>
+                    <span class="sacrificar"></span><bean:message
+                        key="edificios.abadia.granja.animales.tabla.sacrificar.grupo"/>
                 </a>
             </li>
         </ul>
@@ -168,7 +189,7 @@
     <!-- Animales Normal -->
     <display:table name="pageScope.AnimalesNormal" uid="edificio_granja" pagesize="${sessionScope.pagesize}"
                    export="true" requestURI="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}"
-                   sort="list" class="granja alignCenter">
+                   sort="list" class="contenidoedificio alignCenter">
         <display:setProperty name="export.xsl.filename" value="edificio_granja.xsl"/>
         <display:setProperty name="export.pdf.filename" value="edificio_granja.pdf"/>
         <display:setProperty name="export.csv.filename" value="edificio_granja.csv"/>
@@ -225,7 +246,7 @@
 <!-- Animales Aislados -->
 <display:table name="pageScope.AnimalesAislados" uid="edificio_granja_aislados" pagesize="${sessionScope.pagesize}"
                export="true" requestURI="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}"
-               sort="list" class="granja alignCenter">
+               sort="list" class="contenidoedificio alignCenter">
     <display:setProperty name="export.xsl.filename" value="edificio_granja_aislados.xsl"/>
     <display:setProperty name="export.pdf.filename" value="edificio_granja_aislados.pdf"/>
     <display:setProperty name="export.csv.filename" value="edificio_granja_aislados.csv"/>
@@ -273,7 +294,7 @@
 <!-- Animales Embarazados -->
 <display:table name="pageScope.AnimalesEmbarazo" uid="edificio_granja_embarazo" pagesize="${sessionScope.pagesize}"
                export="true" requestURI="/mostrarEdificio.do?clave=${requestScope.Edificio.idDeEdificio}"
-               sort="list" class="granja alignCenter">
+               sort="list" class="contenidoedificio alignCenter">
     <display:setProperty name="export.xsl.filename" value="edificio_granja_embarazo.xsl"/>
     <display:setProperty name="export.pdf.filename" value="edificio_granja_embarazo.pdf"/>
     <display:setProperty name="export.csv.filename" value="edificio_granja_embarazo.csv"/>

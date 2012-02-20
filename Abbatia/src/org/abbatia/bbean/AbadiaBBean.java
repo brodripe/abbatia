@@ -117,10 +117,10 @@ public class AbadiaBBean {
                 sSQLRegion = " regionid=" + p_oAbadia.getIdDeRegion() + " and ";
 
             if (p_afDatosFiltro.getBusqueda() == 1) {
-                nrAbadias = oUtilsAD.getSQL("Select Count(*) from abadia where " + sSQLRegion + " nombre like '%" + p_afDatosFiltro.getSearch() + "%'", 0);
+                nrAbadias = oUtilsAD.getSQL("Select Count(*) from abadia, usuario where abadia.usuarioid=usuario.usuarioid and usuario.abadia_congelada=0 and " + sSQLRegion + " abadia.nombre like '%" + p_afDatosFiltro.getSearch() + "%'", 0);
                 // Directamente a la opción
                 if (nrAbadias == 1) {
-                    iAbadiaId = oUtilsAD.getSQL("Select abadiaid from abadia where " + sSQLRegion + " nombre like '%" + p_afDatosFiltro.getSearch() + "%'", 0);
+                    iAbadiaId = oUtilsAD.getSQL("Select abadia.abadiaid from abadia, usuario where abadia.usuarioid=usuario.usuarioid and usuario.abadia_congelada=0 and " + sSQLRegion + " abadia.nombre like '%" + p_afDatosFiltro.getSearch() + "%'", 0);
                     Utilidades.eliminarRegistroContext(p_oUsuario.getNick());
                     switch (p_afDatosFiltro.getOpcion()) {
                         case 2:  // viajar a una abbatia

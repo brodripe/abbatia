@@ -36,8 +36,8 @@ public class adObispado extends adbeans {
 
     public ArrayList<Table> recuperarAbadiasRegion(MessageResources resource, int regionid, BuscarAbadiaActForm datosFiltro) throws AbadiaException {
         String sSQL = "Select a.abadiaid, a.nombre as NOMBRE_ABADIA, o.descripcion as NOMBRE_ORDEN, apu.total " +
-                "from abadia a, orden_eclesiastica o, abadia_puntuacion_ultima apu WHERE o.ordenid = a.ordenid " +
-                " and a.regionid = ? and a.abadiaid = apu.abadiaid";
+                " from abadia a, orden_eclesiastica o, abadia_puntuacion_ultima apu, usuario u WHERE o.ordenid = a.ordenid " +
+                " and a.regionid = ? and a.abadiaid = apu.abadiaid and a.usuarioid=u.usuarioid and u.abadia_congelada=0";
 
         ArrayList<Table> Contents = new ArrayList<Table>();
         HTML cHTML = new HTML();

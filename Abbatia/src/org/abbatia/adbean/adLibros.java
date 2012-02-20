@@ -1239,9 +1239,9 @@ public class adLibros extends adbeans {
      */
     public ArrayList<Libro> recuperarLibrosProceso(int idPeriodo) throws AbadiaException {
         //Definición de cadena sql de consulta
-        String sSQL = "select l.paginas_copiadas,l.abadiaid, l.libroid, l.libroid_origen, l.idiomaid, l.idiomaid_origen,  ln.paginas, l.desgaste, lt.monjeid, l.fecha_creacion, l.abadiaid_copia, l.estado, l.nivel, u.idiomaid as idioma_usuario, l.tipo_libroid, r.idiomaid as idioma_region, l.desgaste " +
-                " from libro l, libro_nivel ln, libro_tarea lt, monje m, abadia a, usuario u, region r " +
-                " where l.tipo_libroid = ln.tipo_libroid and l.nivel = ln.nivel and lt.monjeid = m.monjeid and m.abadiaid = a.abadiaid and a.usuarioid = u.usuarioid and a.regionid = r.regionid and " +
+        String sSQL = "select l.paginas_copiadas,l.abadiaid, l.libroid, l.libroid_origen, l.idiomaid, l.idiomaid_origen,  ln.paginas, l.desgaste, lt.monjeid, l.fecha_creacion, l.abadiaid_copia, l.estado, l.nivel, u.idiomaid as idioma_usuario, l.tipo_libroid, r.idiomaid as idioma_region " +
+                " from libro l, libro_nivel ln, libro_tarea lt, abadia a, usuario u, region r " +
+                " where l.tipo_libroid = ln.tipo_libroid and l.nivel = ln.nivel and l.abadiaid_copia = a.abadiaid and a.usuarioid = u.usuarioid and a.regionid = r.regionid and " +
                 " l.estado in (0,1,3) and lt.libro_copiaid = l.libroid and u.abadia_congelada=0 and lt.periodoid = ? order by l.abadiaid, u.idiomaid";
         //creo un objeto de tipo Recurso
 
