@@ -598,7 +598,7 @@ public class adUtils extends adbeans {
                 " WHERE a.regionid = r.regionid and a.dummy = 0 and a.abadiaid = ap.abadiaid and ap.total > 0 " +
                 " GROUP by a.regionid " +
                 " ORDER by contar " +
-                " LIMIT 10 ";
+                " LIMIT " + Constantes.NUMERO_REGIONES_SELECCIONABLES_ALTA;
 
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -792,8 +792,7 @@ public class adUtils extends adbeans {
             Inicio.setUltimosAcontecimientos(alTable);
 
             return Inicio;
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new AbadiaSQLException("adUtils. getInicioMain. SQLException.", e, log);
         } finally {
             DBMSUtils.cerrarObjetoSQL(rs);
@@ -893,8 +892,7 @@ public class adUtils extends adbeans {
                 Inicio.setCountMejoresAbadias(getSQL(sSQLCount, 0));
             }
             return Inicio;
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new AbadiaSQLException("Se ha producido un error getTopUsers conexiones.", e, log);
         } finally {
             DBMSUtils.cerrarObjetoSQL(rs);
@@ -1101,8 +1099,7 @@ public class adUtils extends adbeans {
             String r = utils.getSQL("SELECT valor FROM `propiedad_valor` pv WHERE pv.propiedadid = " + propiedadID +
                     " AND pv.claveid = " + clave + " AND pv.tipo = '" + tipo + "'", defecto);
             return r;
-        }
-        catch (AbadiaSQLException ex) {
+        } catch (AbadiaSQLException ex) {
             return defecto;
         }
     }
@@ -1113,8 +1110,7 @@ public class adUtils extends adbeans {
             int r = utils.getSQL("SELECT valor FROM `propiedad_valor` pv WHERE pv.propiedadid = " + propiedadID +
                     " AND pv.claveid = " + clave + " AND pv.tipo = '" + tipo + "'", defecto);
             return r;
-        }
-        catch (AbadiaSQLException ex) {
+        } catch (AbadiaSQLException ex) {
             return defecto;
         }
     }

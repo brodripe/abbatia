@@ -457,5 +457,10 @@ public class Constantes {
     public static int FORZAR_RETORNO_LIBRO_DETERIORADO = 12113;
     // Regresa a casa, sus hermanos le necesitan
     public static int FORZAR_RETORNO_ABADIA_SIN_MONJES = 12114;
+    //dejar la abadía, el usuario congela la cuenta
+    public static int FORZAR_RETORNO_ABADIA_CONGELADA_PROPIA = 12115;
+    public static int FORZAR_RETORNO_ABADIA_CONGELADA_AJENA = 12116;
+
+    public static int NUMERO_REGIONES_SELECCIONABLES_ALTA = 2;
 
 }

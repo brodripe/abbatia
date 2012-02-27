@@ -16,6 +16,11 @@
     <link REL="STYLESHEET" HREF="/theme/styles.css" TYPE="text/css"/>
     <link REL="STYLESHEET" HREF="/theme/style-global.css" TYPE="text/css"/>
     <link REL="STYLESHEET" HREF="/theme/style-revised.css" TYPE="text/css"/>
+    <script type="text/javascript">
+        function confirmarCongelacion() {
+            return confirm('<bean:message key="usuario.opcion.congelar.confirmacion"/>');
+        }
+    </script>
 </head>
 <body bgcolor="#E1C08B">
 
@@ -46,7 +51,7 @@
                             </html:link>
                         </td>
                         <td width="90" align="center" valign="bottom">
-                            <html:link action="/bloquear_abadia">
+                            <html:link action="/bloquear_abadia" onclick="return confirmarCongelacion()">
                                 <html:img border="0" page="/images/iconos/abadia_congelar.gif"/> <br/>
                                 <bean:message key="usuario.opcion.congelar"/>
                                 &nbsp;<img src="/images/iconos/16/registrado.gif" border="0">

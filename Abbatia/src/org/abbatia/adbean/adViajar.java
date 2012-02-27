@@ -285,11 +285,10 @@ public class adViajar extends adbeans {
         }
     }
 
-    public void forzarVueltaProceso(MonjeProceso monje, int p_iCausaVuelta) throws AbadiaException {
+    public void forzarVueltaProceso(MonjeBase monje, int p_iCausaVuelta) throws AbadiaException {
         String msg1;
         int idLibroOrigen;
         int idLibroCopia;
-        int idAbadiaVisita;
         adLibros libroAD;
         adUtils utils;
         adRecurso oRecursoAD;

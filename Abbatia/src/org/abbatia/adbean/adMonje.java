@@ -1967,10 +1967,15 @@ public class adMonje extends adbeans {
     }
 
     public ArrayList<MonjeInicio> recuperarMonjesInvitados(Usuario usuario, Abadia abadia) throws AbadiaException {
-        String sSQL = "SELECT m.MONJEID, m.NOMBRE, l.LITERAL, a.NOMBRE AS NOMBRE_ABADIA " +
+        return recuperarMonjesInvitados(usuario.getIdDeIdioma(), abadia.getIdDeAbadia());
+    }
+
+    public ArrayList<MonjeInicio> recuperarMonjesInvitados(int p_iIdiomaId, int p_iAbadiaId) throws AbadiaException {
+        String sSQL = "SELECT m.MONJEID, m.NOMBRE, m.ABADIAID, l.LITERAL, a.NOMBRE AS NOMBRE_ABADIA " +
                 " from monje m, literales l, jerarquia_eclesiastica j, monje_visita mv, abadia a " +
-                " where mv.abadiaid = a.abadiaid and m.monjeid = mv.monjeid and mv.abadiaID_destino = ? and m.estado = " + Constantes.MONJE_VISITA + " and m.jerarquiaid = j.jerarquiaid and j.literalid=l.literalid and l.idiomaid = " + usuario.getIdDeIdioma() +
-                " order by a.NOMBRE ";
+                " where mv.abadiaid = a.abadiaid and m.monjeid = mv.monjeid and mv.abadiaID_destino = ? " +
+                " and m.estado = " + Constantes.MONJE_VISITA + " and m.jerarquiaid = j.jerarquiaid and " +
+                " j.literalid=l.literalid and l.idiomaid = " + p_iIdiomaId + " order by a.NOMBRE ";
 
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -1978,11 +1983,12 @@ public class adMonje extends adbeans {
         ArrayList<MonjeInicio> alMonjes = new ArrayList<MonjeInicio>();
         try {
             ps = con.prepareStatement(sSQL);
-            ps.setInt(1, abadia.getIdDeAbadia());
+            ps.setInt(1, p_iAbadiaId);
             rs = ps.executeQuery();
             while (rs.next()) {
                 monje = new MonjeInicio();
                 monje.setIdMonje(rs.getInt("MONJEID"));
+                monje.setIdAbadia(rs.getInt("ABADIAID"));
                 monje.setNombreMonje(rs.getString("NOMBRE"));
                 monje.setNombreAbadia(rs.getString("NOMBRE_ABADIA"));
                 monje.setLiteral(rs.getString("LITERAL"));
@@ -2032,9 +2038,13 @@ public class adMonje extends adbeans {
     }
 
     public ArrayList<MonjeInicio> recuperarMonjesVisita(Usuario usuario, Abadia abadia) throws AbadiaException {
-        String sSQL = "SELECT m.MONJEID, m.NOMBRE, l.LITERAL, a.NOMBRE AS NOMBRE_ABADIA " +
+        return recuperarMonjesVisita(usuario.getIdDeIdioma(), abadia.getIdDeAbadia());
+    }
+
+    public ArrayList<MonjeInicio> recuperarMonjesVisita(int p_iIdiomaId, int p_iAbadiaId) throws AbadiaException {
+        String sSQL = "SELECT m.MONJEID, m.NOMBRE, m.ABADIAID, l.LITERAL, a.NOMBRE AS NOMBRE_ABADIA " +
                 " from monje m, literales l, jerarquia_eclesiastica j, monje_visita mv, abadia a " +
-                " where mv.abadiaid_destino = a.abadiaid and m.monjeid = mv.monjeid and mv.abadiaid = ? and m.estado = " + Constantes.MONJE_VISITA + " and m.jerarquiaid = j.jerarquiaid and j.literalid=l.literalid and l.idiomaid = " + usuario.getIdDeIdioma() +
+                " where mv.abadiaid_destino = a.abadiaid and m.monjeid = mv.monjeid and mv.abadiaid = ? and m.estado = " + Constantes.MONJE_VISITA + " and m.jerarquiaid = j.jerarquiaid and j.literalid=l.literalid and l.idiomaid = " + p_iIdiomaId +
                 " order by m.jerarquiaid desc";
 
         PreparedStatement ps = null;
@@ -2043,11 +2053,12 @@ public class adMonje extends adbeans {
         ArrayList<MonjeInicio> alMonjes = new ArrayList<MonjeInicio>();
         try {
             ps = con.prepareStatement(sSQL);
-            ps.setInt(1, abadia.getIdDeAbadia());
+            ps.setInt(1, p_iAbadiaId);
             rs = ps.executeQuery();
             while (rs.next()) {
                 monje = new MonjeInicio();
                 monje.setIdMonje(rs.getInt("MONJEID"));
+                monje.setIdAbadia(rs.getInt("ABADIAID"));
                 monje.setNombreMonje(rs.getString("NOMBRE"));
                 monje.setNombreAbadia(rs.getString("NOMBRE_ABADIA"));
                 monje.setLiteral(rs.getString("LITERAL"));

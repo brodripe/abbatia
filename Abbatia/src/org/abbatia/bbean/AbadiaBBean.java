@@ -26,6 +26,7 @@ import java.io.Serializable;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -258,6 +259,10 @@ public class AbadiaBBean {
         log.info(msgLog);
 
         adUtils oUtilsAD;
+        adMonje oMonjeAD;
+        adViajar oViajarAD;
+        List<MonjeInicio> listaMonjesInvitados = new ArrayList<MonjeInicio>();
+        List<MonjeInicio> listaMonjesVisita = new ArrayList<MonjeInicio>();
 
         String sSQL;
 
@@ -287,6 +292,22 @@ public class AbadiaBBean {
                 sSQL += "WHERE usuarioid=" + p_lUsuarioId;
             }
             oUtilsAD.execSQL(sSQL);
+            //si se congela la abadía...
+            if (p_iOpcion == 1) {
+                //proceso para expulsar a los monges de visita y los de viaje.
+                //1 - Recuperar la lista de monjes que visitan la abadia
+                oMonjeAD = new adMonje(con);
+                oViajarAD = new adViajar(con);
+                listaMonjesInvitados = oMonjeAD.recuperarMonjesInvitados(1, p_iAbadiaId);
+                //2 - Recuperar la lista de monjes que están de viaje
+                listaMonjesVisita = oMonjeAD.recuperarMonjesVisita(1, p_iAbadiaId);
+                for (MonjeInicio monjeInicio : listaMonjesInvitados) {
+                    oViajarAD.forzarVueltaProceso(monjeInicio, Constantes.FORZAR_RETORNO_ABADIA_CONGELADA_PROPIA);
+                }
+                for (MonjeInicio monjeInicio : listaMonjesVisita) {
+                    oViajarAD.forzarVueltaProceso(monjeInicio, Constantes.FORZAR_RETORNO_ABADIA_CONGELADA_AJENA);
+                }
+            }
 
         } catch (AbadiaException e) {
             throw new AbadiaSQLException(sTrace, e, log);
