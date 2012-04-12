@@ -12,6 +12,8 @@ import org.abbatia.bean.Usuario;
 import org.abbatia.dbms.ConnectionFactory;
 import org.abbatia.dbms.DBMSUtils;
 import org.abbatia.exception.AbadiaSQLException;
+import org.abbatia.exception.EstadoLibroIncorrectoException;
+import org.abbatia.exception.LibroNoEncontradoException;
 import org.abbatia.exception.RestauracionLibroException;
 import org.abbatia.exception.base.AbadiaException;
 import org.abbatia.utils.Constantes;
@@ -27,6 +29,7 @@ import org.apache.struts.util.MessageResources;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Benjamín Rodríguez.
@@ -622,6 +625,61 @@ public class LibroBBean {
         }
 
 
+    }
+
+    public int desmontarLibro(Abadia p_oAbadia, int p_iLibro) throws AbadiaException {
+        String sTrace = this.getClass() + ".desmontarLibro()";
+        String msgLog = "Entrando en metodo: " + sTrace;
+        log.info(msgLog);
+
+        int iNumPaginasRecuperadas = 0;
+        adLibros oLibroAD;
+        adRecurso oRecursoAD;
+        Libro oLibro;
+        Random r = new Random(System.currentTimeMillis());
+
+        int iDiferencial;
+
+        Connection con = null;
+        try {
+            con = ConnectionFactory.getConnection(Constantes.DB_CONEXION_ABADIAS);
+            oLibroAD = new adLibros(con);
+            //Recuperar el detalle del libro
+            oLibro = oLibroAD.recuperarLibro(p_iLibro);
+            //validar si el libro pertenece a la abadía
+            if (oLibro.getIdAbadia() == p_oAbadia.getIdDeAbadia())
+            //calcular el número de páginas obtenidas
+            {
+                //validar también que el libro no esté siendo copiado
+                if (oLibro.getEstado() == Constantes.ESTADO_LIBRO_COMPLETO ||
+                        oLibro.getEstado() == Constantes.ESTADO_LIBRO_DETERIORADO ||
+                        oLibro.getEstado() == Constantes.ESTADO_LIBRO_INCOMPLETO ||
+                        oLibro.getEstado() == Constantes.ESTADO_LIBRO_RESTAURANDO ||
+                        oLibro.getEstado() == Constantes.ESTADO_LIBRO_SIN_ENCUADERNAR) {
+                    //obtengo un diferencial entre 30 y 80
+                    iDiferencial = r.nextInt(80 - 30) + 30;
+                    //multiplicamos po rel número de páginas del libro / 2 y dividimos por 100
+                    iNumPaginasRecuperadas = (int) (iDiferencial * (oLibro.getNumPaginasCopiadas() / 2) / 100);
+                    //una vez obtenidas las páginas, hay que darlas de alta como recursos de "pergamino sucio"
+                    if (iNumPaginasRecuperadas > 0) {
+                        oRecursoAD = new adRecurso(con);
+                        oRecursoAD.sumarRecurso(Constantes.RECURSOS_PERGAMINO_SUCIO, p_oAbadia.getIdDeAbadia(), iNumPaginasRecuperadas);
+                        //eliminar el libro
+                        oLibroAD.eliminarLibro(p_iLibro);
+                    }
+                } else {
+                    throw new EstadoLibroIncorrectoException(sTrace, log);
+                }
+            } else {
+                throw new LibroNoEncontradoException(sTrace, log);
+            }
+            return iNumPaginasRecuperadas;
+
+        } finally {
+            DBMSUtils.cerrarObjetoSQL(con);
+            msgLog = "Saliendo de metodo: " + sTrace;
+            log.info(msgLog);
+        }
     }
 }
 

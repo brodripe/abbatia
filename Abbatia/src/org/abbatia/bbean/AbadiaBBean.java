@@ -674,6 +674,15 @@ public class AbadiaBBean {
                 msg.setMensaje(p_oResource.getMessage("mensajes.info.bienvenida2"));
                 oMensajeAD.crearMensaje(msg);
 
+                //todo añadir el envío de un mensaje a todos los jugadores de la región
+                msg.setFechaAbadia(CoreTiempo.getTiempoAbadiaStringConHoras());
+                msg.setFechaReal(CoreTiempo.getTiempoRealStringConHoras());
+                msg.setIdDeAbadia(-1);
+                msg.setIdDeMonje(-1);
+                msg.setIdDeRegion(oAbadia.getIdDeRegion());
+                msg.setMensaje(p_oResource.getMessage("mensajes.info.bienvenida3"));
+                oMensajeAD.crearMensaje(msg);
+
                 ConnectionFactory.commitTransaction(con);
                 return oAbadia;
             }

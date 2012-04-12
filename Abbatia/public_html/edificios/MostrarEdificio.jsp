@@ -104,6 +104,14 @@
             return confirm('<bean:message key="edificios.abadia.biblioteca.confirmar.eliminacion"/>');
         }
 
+        function confirmarDesmontarLibro(min, max)
+        {
+            texto='<bean:message key="edificios.abadia.biblioteca.confirmar.desmontar" arg0="-min-" arg1="-max-"/>'
+            r1 = texto.replace('-min-', min)
+            r2 = r1.replace('-max-', max)
+            return confirm(r2);
+        }
+
         -->
     </script>
 

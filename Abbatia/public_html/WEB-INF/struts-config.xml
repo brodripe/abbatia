@@ -564,6 +564,8 @@
             <forward name="mostrar" path="/guardias/gestionGuardias.jsp"/>
         </action>
 
+        <action path="/desmontarLibro" type="org.abbatia.action.DesmontarLibroAction"/>
+
         <action path="/lista_solicitudes" type="org.abbatia.action.ListaSolicitudesAction"/>
         <action path="/solicitudSi" type="org.abbatia.action.SolicitudSiAction"/>
         <action path="/solicitudNo" type="org.abbatia.action.SolicitudNoAction"/>

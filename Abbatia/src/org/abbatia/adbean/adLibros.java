@@ -8,6 +8,7 @@ import org.abbatia.bean.*;
 import org.abbatia.core.CoreTiempo;
 import org.abbatia.dbms.DBMSUtils;
 import org.abbatia.exception.AbadiaSQLException;
+import org.abbatia.exception.LibroNoEncontradoException;
 import org.abbatia.exception.base.AbadiaException;
 import org.abbatia.utils.Constantes;
 import org.abbatia.utils.HTML;
@@ -769,6 +770,8 @@ public class adLibros extends adbeans {
                 libro.setNumPaginas(rs.getInt("PAGINAS"));
                 libro.setNumPaginasCopiadas(rs.getDouble("PAGINAS_COPIADAS"));
                 libro.setIdAbadia_copia(rs.getInt("ABADIAID_COPIA"));
+            } else {
+                throw new LibroNoEncontradoException("adLibros. recuperarLibro. LibroNoEncontradoException", log);
             }
             return libro;
 

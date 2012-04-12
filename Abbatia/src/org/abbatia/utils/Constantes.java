@@ -211,6 +211,7 @@ public class Constantes {
     public static final Integer RECURSOS_DEUDAS = 1000;
     public static final Integer RECURSOS_PLUMAS = 703;
     public static final Integer RECURSOS_PERGAMINOS = 700;
+    public static final Integer RECURSOS_PERGAMINO_SUCIO = 711;
     public static final Integer RECURSOS_TINTA = 702;
     public static final Integer RECURSOS_PIEL_DE_ANIMAL = 701;
     public static final Integer RECURSOS_PIEL_VACUNA = 704;
