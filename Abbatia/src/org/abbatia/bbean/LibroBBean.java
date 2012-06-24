@@ -633,6 +633,7 @@ public class LibroBBean {
         log.info(msgLog);
 
         int iNumPaginasRecuperadas = 0;
+        int iNumPaginas = 0;
         adLibros oLibroAD;
         adRecurso oRecursoAD;
         Libro oLibro;
@@ -658,8 +659,14 @@ public class LibroBBean {
                         oLibro.getEstado() == Constantes.ESTADO_LIBRO_SIN_ENCUADERNAR) {
                     //obtengo un diferencial entre 30 y 80
                     iDiferencial = r.nextInt(80 - 30) + 30;
+                    //si el libro está incompleto o copiándose utilizaremos el número de páginas copiadas
+                    if (oLibro.getEstado() == Constantes.ESTADO_LIBRO_INCOMPLETO ||
+                            oLibro.getEstado() == Constantes.ESTADO_LIBRO_COPIANDOSE)
+                        iNumPaginas = (int) oLibro.getNumPaginasCopiadas();
+                    else
+                        iNumPaginas = oLibro.getNumPaginas();
                     //multiplicamos po rel número de páginas del libro / 2 y dividimos por 100
-                    iNumPaginasRecuperadas = (int) (iDiferencial * (oLibro.getNumPaginasCopiadas() / 2) / 100);
+                    iNumPaginasRecuperadas = iDiferencial * (iNumPaginas / 2) / 100;
                     //una vez obtenidas las páginas, hay que darlas de alta como recursos de "pergamino sucio"
                     if (iNumPaginasRecuperadas > 0) {
                         oRecursoAD = new adRecurso(con);

@@ -53,6 +53,8 @@
         if (oLibro.getEstado() != 2 && oLibro.getEstado() != 5 && oLibro.getEstado() != 7 && oLibro.getEstado() != 8) {
             alLibrosEnProceso.add(oLibro);
         } else {
+            if (oLibro.getNumPaginasCopiadas() == 0)
+                oLibro.setNumPaginasCopiadas(oLibro.getNumPaginas());
             alLibrosCompletos.add(oLibro);
         }
     }
