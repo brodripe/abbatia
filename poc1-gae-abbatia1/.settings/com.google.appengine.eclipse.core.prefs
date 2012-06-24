@@ -1,0 +1,18 @@
+#Sun May 06 00:40:32 CEST 2012
+eclipse.preferences.version=1
+filesCopiedToWebInfLib=
+gaeDatanucleusEnabled=false
+gaeDeployDialogSettings=
+gaeIsEclipseDefaultInstPath=true
+googleCloudSqlEnabled=false
+localDevMySqlEnabled=false
+prodDatabaseName=guestbook
+prodDatabasePassword=
+prodDatabaseUser=
+prodInstanceName=abbatia.net\:abbatia-test-project\:poc1-abbatia
+prodIsConfigured=true
+testDatabaseName=guestbook
+testDatabasePassword=
+testDatabaseUser=
+testInstanceName=abbatia.net\:abbatia-test-project\:poc1-abbatia
+testIsConfigured=true

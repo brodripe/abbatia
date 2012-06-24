@@ -1,0 +1,30 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Welcome</title>
+</head>
+<body>
+  <p>
+  Welcome to Google App Engine for Java!	
+  </p>
+  <p>
+  <ul>
+    <c:forEach var="message" items="${messages}">
+      <li>
+        <div><c:out value="${message.text}"/></div>
+        <div><a href="/abbatia/messages?id=<c:out value="${message.id}"/>">Delete</a></div>
+      </li>
+    </c:forEach>
+  </ul>
+  </p>
+  <p>
+    <form:form method="post" modelAttribute="messageForm">
+        <form:input path="text" />
+        <input type="submit" value="Create" />
+    </form:form>
+  </p>
+</body>
+</html>
