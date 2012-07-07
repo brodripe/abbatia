@@ -4,11 +4,11 @@
 
   <!-- The Basics -->
   <groupId>org.abbatia</groupId>
-  <artifactId>poc1-gae-abbatia1</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <artifactId>gae-abbatia</artifactId>
+  <version>0.0.2-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>poc1-abbatia</name>
+  <name>gae-abbatia</name>
 
 	
 
@@ -112,7 +112,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.19</version>
+			<version>5.1.18</version>
 		</dependency>
 	</dependencies>
 
@@ -142,7 +142,7 @@
 			<plugin>
 				<groupId>net.kindleit</groupId>
 				<artifactId>maven-gae-plugin</artifactId>
-				<version>0.9.3</version>
+				<version>0.9.4</version>
 		        <dependencies>
 		          <dependency>
 		            <groupId>net.kindleit</groupId>
@@ -150,16 +150,22 @@
 		            <version>${gae.version}</version>
 		            <type>pom</type>
 		          </dependency>
+		          <dependency>
+					<groupId>mysql</groupId>
+					<artifactId>mysql-connector-java</artifactId>
+					<version>5.1.18</version>
+					<type>pom</type>
+				  </dependency>
 		        </dependencies>		        
 		        <configuration>
 		        	<jvmFlags>
 		        		<!-- http://code.google.com/p/googleappengine/issues/detail?id=6928 -->
-		        		<jvmFlag>-Dappengine.user.timezone=UTC</jvmFlag>
+		        		<!--<jvmFlag>-Dappengine.user.timezone=UTC</jvmFlag>
 		        		<jvmFlag>-Drdbms.driver=com.google.cloud.sql.Driver</jvmFlag>
-		        		<jvmFlag>-Drdbms.url=jdbc:google:rdbms://abbatia.net:abbatia-test-project:poc1-abbatia</jvmFlag>
-		        		<!--<jvmFlag>-Drdbms.server=local</jvmFlag>
+		        		<jvmFlag>-Drdbms.url=jdbc:google:rdbms://abbatia.net:abbatia-test-project:poc1-abbatia</jvmFlag>-->
+		        		<jvmFlag>-Drdbms.server=local</jvmFlag>
 						<jvmFlag>-Drdbms.driver=com.mysql.jdbc.Driver</jvmFlag>
-						<jvmFlag>-Drdbms.url=jdbc:mysql://localhost:3306/guestbook?user=root&amp;password=123456&amp;useInformationSchema=true&amp;useUnicode=true&amp;characterEncoding=UTF8&amp;useServerPrepStmts=true</jvmFlag>--> 
+						<jvmFlag>-Drdbms.url=jdbc:mysql://localhost:3306/guestbook?user=root&amp;password=Abbatia&amp;useInformationSchema=true&amp;useUnicode=true&amp;characterEncoding=UTF8&amp;useServerPrepStmts=true</jvmFlag> 
 		        	</jvmFlags>
 		        	<serverId>appengine.google.com</serverId>
 		        </configuration>
@@ -202,21 +208,21 @@
 		-->
 		<downloadSources>true</downloadSources>
 
-		<gae.home>d:/Dev/appengine-java-sdk-1.6.6</gae.home>
+		<gae.home>d:/Dev/appengine-java-sdk-1.7.0</gae.home>
 		
 		<!--
 			Specify AppEngine version for your project. It should match SDK
 			version pointed to by ${gae.home} property (Typically, one used by
 			your Eclipse plug-in)
 		-->
-		<gae.version>1.6.6</gae.version>
+		<gae.version>1.7.0</gae.version>
 		
 		<spring.version>3.1.1.RELEASE</spring.version>
 		
 		<!--
 			Upload to http://test.latest.<applicationName>.appspot.com by default
 		-->
-		<gae.application.version>test2</gae.application.version>
+		<gae.application.version>test</gae.application.version>
 
         <!-- <datanucleus.version>1.1.5</datanucleus.version>-->
 	</properties>
