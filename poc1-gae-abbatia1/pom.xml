@@ -60,7 +60,6 @@
 			<groupId>taglibs</groupId>
 			<version>1.1.2</version>
 			<type>jar</type>
-			<scope>runtime</scope>
 		</dependency>
 
 		<!-- These dependencies are here just for enabling logging -->
@@ -108,12 +107,7 @@
 			<version>${gae.version}</version>
 			<scope>test</scope>
 		</dependency>
-
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.18</version>
-		</dependency>
+		
 	</dependencies>
 
 	<build>
@@ -160,12 +154,12 @@
 		        <configuration>
 		        	<jvmFlags>
 		        		<!-- http://code.google.com/p/googleappengine/issues/detail?id=6928 -->
-		        		<!--<jvmFlag>-Dappengine.user.timezone=UTC</jvmFlag>
-		        		<jvmFlag>-Drdbms.driver=com.google.cloud.sql.Driver</jvmFlag>
-		        		<jvmFlag>-Drdbms.url=jdbc:google:rdbms://abbatia.net:abbatia-test-project:poc1-abbatia</jvmFlag>-->
+		        		<jvmFlag>-Dappengine.user.timezone=UTC</jvmFlag>
+		        		<!--<jvmFlag>-Drdbms.driver=com.google.cloud.sql.Driver</jvmFlag>
+		        		<jvmFlag>-Drdbms.url=jdbc:google:rdbms://abbatia.net:abbatia-test-project:poc1-abbatia</jvmFlag>
 		        		<jvmFlag>-Drdbms.server=local</jvmFlag>
 						<jvmFlag>-Drdbms.driver=com.mysql.jdbc.Driver</jvmFlag>
-						<jvmFlag>-Drdbms.url=jdbc:mysql://localhost:3306/guestbook?user=root&amp;password=Abbatia&amp;useInformationSchema=true&amp;useUnicode=true&amp;characterEncoding=UTF8&amp;useServerPrepStmts=true</jvmFlag> 
+						<jvmFlag>-Drdbms.url=jdbc:mysql://localhost:3306/guestbook?user=root&amp;password=Abbatia&amp;useInformationSchema=true&amp;useUnicode=true&amp;characterEncoding=UTF8&amp;useServerPrepStmts=true</jvmFlag>--> 
 		        	</jvmFlags>
 		        	<serverId>appengine.google.com</serverId>
 		        </configuration>
@@ -228,16 +222,94 @@
 	</properties>
 
 	<profiles>
+		<profile>
+			<id>local</id>
+			<activation>
+		     	<activeByDefault>true</activeByDefault>
+		      	<property>
+		        	<name>env</name>
+		          	<value>dev</value>
+          		</property>
+		    </activation>
+			<dependencies>
+				<dependency>
+					<groupId>mysql</groupId>
+					<artifactId>mysql-connector-java</artifactId>
+					<version>5.1.18</version>
+				</dependency>
+			</dependencies>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>net.kindleit</groupId>
+						<artifactId>maven-gae-plugin</artifactId>
+						<version>0.9.4</version>
+						<configuration>
+				        	<jvmFlags>
+								<jvmFlag>-Drdbms.server=local</jvmFlag>
+								<jvmFlag>-Drdbms.driver=com.mysql.jdbc.Driver</jvmFlag>
+								<jvmFlag>-Drdbms.url=jdbc:mysql://localhost:3306/guestbook?user=root&amp;password=Abbatia&amp;useInformationSchema=true&amp;useUnicode=true&amp;characterEncoding=UTF8&amp;useServerPrepStmts=true</jvmFlag>
+							</jvmFlags>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>system-test</id>
+			<activation>
+		      	<property>
+		        	<name>env</name>
+		          	<value>st</value>
+          		</property>
+		    </activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>net.kindleit</groupId>
+						<artifactId>maven-gae-plugin</artifactId>
+						<version>0.9.4</version>
+						<configuration>
+				        	<jvmFlags>
+								<jvmFlag>-Drdbms.driver=com.google.cloud.sql.Driver</jvmFlag>
+		        				<jvmFlag>-Drdbms.url=jdbc:google:rdbms://abbatia.net:abbatia-test-project:poc1-abbatia</jvmFlag>
+							</jvmFlags>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 		<!--
 			We can configure our integration server to activate this profile and
 			perform gae:deploy, thus uploading latest snapshot to the
 			http://1.latest.<applicationName>.appspot.com automatically
 		-->
 		<profile>
-			<id>integration-build</id>
+			<id>integracion</id>
+			<activation>
+		      	<property>
+		        	<name>env</name>
+		          	<value>it</value>
+          		</property>
+		    </activation>
 			<properties>
 				<gae.application.version>stage</gae.application.version>
 			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>net.kindleit</groupId>
+						<artifactId>maven-gae-plugin</artifactId>
+						<version>0.9.4</version>
+						<configuration>
+				        	<jvmFlags>
+								<jvmFlag>-Drdbms.driver=com.google.cloud.sql.Driver</jvmFlag>
+		        				<jvmFlag>-Drdbms.url=jdbc:google:rdbms://abbatia.net:abbatia-test-project:poc1-abbatia</jvmFlag>
+							</jvmFlags>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 
 		<!--
